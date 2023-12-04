@@ -1,5 +1,5 @@
-<!--pages/index/NextPage.wxml-->
-<text>pages/index/NextPage.wxml</text>
+<!--pages/NextPage/NextPage.wxml-->
+<text>pages/NextPage/NextPage.wxml</text>
 
 <!-- NextPage.wxml -->
 <view class="tabs">

@@ -1,7 +1,7 @@
-/* pages/index/NextPage.wxss */
+/* pages/NextPage/NextPage.wxss */
 
 /* NextPage.wxss */
-/* .tabs {
+.tabs {
   display: flex;
   justify-content: center;
   margin-top: 20rpx;
@@ -12,7 +12,7 @@
   text-align: center;
   padding: 10rpx;
   border: 1px solid #ddd; /* Simple border for tab */
-  /* margin: 5rpx;
-} */ 
+  margin: 5rpx;
+}
 
 /* You can add more styles here to make it look more like tabs */
