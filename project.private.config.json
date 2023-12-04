@@ -1,6 +1,7 @@
 {
   "projectname": "cilia-tools",
   "setting": {
-    "compileHotReLoad": true
+    "compileHotReLoad": true,
+    "skylineRenderEnable": false
   }
 }

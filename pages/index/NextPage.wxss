@@ -1,0 +1,18 @@
+/* pages/index/NextPage.wxss */
+
+/* NextPage.wxss */
+/* .tabs {
+  display: flex;
+  justify-content: center;
+  margin-top: 20rpx;
+}
+
+.tab {
+  flex: 1;
+  text-align: center;
+  padding: 10rpx;
+  border: 1px solid #ddd; /* Simple border for tab */
+  /* margin: 5rpx;
+} */ 
+
+/* You can add more styles here to make it look more like tabs */

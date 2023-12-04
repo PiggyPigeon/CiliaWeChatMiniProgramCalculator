@@ -1,0 +1,9 @@
+<!--pages/index/NextPage.wxml-->
+<text>pages/index/NextPage.wxml</text>
+
+<!-- NextPage.wxml -->
+<view class="tabs">
+  <view class="tab" id="osTab">OS</view>
+  <view class="tab" id="odTab">OD</view>
+</view>
+<!-- Content of the tabs will go here -->

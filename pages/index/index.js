@@ -1,11 +1,21 @@
 // index.js
 Page({
   data: {
-    value1: '',
-    result: ''
+    valueOS: '',
+    valueOD: '',
+    resultOS: '',
+    resultOD: ''
   },
   
-  handleInput1(e) {
+  handleInputOS(e) {
+    this.handleInput(e, 'valueOS');
+  },
+
+  handleInputOD(e) {
+    this.handleInput(e, 'valueOD');
+  },
+
+  handleInput(e, field) {
     let value = e.detail.value;
     value = value.replace(/\D/g, ''); // Remove non-numeric characters
 
@@ -13,16 +23,25 @@ Page({
       value = value.slice(0, 2) + '.' + value.slice(2); // Add decimal after first two digits
     }
 
-    this.setData({
-      value1: value
-    });
+    let update = {};
+    update[field] = value;
+    this.setData(update);
   },
 
   calculate() {
-    const value1 = parseFloat(this.data.value1);
-    const result = Math.round((6.293 + 0.828 * value1) * 4)/4
+    const valueOS = parseFloat(this.data.valueOS);
+    const valueOD = parseFloat(this.data.valueOD);
+    const resultOS = Math.round((6.293 + 0.828 * valueOS) * 4)/4;
+    const resultOD = Math.round((6.293 + 0.828 * valueOD) * 4)/4;
+
     this.setData({
-      result: result.toFixed(2).toString()
+      resultOS: resultOS.toFixed(2).toString(),
+      resultOD: resultOD.toFixed(2).toString()
+    });
+  },
+  continueToNextPage() {
+    wx.navigateTo({
+      url: '/pages/NextPage/NextPage'
     });
   }
 });

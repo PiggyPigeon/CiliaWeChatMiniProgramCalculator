@@ -1,14 +1,19 @@
 <!--index.wxml-->
 <navigation-bar title="Cilia 视光小助手" back="{{false}}" color="#7239EA" background="#C8A2C8"></navigation-bar>
 <scroll-view class="scrollarea" scroll-y type="list">
- 
   <view class="container">
-       <view class="title">NP  试戴计算机</view>
-       <view class="input-container">
-         <text>Sim K:</text>
-         <input id="simKInput" value="{{value1}}" bindinput="handleInput1" placeholder="输入平K" style="width: 70%"></input>
-       </view>
-       <button bindtap="calculate">计算</button>
-       <view class="result">推荐 BFK: {{result}}</view>
-     </view>
+    <view class="title">NP 试戴计算机</view>
+    <view class="input-container">
+      <text>Sim K OS:</text>
+      <input id="simKInputOS" value="{{valueOS}}" bindinput="handleInputOS" placeholder="输入平K/OS SIMK" style="width: 60%"></input>
+    </view>
+    <view class="input-container">
+      <text>Sim K OD:</text>
+      <input id="simKInputOD" value="{{valueOD}}" bindinput="handleInputOD" placeholder="输入平K/OD SIMK" style="width: 60%"></input>
+    </view>
+    <button bindtap="calculate">计算</button>
+    <view class="result">推荐 BFK OS: {{resultOS}}</view>
+    <view class="result">推荐 BFK OD: {{resultOD}}</view>
+    <button bindtap="continueToNextPage">继续</button>
+  </view>
 </scroll-view>
