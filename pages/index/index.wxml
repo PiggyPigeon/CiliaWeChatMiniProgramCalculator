@@ -3,7 +3,7 @@
 <scroll-view class="scrollarea" scroll-y type="list">
  
   <view class="container">
-       <view class="title">NP 试戴计算机</view>
+       <view class="title">NP  试戴计算机</view>
        <view class="input-container">
          <text>Sim K:</text>
          <input id="simKInput" value="{{value1}}" bindinput="handleInput1" placeholder="输入平K" style="width: 70%"></input>
