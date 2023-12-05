@@ -41,7 +41,7 @@ Page({
   },
   continueToNextPage() {
     wx.navigateTo({
-      url: '/pages/NextPage/NextPage'
+      url: `/pages/NextPage/NextPage?resultOS=${this.data.resultOS}&resultOD=${this.data.resultOD}`
     });
   }
 });

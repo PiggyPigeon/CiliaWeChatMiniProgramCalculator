@@ -1,66 +1,85 @@
 // pages/NextPage/NextPage.js
+// NextPage.js
 Page({
-
-  /**
-   * Page initial data
-   */
   data: {
-
+    resultOS: '',
+    resultOD: '',
+    showOS: false,
+    showOD: false,
+    imageOS: '', 
+    notesOS: '',        
+    imageOD: '', 
+    notesOD: '',
+    activeTab: 'OS'   
   },
 
-  /**
-   * Lifecycle function--Called when page load
-   */
   onLoad(options) {
-
+    // Set the received data to state
+    this.setData({
+      resultOS: options.resultOS || '',
+      resultOD: options.resultOD || ''
+    });
   },
 
-  /**
-   * Lifecycle function--Called when page is initially rendered
-   */
-  onReady() {
-
+  showOSOptions() {
+    this.setData({
+      showOS: true,
+      showOD: false,
+      activeTab: 'OS'
+    });
   },
 
-  /**
-   * Lifecycle function--Called when page show
-   */
-  onShow() {
-
+  showODOptions() {
+    this.setData({
+      showOS: false,
+      showOD: true,
+      activeTab: 'OD'
+    });
   },
 
-  /**
-   * Lifecycle function--Called when page hide
-   */
-  onHide() {
-
+  onRadioChangeOS(e) {
+    this.setData({
+      imageOS: e.detail.value
+    });
   },
 
-  /**
-   * Lifecycle function--Called when page unload
-   */
-  onUnload() {
-
+  onRadioChangeOD(e) {
+    this.setData({
+      imageOD: e.detail.value
+    });
   },
 
-  /**
-   * Page event handler function--Called when user drop down
-   */
-  onPullDownRefresh() {
-
+  onNotesInputOS(e) {
+    this.setData({
+      notesOS: e.detail.value
+    });
   },
 
-  /**
-   * Called when page reach bottom
-   */
-  onReachBottom() {
-
+  saveNotesOS() {
+    // For now, we are just saving the notes in `notesOS`.
+    // You can add additional logic here if needed.
+    wx.showToast({
+      title: 'Notes saved',
+      icon: 'success',
+      duration: 2000
+    });
   },
 
-  /**
-   * Called when user click on the top right corner to share
-   */
-  onShareAppMessage() {
+  onNotesInputOD(e) {
+    this.setData({
+      notesOD: e.detail.value
+    });
+  },
 
+  saveNotesOD() {
+    // For now, we are just saving the notes in `notesOS`.
+    // You can add additional logic here if needed.
+    wx.showToast({
+      title: 'Notes saved',
+      icon: 'success',
+      duration: 2000
+    });
   }
-})
+
+
+});

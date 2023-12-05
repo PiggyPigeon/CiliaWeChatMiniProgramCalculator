@@ -1,18 +1,72 @@
-/* pages/NextPage/NextPage.wxss */
+page {
+  background-color: #f5d34e; 
+}
 
-/* NextPage.wxss */
 .tabs {
   display: flex;
   justify-content: center;
-  margin-top: 20rpx;
+  margin-top: 200rpx;
 }
 
 .tab {
-  flex: 1;
+  width: 180rpx; 
+  height: 180rpx; 
+  line-height: 60rpx; 
   text-align: center;
-  padding: 10rpx;
-  border: 1px solid #ddd; /* Simple border for tab */
-  margin: 5rpx;
+  border: 1px solid #5A315D;
+  margin: 50rpx;
+  border-radius: 50%; 
+  display: flex;
+  justify-content: center;
+  align-items: center; 
 }
 
-/* You can add more styles here to make it look more like tabs */
+.options {
+  border: 2rpx solid #5A315D; /* Example border color and thickness */
+  padding: 20rpx;
+  margin: 20rpx;
+  border-radius: 10rpx; 
+}
+
+.row {
+  display: flex;
+  justify-content: center;
+  padding: 10rpx;
+  align-items: center;
+}
+
+.bfk-label {
+  margin-right: 10rpx; 
+}
+
+.radio-button {
+  display: inline-block;
+  padding: 5rpx 10rpx;
+  margin-right: 10rpx;
+}
+
+.notes-section {
+  margin-top: 10rpx; 
+  text-align: center;
+}
+
+.notes-label {
+  text-align: center; 
+  width: 80%;
+  margin-bottom: 5rpx; 
+}
+
+.notes-input {
+  width: 90%; 
+  height: 100rpx; 
+  border: 1px solid #d3b642; 
+  border-radius: 10rpx; 
+  padding: 10rpx; 
+  text-align: center;
+  margin: 0 auto;
+}
+
+.tab.active {
+  background-color: #5A315D; 
+  color: #f5d34e; 
+}
