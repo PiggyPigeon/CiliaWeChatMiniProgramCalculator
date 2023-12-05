@@ -29,10 +29,11 @@
 </view>
   <!-- Row 3: Notes -->
   <view class="notes-section">
-    <text class="notes-label">Notes:</text>
+    <text class="notes-label">筆記:</text>
     <textarea class="notes-input"  type="text" value="{{notesOS}}" bindinput="onNotesInputOS" placeholder="Type notes here"></textarea>
   </view>
 </view>
+
 
  <!-- Row 1: BFK -->
 <view wx:if="{{showOD}}" class="options">
@@ -56,7 +57,8 @@
 </view>
   <!-- Row 3: Notes -->
   <view class="notes-section">
-    <text class="notes-label">Notes:</text>
+    <text class="notes-label">筆記:</text>
     <textarea class="notes-input"  type="text" value="{{notesOD}}" bindinput="onNotesInputOD" placeholder="Type notes here"></textarea>
   </view>
 </view>
+<button class="new-lens-button" bindtap="addNewLens">加另一個片</button>

@@ -70,3 +70,14 @@ page {
   background-color: #5A315D; 
   color: #f5d34e; 
 }
+
+.new-lens-button {
+  background-color: #5A315D; /* Example button color */
+  color: white;
+  padding: 10rpx 20rpx;
+  border: none;
+  border-radius: 5rpx;
+  margin: 20rpx auto;
+  display: block; /* Ensure it's a block element for proper centering */
+  text-align: center;
+}

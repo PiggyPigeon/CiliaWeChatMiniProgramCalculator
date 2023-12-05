@@ -79,7 +79,14 @@ Page({
       icon: 'success',
       duration: 2000
     });
-  }
+  },
+
+  addNewLens() {
+    // Define the action for adding a new OS lens
+    // For example, navigate to another page or show a form
+  },
+
+  
 
 
 });
