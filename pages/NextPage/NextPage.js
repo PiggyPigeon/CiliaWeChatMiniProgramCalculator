@@ -10,7 +10,33 @@ Page({
     notesOS: '',        
     imageOD: '', 
     notesOD: '',
-    activeTab: 'OS'   
+    activeTab: 'OS' ,
+    comfortLevels: ['1 - Excellent', '2', '3', '4', '5', '6', '7', '8', '9', '10 - Unwearable'],
+    comfortIndexOD: 0, 
+    comfortIndexOS: 0,
+  },
+
+  // onBFKInputOD: function(e) {
+  //   this.setData({
+  //     resultOD: e.detail.value
+  //   });
+  // },
+
+  // onBFKInputOS: function(e) {
+  //   this.setData({
+  //     resultOS: e.detail.value
+  //   });
+  // },
+  
+  onComfortLevelChangeOD: function(e) {
+    this.setData({
+      comfortIndexOD: e.detail.value
+    })
+  },
+  onComfortLevelChangeOS: function(e) {
+    this.setData({
+      comfortIndexOS: e.detail.value
+    })
   },
 
   onLoad(options) {

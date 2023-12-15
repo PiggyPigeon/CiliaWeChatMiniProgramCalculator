@@ -1,13 +1,11 @@
 <!--pages/NextPage/NextPage.wxml-->
 <text>pages/NextPage/NextPage.wxml</text>
-
 <!-- NextPage.wxml -->
 <view class="tabs">
   <view class="tab {{activeTab === 'OS' ? 'active' : ''}}" bindtap="showOSOptions">OS</view>
   <view class="tab {{activeTab === 'OD' ? 'active' : ''}}" bindtap="showODOptions">OD</view>
 </view>
   <!-- Row 1: BFK -->
-  
 <view wx:if="{{showOS}}" class="options">
   <view class="row">
     <text class="bfk-label">BFK:  </text>
@@ -27,7 +25,14 @@
     </view>
   </radio-group>
 </view>
-  <!-- Row 3: Notes -->
+  <!-- Row 3: Customer Feedback -->
+  <view class="customer-comfort-section">
+  <text class="customer-feedback-label">顧客舒適度:</text>
+  <picker mode="selector" range="{{comfortLevels}}" bindchange="onComfortLevelChangeOS" value="{{comfortIndexOS}}">
+    <view class="picker-view">{{comfortLevels[comfortIndexOS]}}</view>
+  </picker>
+</view>
+  <!-- Row 4: Notes -->
   <view class="notes-section">
     <text class="notes-label">筆記:</text>
     <textarea class="notes-input"  type="text" value="{{notesOS}}" bindinput="onNotesInputOS" placeholder="Type notes here"></textarea>
@@ -55,7 +60,14 @@
     </view>
   </radio-group>
 </view>
-  <!-- Row 3: Notes -->
+  <!-- Row 3: Customer Feedback -->
+  <view class="customer-comfort-section">
+  <text class="customer-feedback-label">顧客舒適度:</text>
+  <picker mode="selector" range="{{comfortLevels}}" bindchange="onComfortLevelChangeOD" value="{{comfortIndexOD}}">
+    <view class="picker-view">{{comfortLevels[comfortIndexOD]}}</view>
+  </picker>
+</view>
+  <!-- Row 4: Notes -->
   <view class="notes-section">
     <text class="notes-label">筆記:</text>
     <textarea class="notes-input"  type="text" value="{{notesOD}}" bindinput="onNotesInputOD" placeholder="Type notes here"></textarea>
