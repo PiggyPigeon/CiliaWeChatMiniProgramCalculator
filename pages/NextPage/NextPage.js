@@ -2,9 +2,11 @@
 // NextPage.js
 Page({
   data: {
+    originalResultOS: '',
+    originalResultOD: '',
     resultOS: '',
     resultOD: '',
-    showOS: false,
+    showOS: true,
     showOD: false,
     imageOS: '', 
     notesOS: '',        
@@ -14,19 +16,30 @@ Page({
     comfortLevels: ['1 - Excellent', '2', '3', '4', '5', '6', '7', '8', '9', '10 - Unwearable'],
     comfortIndexOD: 0, 
     comfortIndexOS: 0,
+    
+  },
+  
+  onBFKInputOS (e) {
+    this.handleInput(e, 'resultOS');
   },
 
-  // onBFKInputOD: function(e) {
-  //   this.setData({
-  //     resultOD: e.detail.value
-  //   });
-  // },
+  onBFKInputOD(e) {
+    this.handleInput(e, 'resultOD');
+  },
 
-  // onBFKInputOS: function(e) {
-  //   this.setData({
-  //     resultOS: e.detail.value
-  //   });
-  // },
+  handleInput(e, field) {
+    let value = e.detail.value;
+    value = value.replace(/\D/g, ''); // Remove non-numeric characters
+
+    if (value.length > 2) {
+      value = value.slice(0, 2) + '.' + value.slice(2, 4);
+    } 
+ 
+
+    let update = {};
+    update[field] = value;
+    this.setData(update);
+  },
   
   onComfortLevelChangeOD: function(e) {
     this.setData({
@@ -42,6 +55,8 @@ Page({
   onLoad(options) {
     // Set the received data to state
     this.setData({
+      originalResultOS: options.resultOS || '',
+      originalResultOD: options.resultOD || '',
       resultOS: options.resultOS || '',
       resultOD: options.resultOD || ''
     });

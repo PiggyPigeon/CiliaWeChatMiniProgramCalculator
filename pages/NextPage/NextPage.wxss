@@ -19,6 +19,12 @@ page {
   display: flex;
   justify-content: center;
   align-items: center; 
+  color: #5A315D;
+}
+
+.tab.active {
+  background-color: #5A315D; 
+  color: #f5d34e; 
 }
 
 .options {
@@ -36,52 +42,23 @@ page {
 }
 
 .bfk-label {
-  margin-right: 10rpx; 
+  color: #5A315D;
+}
+
+.bfk-input {
+  border: 1px solid #5A315D; 
+  padding: 5rpx 10rpx;    
+  border-radius: 15rpx;   
+  margin: 0 auto;
+  
 }
 
 .radio-button {
   display: inline-block;
   padding: 5rpx 10rpx;
   margin-right: 10rpx;
+  color: #5A315D;
 }
-
-.notes-section {
-  margin-top: 10rpx; 
-  text-align: center;
-}
-
-.notes-label {
-  text-align: center; 
-  width: 80%;
-  margin-bottom: 5rpx; 
-}
-
-.notes-input {
-  width: 90%; 
-  height: 100rpx; 
-  border: 1px solid #d3b642; 
-  border-radius: 10rpx; 
-  padding: 10rpx; 
-  text-align: center;
-  margin: 0 auto;
-}
-
-.tab.active {
-  background-color: #5A315D; 
-  color: #f5d34e; 
-}
-
-.new-lens-button {
-  background-color: #5A315D; /* Example button color */
-  color: white;
-  padding: 10rpx 20rpx;
-  border: none;
-  border-radius: 5rpx;
-  margin: 20rpx auto;
-  display: block; /* Ensure it's a block element for proper centering */
-  text-align: center;
-}
-
 
 .customer-comfort-section {
   margin-top: 10rpx; 
@@ -92,6 +69,7 @@ page {
   text-align: center; 
   width: 80%;
   margin-bottom: 5rpx; 
+  color: #5A315D;
 }
 
 .customer-feedback-input {
@@ -108,11 +86,11 @@ page {
   display: block;
   width: 90%;
   height: 60rpx; 
-  border: 1px solid #d3b642; 
+  border: 1px solid #5A315D; 
   border-radius: 10rpx;
   padding: 10rpx;
-  background-color: white;
-  color: #333;
+  background-color: #f5d34e;
+  color: #5A315D;
   text-align: center;
   line-height: 60rpx;
   margin: 0 auto;
@@ -126,13 +104,37 @@ page {
   color: #5A315D;
 }
 
-.customer-comfort-section {
+
+.notes-section {
+  margin-top: 10rpx; 
   text-align: center;
-  margin-top: 20rpx;
 }
 
-.customer-feedback-label {
-  display: block;
-  margin-bottom: 10rpx;
+.notes-label {
+  text-align: center; 
+  width: 80%;
+  margin-bottom: 5rpx; 
+  color: #5A315D;
 }
 
+.notes-input {
+  width: 90%; 
+  height: 100rpx; 
+  border: 1px solid #5A315D; 
+  border-radius: 10rpx; 
+  padding: 10rpx; 
+  text-align: center;
+  margin: 0 auto;
+  color: #5A315D; 
+}
+
+.new-lens-button {
+  background-color: #5A315D; /* Example button color */
+  color: #f5d34e;
+  padding: 10rpx 20rpx;
+  border: none;
+  border-radius: 5rpx;
+  margin: 20rpx auto;
+  display: block; /* Ensure it's a block element for proper centering */
+  text-align: center;
+}

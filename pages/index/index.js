@@ -20,7 +20,7 @@ Page({
     value = value.replace(/\D/g, ''); // Remove non-numeric characters
 
     if (value.length > 2) {
-      value = value.slice(0, 2) + '.' + value.slice(2); // Add decimal after first two digits
+      value = value.slice(0, 2) + '.' + value.slice(2,4); // Add decimal after first two digits
     }
 
     let update = {};
