@@ -28,7 +28,7 @@ page {
 }
 
 .options {
-  border: 2rpx solid #5A315D; /* Example border color and thickness */
+  border: 7rpx solid #5A315D; /* Example border color and thickness */
   padding: 20rpx;
   margin: 20rpx;
   border-radius: 10rpx; 
@@ -50,7 +50,7 @@ page {
   padding: 5rpx 10rpx;    
   border-radius: 15rpx;   
   margin: 0 auto;
-  
+  color: #5A315D; 
 }
 
 .radio-button {

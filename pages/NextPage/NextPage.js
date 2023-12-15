@@ -16,6 +16,12 @@ Page({
     comfortLevels: ['1 - Excellent', '2', '3', '4', '5', '6', '7', '8', '9', '10 - Unwearable'],
     comfortIndexOD: 0, 
     comfortIndexOS: 0,
+
+
+    concernTabOS: 'NoConcerns',
+    
+    concernsOS: [],
+    
     
   },
   
@@ -77,6 +83,20 @@ Page({
       activeTab: 'OD'
     });
   },
+
+  showNoConcernsOS() {
+    this.setData({concernTabOS: 'NoConcerns' });
+  },
+
+  showHaveConcernsOS() {
+    this.setData({concernTabOS: 'HaveConcerns' });
+  },
+
+  onCheckboxChangeOS(e) {
+    this.setData({ concernsOS: e.detail.value });
+  },
+
+
 
   onRadioChangeOS(e) {
     this.setData({

@@ -1,5 +1,5 @@
 <!--index.wxml-->
-<navigation-bar title="Cilia 视光小助手" back="{{false}}" color="#7239EA" background="#C8A2C8"></navigation-bar>
+<navigation-bar title="Cilia 视光小助手" back="{{false}}"></navigation-bar>
 <scroll-view class="scrollarea" scroll-y type="list">
   <view class="container">
     <view class="title">NP 试戴计算机</view>
@@ -12,6 +12,9 @@
       <input id="simKInputOD" value="{{valueOD}}" bindinput="handleInputOD" placeholder="输入平K/OD SIMK" style="width: 60%"></input>
     </view>
     <button bindtap="calculate">计算</button>
+
+    <button bindtap="clearInputs" class="clear-button">清除</button>
+
     <view class="result">推荐 BFK OS: {{resultOS}}</view>
     <view class="result">推荐 BFK OD: {{resultOD}}</view>
     <button bindtap="continueToNextPage">继续</button>

@@ -7,6 +7,15 @@ Page({
     resultOD: ''
   },
   
+  clearInputs() {
+    this.setData({
+      valueOS: '',
+      valueOD: '',
+      resultOS: '',
+      resultOD: ''
+    });
+  },
+
   handleInputOS(e) {
     this.handleInput(e, 'valueOS');
   },

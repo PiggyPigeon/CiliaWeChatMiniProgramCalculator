@@ -16,6 +16,26 @@
     <input class="bfk-input" type="number" id="BFKOS" name="BFKOS" value="{{resultOS}}" bindinput="onBFKInputOS" style="width: 80%" placeholder="{{originalResultOS}}" placeholder-style="color: #916a94;"/>
   </view>
 
+
+ <!-- New Concern Tabs -->
+ <view class="concern-tabs">
+    <view class="concern-tab {{concernTabOS === 'NoConcerns' ? 'active' : ''}}" bindtap="showNoConcernsOS">No Concerns</view>
+    <view class="concern-tab {{concernTabOS === 'HaveConcerns' ? 'active' : ''}}" bindtap="showHaveConcernsOS">Have Concerns</view>
+  </view>
+
+  <!-- Display Concerns if Have Concerns is active -->
+  <view wx:if="{{concernTabOS === 'HaveConcerns'}}">
+    <checkbox-group bindchange="onCheckboxChangeOS">
+      <label><checkbox value="TooTight"/> Too Tight</label>
+      <label><checkbox value="TooLoose"/> Too Loose</label>
+      <!-- Add other checkboxes here -->
+    </checkbox-group>
+  </view>
+</view>
+
+
+
+
     <!-- Row 2: Radio buttons -->
   <view class="row">
   <radio-group bindchange="onRadioChangeOS">
@@ -26,7 +46,10 @@
       <radio value="image2" checked="{{imageOS === 'image2'}}"/> Too Loose
     </view>
     <view class="radio-button {{imageOS === 'image3' ? 'radio-button-checked' : ''}}">
-      <radio value="image3" checked="{{imageOS === 'image3'}}"/> Bubbles
+      <radio value="image3" checked="{{imageOS === 'image3'}}"/> Too Small
+    </view>
+    <view class="radio-button {{imageOS === 'image4' ? 'radio-button-checked' : ''}}">
+      <radio value="image4" checked="{{imageOS === 'image4'}}"/> Too Big
     </view>
   </radio-group>
 </view>
@@ -65,7 +88,10 @@
       <radio value="image2" checked="{{imageOD === 'image2'}}"/> Too Loose
     </view>
     <view class="radio-button {{imageOD === 'image3' ? 'radio-button-checked' : ''}}">
-      <radio value="image3" checked="{{imageOD === 'image3'}}"/> Bubbles
+      <radio value="image3" checked="{{imageOD === 'image3'}}"/> Too Small
+    </view>
+    <view class="radio-button {{imageOD === 'image4' ? 'radio-button-checked' : ''}}">
+      <radio value="image4" checked="{{imageOD === 'image4'}}"/> Too Big
     </view>
   </radio-group>
 </view>
