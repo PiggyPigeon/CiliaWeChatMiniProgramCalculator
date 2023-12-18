@@ -5,7 +5,35 @@ page {
 .tabs {
   display: flex;
   justify-content: center;
-  margin-top: 200rpx;
+  margin-top: 100rpx;
+}
+
+.concernTabs {
+  display: flex;
+  justify-content: space-around;
+  margin-top: 10rpx;
+  color: #5A315D;
+  align-items: center;
+}
+
+.concernTab {
+  width: 210rpx; 
+  height: 70rpx; 
+  line-height: 40rpx; 
+  text-align: center;
+  border: 1px solid #5A315D;
+  margin: 5rpx;
+  padding: 5rpx;
+  border-radius: 25%; 
+  display: flex;
+  justify-content: center;
+  align-items: center; 
+  color: #5A315D;
+}
+
+.concernTab.active {
+  background-color: #5A315D; 
+  color: #f5d34e; 
 }
 
 .tab {
@@ -25,6 +53,12 @@ page {
 .tab.active {
   background-color: #5A315D; 
   color: #f5d34e; 
+}
+
+.checkbox-label {
+  margin-right: 15rpx;
+  margin-left: 15rpx;
+  color: #5A315D;
 }
 
 .options {
@@ -53,12 +87,19 @@ page {
   color: #5A315D; 
 }
 
-.radio-button {
+radio-group {
+  display: flex;
+  justify-content: space-around;
+  padding: 25rpx 10rpx;
+  color: #5A315D;
+}
+
+/* .radio-button {
   display: inline-block;
   padding: 5rpx 10rpx;
   margin-right: 10rpx;
   color: #5A315D;
-}
+} */
 
 .customer-comfort-section {
   margin-top: 10rpx; 

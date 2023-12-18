@@ -6,23 +6,29 @@ Page({
     originalResultOD: '',
     resultOS: '',
     resultOD: '',
-    showOS: true,
-    showOD: false,
-    imageOS: '', 
+    showOS: false,
+    showOD: true,
     notesOS: '',        
-    imageOD: '', 
     notesOD: '',
-    activeTab: 'OS' ,
-    comfortLevels: ['1 - Excellent', '2', '3', '4', '5', '6', '7', '8', '9', '10 - Unwearable'],
+    activeTab: 'OD',
+    sizeConcernOD: '',
+    tightnessConcernOD: '',
+    curvatureConcernOD: '',
+    sizeConcernOS: '',
+    tightnessConcernOS: '',
+    curvatureConcernOS: '',
+
+    showNoConcernOD: true,
+    showConcernsOD: false,
+    concernTabOD: 'none',
+
+    showNoConcernOS: true,
+    showConcernsOS: false,
+    concernTabOS: 'none',
+
+    comfortLevels: ['1 - 非常舒服', '2 - acceptable', '3 - 不能穿'],
     comfortIndexOD: 0, 
-    comfortIndexOS: 0,
-
-
-    concernTabOS: 'NoConcerns',
-    
-    concernsOS: [],
-    
-    
+    comfortIndexOS: 0,    
   },
   
   onBFKInputOS (e) {
@@ -41,7 +47,6 @@ Page({
       value = value.slice(0, 2) + '.' + value.slice(2, 4);
     } 
  
-
     let update = {};
     update[field] = value;
     this.setData(update);
@@ -59,7 +64,6 @@ Page({
   },
 
   onLoad(options) {
-    // Set the received data to state
     this.setData({
       originalResultOS: options.resultOS || '',
       originalResultOD: options.resultOD || '',
@@ -80,33 +84,75 @@ Page({
     this.setData({
       showOS: false,
       showOD: true,
-      activeTab: 'OD'
+      activeTab: 'OD',
     });
   },
 
-  showNoConcernsOS() {
-    this.setData({concernTabOS: 'NoConcerns' });
-  },
-
-  showHaveConcernsOS() {
-    this.setData({concernTabOS: 'HaveConcerns' });
-  },
-
-  onCheckboxChangeOS(e) {
-    this.setData({ concernsOS: e.detail.value });
-  },
-
-
-
-  onRadioChangeOS(e) {
+  showNoConcernsMenuOS() {
     this.setData({
-      imageOS: e.detail.value
+      showConcernsOS: false,
+      showNoConcernOS: true,
+      concernTabOS: 'none'
+    })
+  },
+
+  showSomeConcernsMenuOS() {
+    this.setData({
+      showConcernsOS: true,
+      showNoConcernOS: false,
+      concernTabOS: 'some'
+    })
+  },
+
+  showNoConcernsMenuOD() {
+    this.setData({
+      showConcernsOD: false,
+      showNoConcernOD: true,
+      concernTabOD: 'none'
     });
   },
 
-  onRadioChangeOD(e) {
+  showSomeConcernsMenuOD() {
     this.setData({
-      imageOD: e.detail.value
+      showConcernsOD: true,
+      showNoConcernOD: false,
+      concernTabOD: 'some'
+    });
+  },
+
+  onRadioChangeSizeOD(e) {
+    this.setData({
+      sizeConcernOD: e.detail.value
+    });
+  },
+
+  onRadioChangeTightnessOD(e) {
+    this.setData({
+      tightnessConcernOD: e.detail.value
+    });
+  },
+
+  onRadioChangeCurvatureOD(e) {
+    this.setData({
+      curvatureConcernOD: e.detail.value
+    });
+  },
+ 
+  onRadioChangeSizeOS(e) {
+    this.setData({
+      sizeConcernOS: e.detail.value
+    });
+  },
+
+  onRadioChangeTightnessOS(e) {
+    this.setData({
+      tightnessConcernOS: e.detail.value
+    });
+  },
+
+  onRadioChangeCurvatureOS(e) {
+    this.setData({
+      curvatureConcernOS: e.detail.value
     });
   },
 
@@ -116,15 +162,21 @@ Page({
     });
   },
 
-  saveNotesOS() {
-    // For now, we are just saving the notes in `notesOS`.
-    // You can add additional logic here if needed.
-    wx.showToast({
-      title: 'Notes saved',
-      icon: 'success',
-      duration: 2000
-    });
-  },
+  // saveNotesOS() {
+  //   wx.showToast({
+  //     title: 'Notes saved',
+  //     icon: 'success',
+  //     duration: 2000
+  //   });
+  // },
+
+  // saveNotesOD() {
+  //   wx.showToast({
+  //     title: 'Notes saved',
+  //     icon: 'success',
+  //     duration: 2000
+  //   });
+  // },
 
   onNotesInputOD(e) {
     this.setData({
@@ -132,22 +184,8 @@ Page({
     });
   },
 
-  saveNotesOD() {
-    // For now, we are just saving the notes in `notesOS`.
-    // You can add additional logic here if needed.
-    wx.showToast({
-      title: 'Notes saved',
-      icon: 'success',
-      duration: 2000
-    });
-  },
-
   addNewLens() {
     // Define the action for adding a new OS lens
     // For example, navigate to another page or show a form
   },
-
-  
-
-
 });
