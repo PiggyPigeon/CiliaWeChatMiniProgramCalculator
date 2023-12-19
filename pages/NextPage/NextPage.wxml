@@ -20,11 +20,17 @@
   <view class="concernTab {{concernTabOD === 'none' ? 'active' : ''}}" bindtap="showNoConcernsMenuOD">沒有問題</view>
   <view class="concernTab {{concernTabOD === 'some' ? 'active' : ''}}" bindtap="showSomeConcernsMenuOD">有問題</view>
 </view>
-<!-- no concern option -->
+
+<!-- no concern option for OD -->
 <view wx:if="{{showNoConcernOD}}" class="concernOptions">
 </view>
 <!-- concern option for OD-->
-<view wx:if="{{showConcernsOD && activeTab === 'OD'}}" class="concernOptions">
+<!-- Toggle for Radio Buttons -->
+<view wx:if="{{showConcernsOD && activeTab === 'OD'}}" class="toggle-radio-buttons" bindtap="toggleRadioButtonsOD">
+  {{showRadioButtonsOD ? '隱藏問題 ▲' : '揭露問題 ▼'}}
+</view>
+
+  <view wx:if="{{showRadioButtonsOD && showConcernsOD && activeTab === 'OD'}}" class="concernOptions">
    <!-- Size Concerns -->
    <radio-group name="sizeConcernOD" bindchange="onRadioChangeSizeOD">
     <label><radio value="tooSmall" checked="{{sizeConcernOD === 'tooSmall'}}"/> 太小</label>
@@ -43,6 +49,7 @@
     <label><radio value="tooFlat" checked="{{curvatureConcernOD === 'tooFlat'}}"/> 太平</label>
   </radio-group>
 </view>
+
 
   <!-- Row 3: Customer Feedback -->
   <view class="customer-comfort-section">
@@ -76,7 +83,12 @@
 <view wx:if="{{showNoConcernOS}}" class="concernOptions">
 </view>
 <!-- concern option for OS-->
-<view wx:if="{{showConcernsOS && activeTab === 'OS'}}" class="concernOptions">
+<!-- Toggle for Radio Buttons -->
+<view wx:if="{{showConcernsOS && activeTab === 'OS'}}" class="toggle-radio-buttons" bindtap="toggleRadioButtonsOS">
+  {{showRadioButtonsOS ? '隱藏問題 ▲' : '揭露問題 ▼'}}
+</view>
+
+  <view wx:if="{{showRadioButtonsOS && showConcernsOS && activeTab === 'OS'}}" class="concernOptions">
    <!-- Size Concerns -->
    <radio-group name="sizeConcernOS" bindchange="onRadioChangeSizeOS">
     <label><radio value="tooSmall" checked="{{sizeConcernOS === 'tooSmall'}}"/> 太小</label>

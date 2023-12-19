@@ -18,6 +18,9 @@ Page({
     tightnessConcernOS: '',
     curvatureConcernOS: '',
 
+    showRadioButtonsOD: true,
+    showRadioButtonsOS: true,
+
     showNoConcernOD: true,
     showConcernsOD: false,
     concernTabOD: 'none',
@@ -26,7 +29,7 @@ Page({
     showConcernsOS: false,
     concernTabOS: 'none',
 
-    comfortLevels: ['1 - 非常舒服', '2 - acceptable', '3 - 不能穿'],
+    comfortLevels: ['1 - 非常舒服', '2 - 可以', '3 - 不能穿'],
     comfortIndexOD: 0, 
     comfortIndexOS: 0,    
   },
@@ -92,7 +95,10 @@ Page({
     this.setData({
       showConcernsOS: false,
       showNoConcernOS: true,
-      concernTabOS: 'none'
+      concernTabOS: 'none',
+      sizeConcernOS: '',
+      curvatureConcernOS: '',
+      tightnessConcernOS: '',
     })
   },
 
@@ -108,7 +114,10 @@ Page({
     this.setData({
       showConcernsOD: false,
       showNoConcernOD: true,
-      concernTabOD: 'none'
+      concernTabOD: 'none',
+      sizeConcernOD: '',
+      curvatureConcernOD: '',
+      tightnessConcernOD: '',
     });
   },
 
@@ -156,12 +165,25 @@ Page({
     });
   },
 
+  toggleRadioButtonsOD() {
+    this.setData({
+      showRadioButtonsOD: !this.data.showRadioButtonsOD
+    });
+  },
+
+  toggleRadioButtonsOS() {
+    this.setData({
+      showRadioButtonsOS: !this.data.showRadioButtonsOS
+    });
+  },
+
   onNotesInputOS(e) {
     this.setData({
       notesOS: e.detail.value
     });
   },
 
+  // saving this code bc we will want it when we link this stuff to a database
   // saveNotesOS() {
   //   wx.showToast({
   //     title: 'Notes saved',
@@ -170,13 +192,7 @@ Page({
   //   });
   // },
 
-  // saveNotesOD() {
-  //   wx.showToast({
-  //     title: 'Notes saved',
-  //     icon: 'success',
-  //     duration: 2000
-  //   });
-  // },
+ 
 
   onNotesInputOD(e) {
     this.setData({

@@ -29,6 +29,7 @@ page {
   justify-content: center;
   align-items: center; 
   color: #5A315D;
+  background-color: #f3e3a1;
 }
 
 .concernTab.active {
@@ -48,6 +49,7 @@ page {
   justify-content: center;
   align-items: center; 
   color: #5A315D;
+  background-color: #f3e3a1;
 }
 
 .tab.active {
@@ -85,6 +87,16 @@ page {
   border-radius: 15rpx;   
   margin: 0 auto;
   color: #5A315D; 
+  background-color: #f3e3a1;
+}
+
+.toggle-radio-buttons {
+  color: #5A315D;
+  display: flex;
+  justify-content: center;
+  font-weight: 100;
+  font-size: smaller;
+  margin-left: 15rpx;
 }
 
 radio-group {
@@ -92,14 +104,8 @@ radio-group {
   justify-content: space-around;
   padding: 25rpx 10rpx;
   color: #5A315D;
+  
 }
-
-/* .radio-button {
-  display: inline-block;
-  padding: 5rpx 10rpx;
-  margin-right: 10rpx;
-  color: #5A315D;
-} */
 
 .customer-comfort-section {
   margin-top: 10rpx; 
@@ -130,7 +136,7 @@ radio-group {
   border: 1px solid #5A315D; 
   border-radius: 10rpx;
   padding: 10rpx;
-  background-color: #f5d34e;
+  background-color: #f3e3a1;
   color: #5A315D;
   text-align: center;
   line-height: 60rpx;
@@ -167,6 +173,7 @@ radio-group {
   text-align: center;
   margin: 0 auto;
   color: #5A315D; 
+  background-color: #f3e3a1;
 }
 
 .new-lens-button {
