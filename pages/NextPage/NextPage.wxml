@@ -1,5 +1,5 @@
 <!--pages/NextPage/NextPage.wxml-->
-<text>pages/NextPage/NextPage.wxml</text>
+
 <!-- NextPage.wxml -->
 <view class="tabs">
   <view class="tab {{activeTab === 'OD' ? 'active' : ''}}" bindtap="showODOptions">OD</view>
@@ -122,4 +122,5 @@
     <textarea class="notes-input"  type="text" value="{{notesOS}}" bindinput="onNotesInputOS" placeholder="在這裡寫筆記" placeholder-style="color: #916a94;"></textarea>
   </view>
 </view>
+
 <button class="new-lens-button" bindtap="addNewLens">加另一個片</button>

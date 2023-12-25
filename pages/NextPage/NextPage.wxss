@@ -95,7 +95,7 @@ page {
   display: flex;
   justify-content: center;
   font-weight: 100;
-  font-size: smaller;
+  
   margin-left: 15rpx;
 }
 

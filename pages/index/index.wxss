@@ -3,7 +3,7 @@ page {
   height: 100vh;
   display: flex;
   flex-direction: column;
-  background-color: #f5d34e;
+  background-color: #fdeeaf;
 }
 
 .scrollarea {
@@ -34,7 +34,7 @@ input {
   padding: 5px;
   border: 1px solid #5A315D;
   border-radius: 4px;
-  background: #f3e3a1;
+  background: #fae699;
   color: #5A315D;
 }
 button {
@@ -57,7 +57,7 @@ text {
 .clear-button {
   margin-top: 10px;
   padding: 5px 5px;
-  background-color:  #f5d34e;
+  background-color:  #fdeeaf;
   color:#5A315D;
   border-radius: 4px;
   font-size: 13px;
