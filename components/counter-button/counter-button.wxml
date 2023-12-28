@@ -13,6 +13,6 @@
 </view>
 
 <view class="fart-notes-section">
-    <text class="fart-notes-label">Fart Notes:</text>
-    <textarea class="fart-notes-input"  type="text" value="{{notes}}" bindinput="takeNotes" placeholder="faaarrrttt" placeholder-style="color: #916a94;"></textarea>
-  </view>
+  <text class="fart-notes-label">Fart Notes:</text>
+  <textarea class="fart-notes-input"  type="text" value="{{notes}}" bindinput="takeNotes" placeholder="faaarrrttt" placeholder-style="color: #916a94;"></textarea>
+ </view>

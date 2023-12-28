@@ -9,7 +9,6 @@
   margin: 5rpx;
   padding: 5rpx;
   border-radius: 15%; 
-   
 }
 
 .fart-counter-toggle {

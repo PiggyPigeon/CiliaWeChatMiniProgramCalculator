@@ -19,15 +19,11 @@ Component({
 
     notes: {
       type: String,
-      value: ''
+      value: '',
     },
   },
-  methods: {
-    // incrementCount: function() {
-    //   // Inform the parent to increment the count based on identifier
-    //   this.triggerEvent('incrementCount', { identifier: this.properties.identifier });
-    // }
 
+  methods: {
     toggleCollapse: function() {
       const collapsed = !this.data.collapsed;
       this.setData({ collapsed });
@@ -43,7 +39,8 @@ Component({
     takeNotes: function(e) {
       this.triggerEvent('takeNotes', {
         notes: e.detail.value,
-        identifier: this.properties.identifier
+        identifier: this.properties.identifier,
+        counterId: this.properties.counterId
       });
     }
 

@@ -14,13 +14,12 @@ Page({
 
       // <!-- learning about components -->
     fartCounters: [ 
-      {id: 1, countOD: 0, countOS: 0} 
+      {id: 1, countOD: 0, countOS: 0, compNotesOD: '', compNotesOS: ''} 
     ],
     nextCounterId: 2,
-    // countOD: 0,
-    // countOS: 0,
-    compNotesOS: '',        
-    compNotesOD: '',
+    // compNotesOS: '',        
+    // compNotesOD: '',
+
 
     sizeConcernOD: '',
     tightnessConcernOD: '',
@@ -202,32 +201,8 @@ onNotesInputOD(e) {
 },
 
   // <!-- learning about components -->
-  handleNotes: function(e) {
-    const { notes, identifier } = e.detail;
-    if (identifier === 'OD') {
-      this.setData({
-        compNotesOD: notes 
-      });
-    } else if (identifier === 'OS') {
-      this.setData({
-        compNotesOS: notes
-      });
-    }
-  },
-
-  // learning about adding components
-  addNewFartCounter: function() {
-    const newCounter = { id: this.data.nextCounterId, countOD: 0, countOS: 0 };
-    const newFartCounters = this.data.fartCounters.concat(newCounter); // Using concat instead of spread operator
-    this.setData({
-      fartCounters: newFartCounters,
-      nextCounterId: this.data.nextCounterId + 1
-    });
-  },
-
   handleIncrement: function(e) {
     const { identifier, counterId } = e.detail;
-    // Find the counter in the array and increment its count
     const counters = this.data.fartCounters.map(counter => {
       if (counter.id === counterId) {
         if (identifier === 'OD') {
@@ -238,11 +213,51 @@ onNotesInputOD(e) {
       }
       return counter;
     });
-  
     this.setData({
       fartCounters: counters
     });
-  }
+  },
+
+  handleNotes: function(e) {
+    // Extract relevant information from the event object
+    const { notes, identifier, counterId } = e.detail;
+
+    // Create a new array by mapping over the existing fart counters
+    const counters = this.data.fartCounters.map(counter => {
+      // Check if the current counter's id matches the counterId passed in
+      if (counter.id === counterId) {
+        // Create a copy of the current counter to avoid modifying it directly
+        const updatedCounter = Object.assign({}, counter);
+
+        // Check the identifier ('OD' or 'OS') to determine which notes to update
+        if (identifier === 'OD') {
+          // Update the compNotesOD property of the copied counter with the new notes
+          updatedCounter.compNotesOD = notes;
+        } else if (identifier === 'OS') {
+          // Update the compNotesOS property of the copied counter with the new notes
+          updatedCounter.compNotesOS = notes;
+        }
+
+        // Return the updated counter
+        return updatedCounter;
+      }
+      // If the current counter's id doesn't match, return it unchanged
+      return counter;
+    });
+
+    // Set the data property 'fartCounters' to the new array with updated counters
+    this.setData({
+      fartCounters: counters
+    });
+  },
 
 
+  addNewFartCounter: function() {
+    const newCounter = { id: this.data.nextCounterId, countOD: 0, countOS: 0, compNotesOS: '', compNotesOD: '' };
+    const newFartCounters = this.data.fartCounters.concat(newCounter); 
+    this.setData({
+      fartCounters: newFartCounters,
+      nextCounterId: this.data.nextCounterId + 1
+    });
+  },
 });
