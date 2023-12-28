@@ -1,0 +1,56 @@
+/* components/counter-button/counter-button.wxss */
+
+
+.counter-button {
+  background-color: #f5d34e;
+  line-height: 40rpx; 
+  text-align: center;
+  border: 3px dotted #5A315D;
+  margin: 5rpx;
+  padding: 5rpx;
+  border-radius: 15%; 
+   
+}
+
+.fart-counter-toggle {
+  display: flex;
+  justify-content: space-around;
+  margin-top: 10rpx;
+  background-color: #f5d34e;
+  color: #5A315D;
+  align-items: center;
+}
+
+.counter-content {
+  background-color: #f5d34e;
+  color: #5A315D;
+}
+
+.counter-content.collapsed {
+  display: none;
+}
+
+.fart-notes-section {
+  margin-top: 10rpx; 
+  text-align: center;
+}
+
+.fart-notes-label {
+  text-align: center; 
+  width: 80%;
+  margin-bottom: 5rpx; 
+  color: #5A315D;
+  font-weight: 500;
+}
+
+.fart-notes-input {
+  width: 90%; 
+  height: 100rpx; 
+  border: 1px solid #5A315D; 
+  border-radius: 10rpx; 
+  padding: 10rpx; 
+  text-align: center;
+  margin: 0 auto;
+  color: #5A315D; 
+  background-color: #f3e3a1;
+}

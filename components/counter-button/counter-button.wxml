@@ -1,0 +1,18 @@
+<!--components/counter-button/counter-button.wxml-->
+
+
+<!-- <button bindtap="incrementCount">Farted {{count}} times</button> -->
+
+<view class="counter-button">
+  <button class="fart-counter-toggle" bindtap="toggleCollapse">
+    {{collapsed ? '▼' : '▲'}}
+  </button>
+  <button bindtap="incrementCount" class="counter-content {{collapsed ? 'collapsed' : ''}}">
+    Farted {{count}} times
+  </button>
+</view>
+
+<view class="fart-notes-section">
+    <text class="fart-notes-label">Fart Notes:</text>
+    <textarea class="fart-notes-input"  type="text" value="{{notes}}" bindinput="takeNotes" placeholder="faaarrrttt" placeholder-style="color: #916a94;"></textarea>
+  </view>

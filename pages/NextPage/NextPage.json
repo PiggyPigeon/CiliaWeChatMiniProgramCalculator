@@ -1,5 +1,6 @@
 {
   "usingComponents": {
-    
+    "counter-button": "/components/counter-button/counter-button",
+    "lens-notes": "/components/lens-notes/lens-notes"
   }
 }

@@ -8,6 +8,45 @@ page {
   margin-top: 100rpx;
 }
 
+.tab {
+  width: 180rpx; 
+  height: 180rpx; 
+  line-height: 60rpx; 
+  text-align: center;
+  border: 1px solid #5A315D;
+  margin: 50rpx;
+  border-radius: 50%; 
+  display: flex;
+  justify-content: center;
+  align-items: center; 
+  color: #5A315D;
+  background-color: #f3e3a1;
+}
+
+.tab.active {
+  background-color: #5A315D; 
+  color: #f5d34e; 
+}
+
+.fart-label {
+  display: flex;
+  justify-content: center;
+  color: #5A315D;
+  font-family: fantasy;
+}
+
+.new-fart-button {
+  background-color: #5A315D; 
+  color: #f5d34e;
+  padding: 10rpx 20rpx;
+  border: none;
+  border-radius: 5rpx;
+  margin: 20rpx auto;
+  display: block; 
+  text-align: center;
+}
+
+
 .concernTabs {
   display: flex;
   justify-content: space-around;
@@ -37,25 +76,6 @@ page {
   color: #f5d34e; 
 }
 
-.tab {
-  width: 180rpx; 
-  height: 180rpx; 
-  line-height: 60rpx; 
-  text-align: center;
-  border: 1px solid #5A315D;
-  margin: 50rpx;
-  border-radius: 50%; 
-  display: flex;
-  justify-content: center;
-  align-items: center; 
-  color: #5A315D;
-  background-color: #f3e3a1;
-}
-
-.tab.active {
-  background-color: #5A315D; 
-  color: #f5d34e; 
-}
 
 .checkbox-label {
   margin-right: 15rpx;
@@ -177,12 +197,13 @@ radio-group {
 }
 
 .new-lens-button {
-  background-color: #5A315D; /* Example button color */
+  background-color: #5A315D; 
   color: #f5d34e;
   padding: 10rpx 20rpx;
   border: none;
   border-radius: 5rpx;
   margin: 20rpx auto;
-  display: block; /* Ensure it's a block element for proper centering */
+  display: block;
   text-align: center;
 }
+

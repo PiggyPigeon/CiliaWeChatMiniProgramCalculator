@@ -6,6 +6,15 @@
   <view class="tab {{activeTab === 'OS' ? 'active' : ''}}" bindtap="showOSOptions">OS</view>
 </view>
 
+<!-- learning about components -->
+<!-- Iterate through all fart counters and create a component for each -->
+<block wx:for="{{fartCounters}}" wx:key="id">
+  <h1 class="fart-label" >Lens {{index + 1}}</h1>
+  <counter-button counterId="{{item.id}}" count="{{activeTab === 'OD' ? item.countOD : item.countOS}}" notes="{{activeTab === 'OD' ? compNotesOD : compNotesOS}}" identifier="{{activeTab}}" collapsed="{{counterCollapsed}}" bind:incrementCount="handleIncrement" bind:takeNotes="handleNotes" ></counter-button>
+</block>
+
+<button class="new-fart-button" bindtap="addNewFartCounter">Add Farts</button>
+
 
 <!-- OD -->
  <!-- Row 1: BFK -->
@@ -124,3 +133,5 @@
 </view>
 
 <button class="new-lens-button" bindtap="addNewLens">加另一個片</button>
+
+

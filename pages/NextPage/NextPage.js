@@ -11,6 +11,17 @@ Page({
     notesOS: '',        
     notesOD: '',
     activeTab: 'OD',
+
+      // <!-- learning about components -->
+    fartCounters: [ 
+      {id: 1, countOD: 0, countOS: 0} 
+    ],
+    nextCounterId: 2,
+    // countOD: 0,
+    // countOS: 0,
+    compNotesOS: '',        
+    compNotesOD: '',
+
     sizeConcernOD: '',
     tightnessConcernOD: '',
     curvatureConcernOD: '',
@@ -177,31 +188,61 @@ Page({
     });
   },
 
-  onNotesInputOS(e) {
+
+ onNotesInputOS(e) {
+  this.setData({
+    notesOS: e.detail.value
+  });
+},
+
+onNotesInputOD(e) {
+  this.setData({
+    notesOD: e.detail.value
+  });
+},
+
+  // <!-- learning about components -->
+  handleNotes: function(e) {
+    const { notes, identifier } = e.detail;
+    if (identifier === 'OD') {
+      this.setData({
+        compNotesOD: notes 
+      });
+    } else if (identifier === 'OS') {
+      this.setData({
+        compNotesOS: notes
+      });
+    }
+  },
+
+  // learning about adding components
+  addNewFartCounter: function() {
+    const newCounter = { id: this.data.nextCounterId, countOD: 0, countOS: 0 };
+    const newFartCounters = this.data.fartCounters.concat(newCounter); // Using concat instead of spread operator
     this.setData({
-      notesOS: e.detail.value
+      fartCounters: newFartCounters,
+      nextCounterId: this.data.nextCounterId + 1
     });
   },
 
-  // saving this code bc we will want it when we link this stuff to a database
-  // saveNotesOS() {
-  //   wx.showToast({
-  //     title: 'Notes saved',
-  //     icon: 'success',
-  //     duration: 2000
-  //   });
-  // },
-
- 
-
-  onNotesInputOD(e) {
-    this.setData({
-      notesOD: e.detail.value
+  handleIncrement: function(e) {
+    const { identifier, counterId } = e.detail;
+    // Find the counter in the array and increment its count
+    const counters = this.data.fartCounters.map(counter => {
+      if (counter.id === counterId) {
+        if (identifier === 'OD') {
+          return Object.assign({}, counter, { countOD: counter.countOD + 1 });
+        } else if (identifier === 'OS') {
+          return Object.assign({}, counter, { countOS: counter.countOS + 1 });
+        }
+      }
+      return counter;
     });
-  },
+  
+    this.setData({
+      fartCounters: counters
+    });
+  }
 
-  addNewLens() {
-    // Define the action for adding a new OS lens
-    // For example, navigate to another page or show a form
-  },
+
 });
