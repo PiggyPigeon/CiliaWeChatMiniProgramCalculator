@@ -2,17 +2,16 @@
 // NextPage.js
 Page({
   data: {
-    originalResultOS: '',
-    originalResultOD: '',
-    resultOS: '',
-    resultOD: '',
-    
     activeTab: 'OD',
     lensCollection: [ 
       {id: 1, countOD: 0, countOS: 0, compNotesOD: '', compNotesOS: '', resultOD: '', resultOS: ''} 
     ],
     nextLensId: 2,
 
+    originalResultOS: '',
+    originalResultOD: '',
+    resultOS: '',
+    resultOD: '',
     showOS: false,
     showOD: true,
     notesOS: '',        
@@ -50,7 +49,7 @@ Page({
 
   handleInput(e, field) {
     let value = e.detail.value;
-    value = value.replace(/\D/g, ''); // Remove non-numeric characters
+    value = value.replace(/\D/g, ''); 
 
     if (value.length > 2) {
       value = value.slice(0, 2) + '.' + value.slice(2, 4);
@@ -72,36 +71,7 @@ Page({
     })
   },
 
-  onLoad(options) {
-    let updatedLensCollection = this.data.lensCollection.map((lens, index) => {
-      if (index === 0) { 
-        return {
-          id: lens.id, 
-          countOD: lens.countOD,
-          countOS: lens.countOS,
-          compNotesOD: lens.compNotesOD,
-          compNotesOS: lens.compNotesOS,
-          resultOD: options.resultOD || lens.resultOD, 
-          resultOS: options.resultOS || lens.resultOS,
-        };
-      }
-      return lens;
-    });
-    this.setData({
-      originalResultOS: options.resultOS || '',
-      originalResultOD: options.resultOD || '',
-      lensCollection: updatedLensCollection
-    });
-  },
 
-  // onLoad(options) {
-  //   this.setData({
-  //     originalResultOS: options.resultOS || '',
-  //     originalResultOD: options.resultOD || '',
-  //     resultOS: options.resultOS || '',
-  //     resultOD: options.resultOD || ''
-  //   });
-  // },
 
   showOSOptions() {
     this.setData({
@@ -255,6 +225,29 @@ onNotesInputOD(e) {
     });
   },
 
+  // actual component building down here
+  onLoad(options) {
+    let updatedLensCollection = this.data.lensCollection.map((lens, index) => {
+      if (index === 0) { 
+        return {
+          id: lens.id, 
+          countOD: lens.countOD,
+          countOS: lens.countOS,
+          compNotesOD: lens.compNotesOD,
+          compNotesOS: lens.compNotesOS,
+          resultOD: options.resultOD || lens.resultOD, 
+          resultOS: options.resultOS || lens.resultOS,
+        };
+      }
+      return lens;
+    });
+    this.setData({
+      originalResultOS: options.resultOS || '',
+      originalResultOD: options.resultOD || '',
+      lensCollection: updatedLensCollection
+    });
+  },
+
   handleBFKInput: function(e) {
     const { BFKinput, identifier, lensId } = e.detail;
     let formattedInput = BFKinput.replace(/\D/g, '');
@@ -278,36 +271,38 @@ onNotesInputOD(e) {
     });
   },
 
-  
-
-
-  // handleBFKInput: function(e) {
-  //   const { BFKinput, identifier, lensId } = e.detail;
-  //   const lenses = this.data.lensCollection.map(lens => {
-  //     if (lens.id === lensId) {
-  //       const updatedBFK = Object.assign({}, lens);
-  //       if (identifier === 'OD') {
-  //         updatedBFK.resultOD = BFKinput;
-  //       } else if (identifier === 'OS') {
-  //         updatedBFK.resultOS = BFKinput;
-  //       }
-  //       return updatedBFK;
-  //     }
-  //     return lens;
-  //   });
-  //   this.setData({
-  //     lensCollection: lenses
-  //   });
-  // },
-
-
-
   addNewLens: function() {
+    let allBFKValid = true;
+    this.data.lensCollection.forEach(lens => {
+      let bfkOD = parseFloat(lens.resultOD);
+      let bfkOS = parseFloat(lens.resultOS);
+  
+      if ((bfkOS < 37.5 || bfkOS > 46.5)) {
+        wx.showToast({
+          title: 'BFK OS value out of range (37.5 - 46.5)',
+          icon: 'none',
+          duration: 2000
+        });
+        allBFKValid = false; 
+      }
+      if ((bfkOD < 37.5 || bfkOD > 46.5)) {
+        wx.showToast({
+          title: 'BFK OD value out of range (37.5 - 46.5)',
+          icon: 'none',
+          duration: 2000
+        });
+        allBFKValid = false;  
+      }
+    });
+    if (allBFKValid) {
+
     const newLens = { id: this.data.nextLensId, countOD: 0, countOS: 0, compNotesOS: '', compNotesOD: '', resultOD: '', resultOS: ''};
     const newLensCollection = this.data.lensCollection.concat(newLens); 
     this.setData({
       lensCollection: newLensCollection,
       nextLensId: this.data.nextLensId + 1
     });
+  }
   },
 });
+

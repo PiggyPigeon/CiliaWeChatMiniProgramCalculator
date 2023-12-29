@@ -1,7 +1,5 @@
 <!--components/counter-button/counter-button.wxml-->
 
-
-<!-- <button bindtap="incrementCount">Farted {{count}} times</button> -->
 <view class="lens-container">
   <h1 class="lens-label">Lens {{index + 1}}</h1> 
 <view class="counter-button">
@@ -17,7 +15,6 @@
   <text class="fart-notes-label">Fart Notes:</text>
   <textarea class="fart-notes-input"  type="text" value="{{notes}}" bindinput="takeNotes" placeholder="faaarrrttt" placeholder-style="color: #916a94;"></textarea>
  </view>
- <!-- value="{{identifier === 'OD' ? item.resultOD : item.resultOS}}" -->
  
   <view class="BFK-row">
     <label class="bfk-label" for="BFK-value"> BFK:</label>
