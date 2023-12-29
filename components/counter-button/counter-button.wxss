@@ -2,7 +2,7 @@
 
 
 .counter-button {
-  background-color: #f5d34e;
+  background-color: #fdeeaf;
   line-height: 40rpx; 
   text-align: center;
   border: 3px dotted #5A315D;
@@ -30,13 +30,13 @@
   display: flex;
   justify-content: space-around;
   margin-top: 10rpx;
-  background-color: #f5d34e;
+  background-color: #fdeeaf;
   color: #5A315D;
   align-items: center;
 }
 
 .counter-content {
-  background-color: #f5d34e;
+  background-color: #fdeeaf;
   color: #5A315D;
 }
 
@@ -66,7 +66,7 @@
   text-align: center;
   margin: 0 auto;
   color: #5A315D; 
-  background-color: #f3e3a1;
+  background-color: #fdeeaf;
 }
 
 .BFK-row {
@@ -86,5 +86,5 @@
   border-radius: 15rpx;   
   margin: 0 auto;
   color: #5A315D; 
-  background-color: #f3e3a1;
+  background-color: #fdeeaf;
 }

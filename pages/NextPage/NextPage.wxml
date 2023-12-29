@@ -1,11 +1,15 @@
 <!--pages/NextPage/NextPage.wxml-->
 
 <!-- NextPage.wxml -->
+
+
 <view class="tabs">
   <view class="tab {{activeTab === 'OD' ? 'active' : ''}}" bindtap="showODOptions">OD</view>
   <view class="tab {{activeTab === 'OS' ? 'active' : ''}}" bindtap="showOSOptions">OS</view>
 </view>
 
+
+<scroll-view class="scroll-view" scroll-y="true" style="height: 50%;">
 <block wx:for="{{lensCollection}}" wx:key="id">
   <counter-button 
   index="{{index}}" 
@@ -23,10 +27,12 @@
   </counter-button>
 </block>
 <button class="new-fart-button" bindtap="addNewLens">Add Farts</button>
+</scroll-view>
+
 
 <!-- OD -->
  <!-- Row 1: BFK -->
-<view wx:if="{{showOD}}" class="options">
+<view wx:if="{{showOD}}" class="options" style="width: 706rpx; height: 100rpx; display: block; box-sizing: border-box">
   <view class="row">
     <label class="bfk-label" for="BFKOD"> BFK:</label>
     <input class="bfk-input" type="digit" id="BFKOD" name="BFKOD" value="{{resultOD}}" bindinput="onBFKInputOD" style="width: 80%" placeholder="{{originalResultOD}}" placeholder-style="color: #916a94;"/>
@@ -86,7 +92,7 @@
 
 <!-- OS -->
   <!-- Row 1: BFK -->
-  <view wx:if="{{showOS}}" class="options">
+  <view wx:if="{{showOS}}" class="options" style="width: 706rpx; height: 100rpx; display: block; box-sizing: border-box">
   <view class="row">
     <label class="bfk-label" for="BFKOS"> BFK:</label>
     <input class="bfk-input" type="number" id="BFKOS" name="BFKOS" value="{{resultOS}}" bindinput="onBFKInputOS" style="width: 80%" placeholder="{{originalResultOS}}" placeholder-style="color: #916a94;"/>

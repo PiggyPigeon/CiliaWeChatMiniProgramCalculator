@@ -1,6 +1,15 @@
 page {
-  background-color: #f5d34e; 
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  background-color: #fdeeaf;
 }
+
+.scroll-view {
+  flex: 1; 
+  width: 100%; 
+}
+
 
 .tabs {
   display: flex;
@@ -20,23 +29,18 @@ page {
   justify-content: center;
   align-items: center; 
   color: #5A315D;
-  background-color: #f3e3a1;
+  background-color: #fdeeaf;
 }
 
 .tab.active {
   background-color: #5A315D; 
-  color: #f5d34e; 
+  color: #fdeeaf; 
 }
-
-
-
-
-
 
 
 .new-fart-button {
   background-color: #5A315D; 
-  color: #f5d34e;
+  color: #fdeeaf;
   padding: 10rpx 20rpx;
   border: none;
   border-radius: 5rpx;
@@ -84,8 +88,8 @@ page {
 
 .options {
   border: 7rpx solid #5A315D; /* Example border color and thickness */
-  padding: 20rpx;
-  margin: 20rpx;
+  padding: 10rpx;
+  margin: 10rpx;
   border-radius: 10rpx; 
 }
 

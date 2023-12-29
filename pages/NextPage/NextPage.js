@@ -276,10 +276,9 @@ onNotesInputOD(e) {
     this.data.lensCollection.forEach(lens => {
       let bfkOD = parseFloat(lens.resultOD);
       let bfkOS = parseFloat(lens.resultOS);
-  
       if ((bfkOS < 37.5 || bfkOS > 46.5)) {
         wx.showToast({
-          title: 'BFK OS value out of range (37.5 - 46.5)',
+          title: `Lens ${lens.id} BFK OS value is out of range (37.5 - 46.5)`,
           icon: 'none',
           duration: 2000
         });
@@ -287,7 +286,7 @@ onNotesInputOD(e) {
       }
       if ((bfkOD < 37.5 || bfkOD > 46.5)) {
         wx.showToast({
-          title: 'BFK OD value out of range (37.5 - 46.5)',
+          title: `Lens ${lens.id} BFK OD value is out of range (37.5 - 46.5)`,
           icon: 'none',
           duration: 2000
         });
@@ -295,7 +294,6 @@ onNotesInputOD(e) {
       }
     });
     if (allBFKValid) {
-
     const newLens = { id: this.data.nextLensId, countOD: 0, countOS: 0, compNotesOS: '', compNotesOD: '', resultOD: '', resultOS: ''};
     const newLensCollection = this.data.lensCollection.concat(newLens); 
     this.setData({
