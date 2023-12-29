@@ -11,6 +11,21 @@
   border-radius: 15%; 
 }
 
+.lens-container {
+  border: 3px solid #5A315D;
+  padding: 13rpx;
+  margin: 5rpx;
+  border-radius: 15%; 
+}
+
+.lens-label {
+  display: flex;
+  justify-content: center;
+  color: #5A315D;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  font-weight: 600;
+}
+
 .fart-counter-toggle {
   display: flex;
   justify-content: space-around;
@@ -49,6 +64,26 @@
   border-radius: 10rpx; 
   padding: 10rpx; 
   text-align: center;
+  margin: 0 auto;
+  color: #5A315D; 
+  background-color: #f3e3a1;
+}
+
+.BFK-row {
+  display: flex;
+  justify-content: center;
+  padding: 10rpx;
+  align-items: center;
+}
+
+.bfk-label {
+  color: #5A315D;
+}
+
+.bfk-input {
+  border: 1px solid #5A315D; 
+  padding: 5rpx 10rpx;    
+  border-radius: 15rpx;   
   margin: 0 auto;
   color: #5A315D; 
   background-color: #f3e3a1;

@@ -1,6 +1,9 @@
 // components/counter-button/counter-button.js
 Component({
   properties: {
+    index: {
+      type: Number,
+    },
     count: {
       type: Number,
       value: 0
@@ -9,18 +12,23 @@ Component({
       type: String,
       value: 'OD'
     },
-    counterId: {
+    lensId: {
       type: Number,
     },
     collapsed: {
       type: Boolean,
       value: false,
     },
-
     notes: {
       type: String,
       value: '',
     },
+    BFKinput: {
+      type: String,
+      value: '',
+    },
+    originalResultOD: String,
+    originalResultOS: String,
   },
 
   methods: {
@@ -32,7 +40,7 @@ Component({
     incrementCount: function() {
       this.triggerEvent('incrementCount', {
         identifier: this.properties.identifier,
-        counterId: this.properties.counterId
+        lensId: this.properties.lensId
       });
     },
 
@@ -40,9 +48,16 @@ Component({
       this.triggerEvent('takeNotes', {
         notes: e.detail.value,
         identifier: this.properties.identifier,
-        counterId: this.properties.counterId
+        lensId: this.properties.lensId
+      });
+    },
+
+    editBFK: function(e) {
+      this.triggerEvent('editBFK', {
+        BFKinput: e.detail.value,
+        identifier: this.properties.identifier,
+        lensId: this.properties.lensId,
       });
     }
-
   }
 });

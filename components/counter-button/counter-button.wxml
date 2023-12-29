@@ -2,7 +2,8 @@
 
 
 <!-- <button bindtap="incrementCount">Farted {{count}} times</button> -->
-
+<view class="lens-container">
+  <h1 class="lens-label">Lens {{index + 1}}</h1> 
 <view class="counter-button">
   <button class="fart-counter-toggle" bindtap="toggleCollapse">
     {{collapsed ? '▼' : '▲'}}
@@ -16,3 +17,14 @@
   <text class="fart-notes-label">Fart Notes:</text>
   <textarea class="fart-notes-input"  type="text" value="{{notes}}" bindinput="takeNotes" placeholder="faaarrrttt" placeholder-style="color: #916a94;"></textarea>
  </view>
+ <!-- value="{{identifier === 'OD' ? item.resultOD : item.resultOS}}" -->
+ 
+  <view class="BFK-row">
+    <label class="bfk-label" for="BFK-value"> BFK:</label>
+    <input class="bfk-input" type="text" 
+    value="{{BFKinput}}"
+    placeholder="{{identifier === 'OD' ? originalResultOD : originalResultOS}}"
+    bindinput="editBFK" style="width: 80%"/>
+  </view>
+
+</view>

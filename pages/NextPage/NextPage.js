@@ -6,21 +6,17 @@ Page({
     originalResultOD: '',
     resultOS: '',
     resultOD: '',
+    
+    activeTab: 'OD',
+    lensCollection: [ 
+      {id: 1, countOD: 0, countOS: 0, compNotesOD: '', compNotesOS: '', resultOD: '', resultOS: ''} 
+    ],
+    nextLensId: 2,
+
     showOS: false,
     showOD: true,
     notesOS: '',        
     notesOD: '',
-    activeTab: 'OD',
-
-      // <!-- learning about components -->
-    fartCounters: [ 
-      {id: 1, countOD: 0, countOS: 0, compNotesOD: '', compNotesOS: ''} 
-    ],
-    nextCounterId: 2,
-    // compNotesOS: '',        
-    // compNotesOD: '',
-
-
     sizeConcernOD: '',
     tightnessConcernOD: '',
     curvatureConcernOD: '',
@@ -34,7 +30,6 @@ Page({
     showNoConcernOD: true,
     showConcernsOD: false,
     concernTabOD: 'none',
-
     showNoConcernOS: true,
     showConcernsOS: false,
     concernTabOS: 'none',
@@ -44,6 +39,7 @@ Page({
     comfortIndexOS: 0,    
   },
   
+
   onBFKInputOS (e) {
     this.handleInput(e, 'resultOS');
   },
@@ -77,13 +73,35 @@ Page({
   },
 
   onLoad(options) {
+    let updatedLensCollection = this.data.lensCollection.map((lens, index) => {
+      if (index === 0) { 
+        return {
+          id: lens.id, 
+          countOD: lens.countOD,
+          countOS: lens.countOS,
+          compNotesOD: lens.compNotesOD,
+          compNotesOS: lens.compNotesOS,
+          resultOD: options.resultOD || lens.resultOD, 
+          resultOS: options.resultOS || lens.resultOS,
+        };
+      }
+      return lens;
+    });
     this.setData({
       originalResultOS: options.resultOS || '',
       originalResultOD: options.resultOD || '',
-      resultOS: options.resultOS || '',
-      resultOD: options.resultOD || ''
+      lensCollection: updatedLensCollection
     });
   },
+
+  // onLoad(options) {
+  //   this.setData({
+  //     originalResultOS: options.resultOS || '',
+  //     originalResultOD: options.resultOD || '',
+  //     resultOS: options.resultOS || '',
+  //     resultOD: options.resultOD || ''
+  //   });
+  // },
 
   showOSOptions() {
     this.setData({
@@ -202,9 +220,9 @@ onNotesInputOD(e) {
 
   // <!-- learning about components -->
   handleIncrement: function(e) {
-    const { identifier, counterId } = e.detail;
-    const counters = this.data.fartCounters.map(counter => {
-      if (counter.id === counterId) {
+    const { identifier, lensId } = e.detail;
+    const lenses = this.data.lensCollection.map(counter => {
+      if (counter.id === lensId) {
         if (identifier === 'OD') {
           return Object.assign({}, counter, { countOD: counter.countOD + 1 });
         } else if (identifier === 'OS') {
@@ -214,50 +232,82 @@ onNotesInputOD(e) {
       return counter;
     });
     this.setData({
-      fartCounters: counters
+      lensCollection: lenses
     });
   },
 
   handleNotes: function(e) {
-    // Extract relevant information from the event object
-    const { notes, identifier, counterId } = e.detail;
-
-    // Create a new array by mapping over the existing fart counters
-    const counters = this.data.fartCounters.map(counter => {
-      // Check if the current counter's id matches the counterId passed in
-      if (counter.id === counterId) {
-        // Create a copy of the current counter to avoid modifying it directly
-        const updatedCounter = Object.assign({}, counter);
-
-        // Check the identifier ('OD' or 'OS') to determine which notes to update
+    const { notes, identifier, lensId } = e.detail;
+    const lenses = this.data.lensCollection.map(note => {
+      if (note.id === lensId) {
+        const updatedNote = Object.assign({}, note);
         if (identifier === 'OD') {
-          // Update the compNotesOD property of the copied counter with the new notes
-          updatedCounter.compNotesOD = notes;
+          updatedNote.compNotesOD = notes;
         } else if (identifier === 'OS') {
-          // Update the compNotesOS property of the copied counter with the new notes
-          updatedCounter.compNotesOS = notes;
+          updatedNote.compNotesOS = notes;
         }
-
-        // Return the updated counter
-        return updatedCounter;
+        return updatedNote;
       }
-      // If the current counter's id doesn't match, return it unchanged
-      return counter;
+      return note;
     });
-
-    // Set the data property 'fartCounters' to the new array with updated counters
     this.setData({
-      fartCounters: counters
+      lensCollection: lenses
     });
   },
 
-
-  addNewFartCounter: function() {
-    const newCounter = { id: this.data.nextCounterId, countOD: 0, countOS: 0, compNotesOS: '', compNotesOD: '' };
-    const newFartCounters = this.data.fartCounters.concat(newCounter); 
+  handleBFKInput: function(e) {
+    const { BFKinput, identifier, lensId } = e.detail;
+    let formattedInput = BFKinput.replace(/\D/g, '');
+    if (formattedInput.length > 2) { 
+      formattedInput = formattedInput.slice(0, 2) + '.' + formattedInput.slice(2, 4); 
+    }
+    const lenses = this.data.lensCollection.map(lens => {
+      if (lens.id === lensId) {
+        const updatedBFK = Object.assign({}, lens);
+        if (identifier === 'OD') {
+          updatedBFK.resultOD = formattedInput;
+        } else if (identifier === 'OS') {
+          updatedBFK.resultOS = formattedInput;
+        }
+        return updatedBFK;
+      }
+      return lens;
+    });
     this.setData({
-      fartCounters: newFartCounters,
-      nextCounterId: this.data.nextCounterId + 1
+      lensCollection: lenses
+    });
+  },
+
+  
+
+
+  // handleBFKInput: function(e) {
+  //   const { BFKinput, identifier, lensId } = e.detail;
+  //   const lenses = this.data.lensCollection.map(lens => {
+  //     if (lens.id === lensId) {
+  //       const updatedBFK = Object.assign({}, lens);
+  //       if (identifier === 'OD') {
+  //         updatedBFK.resultOD = BFKinput;
+  //       } else if (identifier === 'OS') {
+  //         updatedBFK.resultOS = BFKinput;
+  //       }
+  //       return updatedBFK;
+  //     }
+  //     return lens;
+  //   });
+  //   this.setData({
+  //     lensCollection: lenses
+  //   });
+  // },
+
+
+
+  addNewLens: function() {
+    const newLens = { id: this.data.nextLensId, countOD: 0, countOS: 0, compNotesOS: '', compNotesOD: '', resultOD: '', resultOS: ''};
+    const newLensCollection = this.data.lensCollection.concat(newLens); 
+    this.setData({
+      lensCollection: newLensCollection,
+      nextLensId: this.data.nextLensId + 1
     });
   },
 });

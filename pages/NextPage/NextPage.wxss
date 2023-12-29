@@ -28,12 +28,11 @@ page {
   color: #f5d34e; 
 }
 
-.fart-label {
-  display: flex;
-  justify-content: center;
-  color: #5A315D;
-  font-family: fantasy;
-}
+
+
+
+
+
 
 .new-fart-button {
   background-color: #5A315D; 
