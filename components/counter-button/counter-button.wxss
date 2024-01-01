@@ -44,12 +44,12 @@
   display: none;
 }
 
-.fart-notes-section {
+.notes-section {
   margin-top: 10rpx; 
   text-align: center;
 }
 
-.fart-notes-label {
+.notes-label {
   text-align: center; 
   width: 80%;
   margin-bottom: 5rpx; 
@@ -57,7 +57,7 @@
   font-weight: 500;
 }
 
-.fart-notes-input {
+.notes-input {
   width: 90%; 
   height: 100rpx; 
   border: 1px solid #5A315D; 
