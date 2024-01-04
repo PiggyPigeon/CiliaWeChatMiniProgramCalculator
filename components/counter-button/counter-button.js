@@ -4,31 +4,49 @@ Component({
     index: {
       type: Number,
     },
+
+    comfortLevels: {
+      type: Array,
+      value: ['very comfortable', 'acceptable', 'unwearable',],
+    },
+
+    comfortIndex: {
+      type: Number,
+      value: 0, 
+    },
+
     count: {
       type: Number,
       value: 0
     },
+
     identifier: {
       type: String,
       value: 'OD'
     },
+
     lensId: {
       type: Number,
     },
+
     collapsed: {
       type: Boolean,
       value: false,
     },
+
     notes: {
       type: String,
       value: '',
     },
+
     BFKinput: {
       type: String,
       value: '',
     },
+
     originalResultOD: String,
     originalResultOS: String,
+
   },
 
   methods: {
@@ -58,6 +76,20 @@ Component({
         identifier: this.properties.identifier,
         lensId: this.properties.lensId,
       });
-    }
+    },
+
+    changeComfortLevel: function(e) {
+      this.setData({
+        comfortIndex: e.detail.value
+      });
+
+      this.triggerEvent('changeComfortLevel', {
+        comfortIndex: this.data.comfortIndex,
+        identifier: this.properties.identifier,
+        lensId: this.properties.lensId,
+      });
+    },
+
+    
   }
 });

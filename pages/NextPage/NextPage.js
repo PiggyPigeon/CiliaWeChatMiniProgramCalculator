@@ -4,7 +4,7 @@ Page({
   data: {
     activeTab: 'OD',
     lensCollection: [ 
-      {id: 1, countOD: 0, countOS: 0, compNotesOD: '', compNotesOS: '', resultOD: '', resultOS: ''} 
+      {id: 1, countOD: 0, countOS: 0, compNotesOD: '', compNotesOS: '', resultOD: '', resultOS: '', comfortIndexOD: 0, comfortIndexOS: 0 } 
     ],
     nextLensId: 2,
 
@@ -33,9 +33,9 @@ Page({
     showConcernsOS: false,
     concernTabOS: 'none',
 
-    comfortLevels: ['1 - 非常舒服', '2 - 可以', '3 - 不能穿'],
-    comfortIndexOD: 0, 
-    comfortIndexOS: 0,    
+    // comfortLevels: ['1 - 非常舒服', '2 - 可以', '3 - 不能穿'],
+    // comfortIndexOD: 0, 
+    // comfortIndexOS: 0,    
   },
   
 
@@ -70,8 +70,6 @@ Page({
       comfortIndexOS: e.detail.value
     })
   },
-
-
 
   showOSOptions() {
     this.setData({
@@ -206,6 +204,27 @@ onNotesInputOD(e) {
     });
   },
 
+  handleComfortLevelChange: function(e) {
+    const { comfortIndex, identifier, lensId } = e.detail;
+    const lenses = this.data.lensCollection.map(index => {
+      if (index.id === lensId) {
+        const updatedIndex = Object.assign({}, index);
+        if (identifier === 'OD') {
+          updatedIndex.comfortIndexOD = comfortIndex;
+        } else if (identifier === 'OS') {
+          updatedIndex.comfortIndexOS = comfortIndex;
+        }
+        return updatedIndex;
+      }
+      return index;
+    });
+    this.setData({
+      lensCollection: lenses
+    });
+  },
+
+
+    // actual component building down here
   handleNotes: function(e) {
     const { notes, identifier, lensId } = e.detail;
     const lenses = this.data.lensCollection.map(note => {
@@ -225,7 +244,6 @@ onNotesInputOD(e) {
     });
   },
 
-  // actual component building down here
   onLoad(options) {
     let updatedLensCollection = this.data.lensCollection.map((lens, index) => {
       if (index === 0) { 
@@ -294,7 +312,7 @@ onNotesInputOD(e) {
       }
     });
     if (allBFKValid) {
-    const newLens = { id: this.data.nextLensId, countOD: 0, countOS: 0, compNotesOS: '', compNotesOD: '', resultOD: '', resultOS: ''};
+    const newLens = { id: this.data.nextLensId, countOD: 0, countOS: 0, compNotesOS: '', compNotesOD: '', resultOD: '', resultOS: '', comfortIndexOD: 0, comfortIndexOS: 0 };
     const newLensCollection = this.data.lensCollection.concat(newLens); 
     this.setData({
       lensCollection: newLensCollection,

@@ -17,19 +17,33 @@
   count="{{activeTab === 'OD' ? item.countOD : item.countOS}}" 
   notes="{{activeTab === 'OD' ? item.compNotesOD : item.compNotesOS}}"  
   BFKinput="{{activeTab === 'OD' ? item.resultOD : item.resultOS}}"
+  comfortIndex="{{activeTab === 'OD' ? item.comfortIndexOD : item.comfortIndexOS}}"
   originalResultOD="{{originalResultOD}}"
   originalResultOS="{{originalResultOS}}"
   identifier="{{activeTab}}" 
   collapsed="{{counterCollapsed}}" 
   bind:incrementCount="handleIncrement" 
   bind:takeNotes="handleNotes"
-  bind:editBFK="handleBFKInput">
+  bind:editBFK="handleBFKInput"
+
+  bind:changeComfortLevel="handleComfortLevelChange">
+
   </counter-button>
 </block>
-<button class="new-fart-button" bindtap="addNewLens">Add Farts</button>
+<button class="new-fart-button" bindtap="addNewLens">Add Lens</button>
 </scroll-view>
 
 
+<!-- <view class="customer-comfort-section">
+  <text class="customer-feedback-label">顧客舒適度:</text>
+  <picker mode="selector" range="{{comfortLevels}}" bindchange="onComfortLevelChangeOD" value="{{comfortIndexOD}}">
+    <view class="picker-view">{{comfortLevels[comfortIndexOD]}}</view>
+  </picker>
+</view> -->
+
+
+
+<scroll-view class="scroll-view" scroll-y="true" style="height: 50%;">
 <!-- OD -->
  <!-- Row 1: BFK -->
 <view wx:if="{{showOD}}" class="options" style="width: 706rpx; height: 100rpx; display: block; box-sizing: border-box">
@@ -145,7 +159,7 @@
     <textarea class="notes-input"  type="text" value="{{notesOS}}" bindinput="onNotesInputOS" placeholder="在這裡寫筆記" placeholder-style="color: #916a94;"></textarea>
   </view>
 </view>
-
+</scroll-view>
 <button class="new-lens-button" bindtap="addNewLens">加另一個片</button>
 
 

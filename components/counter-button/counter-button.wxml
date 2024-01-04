@@ -20,6 +20,14 @@
     bindinput="editBFK" style="width: 80%"/>
   </view>
 
+  <view class="customer-comfort-section">
+    <text class="customer-feedback-label">Comfort Level:</text>
+    <picker mode="selector" range="{{comfortLevels}}" bindchange="changeComfortLevel" value="{{comfortIndex}}">
+      <view class="picker-view">{{comfortLevels[comfortIndex]}}</view>
+    </picker>
+  </view>
+
+
   <view class="notes-section">
   <text class="notes-label">筆記:</text>
   <textarea class="notes-input"  type="text" value="{{notes}}" bindinput="takeNotes" placeholder="在這裡寫筆記" placeholder-style="color: #916a94;"></textarea>

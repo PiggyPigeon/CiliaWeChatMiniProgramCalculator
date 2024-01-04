@@ -88,3 +88,39 @@
   color: #5A315D; 
   background-color: #fdeeaf;
 }
+
+
+.customer-comfort-section {
+  margin-top: 10rpx; 
+  text-align: center;
+}
+
+.customer-feedback-label {
+  text-align: center; 
+  width: 80%;
+  margin-bottom: 5rpx; 
+  color: #5A315D;
+}
+
+
+.picker-view {
+  display: block;
+  width: 90%;
+  height: 60rpx; 
+  border: 1px solid #5A315D; 
+  border-radius: 10rpx;
+  padding: 10rpx;
+  background-color: #fdeeaf;
+  color: #5A315D;
+  text-align: center;
+  line-height: 60rpx;
+  margin: 0 auto;
+  margin-top: 10rpx;
+}
+
+.picker-view::after {
+  content: '\25BC'; 
+  float: right;
+  margin-right: 10rpx;
+  color: #5A315D;
+}
