@@ -8,7 +8,6 @@
   <view class="tab {{activeTab === 'OS' ? 'active' : ''}}" bindtap="showOSOptions">OS</view>
 </view>
 
-
 <scroll-view class="scroll-view" scroll-y="true" style="height: 50%;">
 <block wx:for="{{lensCollection}}" wx:key="id">
   <counter-button 
@@ -18,29 +17,28 @@
   notes="{{activeTab === 'OD' ? item.compNotesOD : item.compNotesOS}}"  
   BFKinput="{{activeTab === 'OD' ? item.resultOD : item.resultOS}}"
   comfortIndex="{{activeTab === 'OD' ? item.comfortIndexOD : item.comfortIndexOS}}"
+  concernTab="{{activeTab === 'OD' ? item.concernTabOD : item.concernTabOS}}"
+  sizeConcern="{{activeTab === 'OD' ? item.sizeConcernOD : item.sizeConcernOS}}"
+  tightnessConcern="{{activeTab === 'OD' ? item.tightnessConcernOD : item.tightnessConcernOS}}"
+  curvatureConcern="{{activeTab === 'OD' ? item.curvatureConcernOD : item.curvatureConcernOS}}"
   originalResultOD="{{originalResultOD}}"
   originalResultOS="{{originalResultOS}}"
   identifier="{{activeTab}}" 
   collapsed="{{counterCollapsed}}" 
+  
+  bind:toggleConcerns="handleConcernTabChanged"
+  bind:sizeConcernChanged="handleSizeConcernChanged"
+  bind:tightnessConcernChanged="handleTightnessConcernChanged"
+  bind:curvatureConcernChanged="handleCurvatureConcernChanged"
+  
   bind:incrementCount="handleIncrement" 
   bind:takeNotes="handleNotes"
   bind:editBFK="handleBFKInput"
-
   bind:changeComfortLevel="handleComfortLevelChange">
-
   </counter-button>
 </block>
 <button class="new-fart-button" bindtap="addNewLens">Add Lens</button>
 </scroll-view>
-
-
-<!-- <view class="customer-comfort-section">
-  <text class="customer-feedback-label">顧客舒適度:</text>
-  <picker mode="selector" range="{{comfortLevels}}" bindchange="onComfortLevelChangeOD" value="{{comfortIndexOD}}">
-    <view class="picker-view">{{comfortLevels[comfortIndexOD]}}</view>
-  </picker>
-</view> -->
-
 
 
 <scroll-view class="scroll-view" scroll-y="true" style="height: 50%;">

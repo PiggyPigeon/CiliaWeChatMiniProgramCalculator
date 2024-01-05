@@ -118,7 +118,6 @@ page {
   display: flex;
   justify-content: center;
   font-weight: 100;
-  
   margin-left: 15rpx;
 }
 
@@ -127,7 +126,6 @@ radio-group {
   justify-content: space-around;
   padding: 25rpx 10rpx;
   color: #5A315D;
-  
 }
 
 .customer-comfort-section {

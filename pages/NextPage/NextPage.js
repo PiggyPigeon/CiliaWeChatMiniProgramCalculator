@@ -1,37 +1,55 @@
 // pages/NextPage/NextPage.js
-// NextPage.js
+
 Page({
   data: {
     activeTab: 'OD',
-    lensCollection: [ 
-      {id: 1, countOD: 0, countOS: 0, compNotesOD: '', compNotesOS: '', resultOD: '', resultOS: '', comfortIndexOD: 0, comfortIndexOS: 0 } 
-    ],
-    nextLensId: 2,
-
+    showOS: false,
+    showOD: true,
     originalResultOS: '',
     originalResultOD: '',
     resultOS: '',
     resultOD: '',
-    showOS: false,
-    showOD: true,
+
+    lensCollection: [ 
+      {id: 1, 
+      countOD: 0, 
+      countOS: 0, 
+      compNotesOD: '', 
+      compNotesOS: '', 
+      resultOD: '', 
+      resultOS: '', 
+      comfortIndexOD: 0, 
+      comfortIndexOS: 0,
+      concernTabOD: 'none', 
+      concernTabOS: 'none', 
+      sizeConcernOD: '',
+      tightnessConcernOD: '',
+      curvatureConcernOD: '',
+      sizeConcernOS: '',
+      tightnessConcernOS: '',
+      curvatureConcernOS: '',
+    } 
+    ],
+    nextLensId: 2,
+      
     notesOS: '',        
     notesOD: '',
-    sizeConcernOD: '',
-    tightnessConcernOD: '',
-    curvatureConcernOD: '',
-    sizeConcernOS: '',
-    tightnessConcernOS: '',
-    curvatureConcernOS: '',
+    // sizeConcernOD: '',
+    // tightnessConcernOD: '',
+    // curvatureConcernOD: '',
+    // sizeConcernOS: '',
+    // tightnessConcernOS: '',
+    // curvatureConcernOS: '',
 
     showRadioButtonsOD: true,
     showRadioButtonsOS: true,
 
-    showNoConcernOD: true,
-    showConcernsOD: false,
-    concernTabOD: 'none',
-    showNoConcernOS: true,
-    showConcernsOS: false,
-    concernTabOS: 'none',
+    // showNoConcernOD: true,
+    // showConcernsOD: false,
+    // concernTabOD: 'none',
+    // showNoConcernOS: true,
+    // showConcernsOS: false,
+    // concernTabOS: 'none',
 
     // comfortLevels: ['1 - 非常舒服', '2 - 可以', '3 - 不能穿'],
     // comfortIndexOD: 0, 
@@ -71,22 +89,7 @@ Page({
     })
   },
 
-  showOSOptions() {
-    this.setData({
-      showOS: true,
-      showOD: false,
-      activeTab: 'OS'
-    });
-  },
-
-  showODOptions() {
-    this.setData({
-      showOS: false,
-      showOD: true,
-      activeTab: 'OD',
-    });
-  },
-
+  
   showNoConcernsMenuOS() {
     this.setData({
       showConcernsOS: false,
@@ -187,6 +190,22 @@ onNotesInputOD(e) {
 },
 
   // <!-- learning about components -->
+  showOSOptions() {
+    this.setData({
+      showOS: true,
+      showOD: false,
+      activeTab: 'OS'
+    });
+  },
+
+  showODOptions() {
+    this.setData({
+      showOS: false,
+      showOD: true,
+      activeTab: 'OD',
+    });
+  },
+
   handleIncrement: function(e) {
     const { identifier, lensId } = e.detail;
     const lenses = this.data.lensCollection.map(counter => {
@@ -203,6 +222,63 @@ onNotesInputOD(e) {
       lensCollection: lenses
     });
   },
+
+
+
+  handleConcernTabChanged: function(e) {
+    // Extracting the necessary details from the event
+    const { lensId, identifier, concernTab } = e.detail;
+    // Finding the index of the lens that matches the lensId
+    const lensIndex = this.data.lensCollection.findIndex(lens => lens.id === lensId);
+    if (lensIndex !== -1) {
+      // Determine the key for updating based on the identifier
+      const lensKey = identifier === 'OD' ? 'concernTabOD' : 'concernTabOS';
+      // Creating a new object for the lens with updated concernTab
+      const updatedLens = Object.assign({}, this.data.lensCollection[lensIndex], {[lensKey]: concernTab});
+      // Updating the state with the new lens data
+      this.setData({
+        [`lensCollection[${lensIndex}]`]: updatedLens
+      });
+    }
+  },
+  
+  handleSizeConcernChanged: function(e) {
+    const { lensId, identifier, sizeConcern } = e.detail;
+    const lensIndex = this.data.lensCollection.findIndex(lens => lens.id === lensId);
+    if (lensIndex !== -1) {
+      const lensKey = identifier === 'OD' ? 'sizeConcernOD' : 'sizeConcernOS';
+      const updatedLens = Object.assign({}, this.data.lensCollection[lensIndex], {[lensKey]: sizeConcern});
+      this.setData({
+        [`lensCollection[${lensIndex}]`]: updatedLens
+      });
+    }
+  },
+  
+  
+  handleTightnessConcernChanged: function(e) {
+    const { lensId, identifier, tightnessConcern } = e.detail;
+    const lensIndex = this.data.lensCollection.findIndex(lens => lens.id === lensId);
+    if (lensIndex !== -1) {
+      const lensKey = identifier === 'OD' ? 'tightnessConcernOD' : 'tightnessConcernOS';
+      const updatedLens = Object.assign({}, this.data.lensCollection[lensIndex], {[lensKey]: tightnessConcern});
+      this.setData({
+        [`lensCollection[${lensIndex}]`]: updatedLens
+      });
+    }
+  },
+
+  handleCurvatureConcernChanged: function(e) {
+    const { lensId, identifier, curvatureConcern } = e.detail;
+    const lensIndex = this.data.lensCollection.findIndex(lens => lens.id === lensId);
+    if (lensIndex !== -1) {
+      const lensKey = identifier === 'OD' ? 'curvatureConcernOD' : 'curvatureConcernOS';
+      const updatedLens = Object.assign({}, this.data.lensCollection[lensIndex], {[lensKey]: curvatureConcern});
+      this.setData({
+        [`lensCollection[${lensIndex}]`]: updatedLens
+      });
+    }
+  },
+  
 
   handleComfortLevelChange: function(e) {
     const { comfortIndex, identifier, lensId } = e.detail;

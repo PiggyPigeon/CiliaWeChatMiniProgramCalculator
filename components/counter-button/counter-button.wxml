@@ -11,6 +11,8 @@
   </button>
 </view>
 
+
+
   <view class="BFK-row">
     <label class="bfk-label" for="BFK-value"> BFK:</label>
     <input class="bfk-input" type="text" 
@@ -19,6 +21,27 @@
     placeholder-style="color: #916a94;"
     bindinput="editBFK" style="width: 80%"/>
   </view>
+
+    <view class="concernTabs"> 贴合:
+      <view class="concernTab {{concernTab === 'none' ? 'active' : ''}}" data-concern="none" bindtap="toggleConcerns">沒有問題</view>
+      <view class="concernTab {{concernTab === 'some' ? 'active' : ''}}" data-concern="some" bindtap="toggleConcerns">有問題</view>
+    </view>
+  <view wx:if="{{concernTab === 'some'}}" class="concernOptions">
+    <radio-group name="sizeConcern" bindchange="onRadioChangeSize">
+      <label><radio value="tooSmall" checked="{{sizeConcern === 'tooSmall'}}"/> Too Small</label>
+      <label><radio value="tooBig" checked="{{sizeConcern === 'tooBig'}}"/> Too Big</label>
+    </radio-group>
+    <radio-group name="tightnessConcern" bindchange="onRadioChangeTightness">
+      <label><radio value="tooTight" checked="{{tightnessConcern === 'tooTight'}}"/> Too Tight</label>
+      <label><radio value="tooLoose" checked="{{tightnessConcern === 'tooLoose'}}"/> Too Loose</label>
+    </radio-group>
+    <radio-group name="curvatureConcern" bindchange="onRadioChangeCurvature">
+      <label><radio value="tooSteep" checked="{{curvatureConcern === 'tooSteep'}}"/> Too Steep</label>
+      <label><radio value="tooFlat" checked="{{curvatureConcern === 'tooFlat'}}"/> Too Flat</label>
+    </radio-group>
+  </view>
+
+
 
   <view class="customer-comfort-section">
     <text class="customer-feedback-label">Comfort Level:</text>
