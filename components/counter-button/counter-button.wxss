@@ -1,21 +1,17 @@
 /* components/counter-button/counter-button.wxss */
 
-
-.counter-button {
-  background-color: #fdeeaf;
-  line-height: 40rpx; 
-  text-align: center;
-  border: 3px dotted #5A315D;
-  margin: 5rpx;
-  padding: 5rpx;
-  border-radius: 15%; 
-}
-
 .lens-container {
   border: 3px solid #5A315D;
-  padding: 13rpx;
+  padding: 30rpx;
   margin: 5rpx;
-  border-radius: 15%; 
+  margin-bottom: 20rpx;
+  border-radius: 10%; 
+}
+
+.lens-header {
+  display: flex;
+  justify-content: space-between;
+  color: #5A315D;
 }
 
 .lens-label {
@@ -26,22 +22,12 @@
   font-weight: 600;
 }
 
-.fart-counter-toggle {
+.toggle-arrow {
   display: flex;
   justify-content: space-around;
   margin-top: 10rpx;
-  background-color: #fdeeaf;
   color: #5A315D;
   align-items: center;
-}
-
-.counter-content {
-  background-color: #fdeeaf;
-  color: #5A315D;
-}
-
-.counter-content.collapsed {
-  display: none;
 }
 
 .notes-section {
@@ -124,24 +110,6 @@
   color: #5A315D;
 }
 
-
-.toggle-radio-buttons {
-  color: #5A315D;
-  display: flex;
-  justify-content: center;
-  font-weight: 100;
-  margin-left: 15rpx;
-}
-
-radio-group {
-  display: flex;
-  justify-content: space-around;
-  padding: 25rpx 10rpx;
-  color: #5A315D;
-}
-
-
-
 .concernTabs {
   display: flex;
   justify-content: space-around;
@@ -170,3 +138,11 @@ radio-group {
   background-color: #5A315D; 
   color: #fdeeaf; 
 }
+
+radio-group {
+  display: flex;
+  justify-content: space-around;
+  padding: 25rpx 10rpx;
+  color: #5A315D;
+}
+

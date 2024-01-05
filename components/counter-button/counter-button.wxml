@@ -1,17 +1,12 @@
 <!--components/counter-button/counter-button.wxml-->
 
 <view class="lens-container">
-  <h1 class="lens-label">Lens {{index + 1}}</h1> 
-<view class="counter-button">
-  <button class="fart-counter-toggle" bindtap="toggleCollapse">
-    {{collapsed ? '▼' : '▲'}}
-  </button>
-  <button bindtap="incrementCount" class="counter-content {{collapsed ? 'collapsed' : ''}}">
-    Farted {{count}} times
-  </button>
-</view>
+  <view class="lens-header" bindtap="toggleLensContent">
+    <h1 class="lens-label">Lens {{index + 1}}</h1>
+    <text class="toggle-lens-content">{{collapsed ? '▼' : '▲'}}</text>
+  </view> 
 
-
+  <view wx:if="{{!collapsed}}" class="lens-content">
 
   <view class="BFK-row">
     <label class="bfk-label" for="BFK-value"> BFK:</label>
@@ -26,7 +21,8 @@
       <view class="concernTab {{concernTab === 'none' ? 'active' : ''}}" data-concern="none" bindtap="toggleConcerns">沒有問題</view>
       <view class="concernTab {{concernTab === 'some' ? 'active' : ''}}" data-concern="some" bindtap="toggleConcerns">有問題</view>
     </view>
-  <view wx:if="{{concernTab === 'some'}}" class="concernOptions">
+    <view wx:if="{{concernTab === 'some'}}" class="toggle-arrow" bindtap="toggleConcernsCollapse"> {{concernsCollapsed ? '▼' : '▲'}} </view>
+  <view wx:if="{{concernTab === 'some' && !concernsCollapsed}}" class="concernOptions">
     <radio-group name="sizeConcern" bindchange="onRadioChangeSize">
       <label><radio value="tooSmall" checked="{{sizeConcern === 'tooSmall'}}"/> Too Small</label>
       <label><radio value="tooBig" checked="{{sizeConcern === 'tooBig'}}"/> Too Big</label>
@@ -42,7 +38,6 @@
   </view>
 
 
-
   <view class="customer-comfort-section">
     <text class="customer-feedback-label">Comfort Level:</text>
     <picker mode="selector" range="{{comfortLevels}}" bindchange="changeComfortLevel" value="{{comfortIndex}}">
@@ -55,5 +50,5 @@
   <text class="notes-label">筆記:</text>
   <textarea class="notes-input"  type="text" value="{{notes}}" bindinput="takeNotes" placeholder="在這裡寫筆記" placeholder-style="color: #916a94;"></textarea>
  </view>
-
+</view>
 </view>

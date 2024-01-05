@@ -2,7 +2,6 @@
 
 <!-- NextPage.wxml -->
 
-
 <view class="tabs">
   <view class="tab {{activeTab === 'OD' ? 'active' : ''}}" bindtap="showODOptions">OD</view>
   <view class="tab {{activeTab === 'OS' ? 'active' : ''}}" bindtap="showOSOptions">OS</view>
@@ -13,7 +12,6 @@
   <counter-button 
   index="{{index}}" 
   lensId="{{item.id}}"
-  count="{{activeTab === 'OD' ? item.countOD : item.countOS}}" 
   notes="{{activeTab === 'OD' ? item.compNotesOD : item.compNotesOS}}"  
   BFKinput="{{activeTab === 'OD' ? item.resultOD : item.resultOS}}"
   comfortIndex="{{activeTab === 'OD' ? item.comfortIndexOD : item.comfortIndexOS}}"
@@ -25,139 +23,16 @@
   originalResultOS="{{originalResultOS}}"
   identifier="{{activeTab}}" 
   collapsed="{{counterCollapsed}}" 
-  
   bind:toggleConcerns="handleConcernTabChanged"
   bind:sizeConcernChanged="handleSizeConcernChanged"
   bind:tightnessConcernChanged="handleTightnessConcernChanged"
   bind:curvatureConcernChanged="handleCurvatureConcernChanged"
-  
-  bind:incrementCount="handleIncrement" 
   bind:takeNotes="handleNotes"
   bind:editBFK="handleBFKInput"
   bind:changeComfortLevel="handleComfortLevelChange">
   </counter-button>
 </block>
-<button class="new-fart-button" bindtap="addNewLens">Add Lens</button>
+<button class="new-lens-button" bindtap="addNewLens">Add Lens</button>
 </scroll-view>
-
-
-<scroll-view class="scroll-view" scroll-y="true" style="height: 50%;">
-<!-- OD -->
- <!-- Row 1: BFK -->
-<view wx:if="{{showOD}}" class="options" style="width: 706rpx; height: 100rpx; display: block; box-sizing: border-box">
-  <view class="row">
-    <label class="bfk-label" for="BFKOD"> BFK:</label>
-    <input class="bfk-input" type="digit" id="BFKOD" name="BFKOD" value="{{resultOD}}" bindinput="onBFKInputOD" style="width: 80%" placeholder="{{originalResultOD}}" placeholder-style="color: #916a94;"/>
-  </view>
-
-<!-- Row 2, Fitting Concerns -->
-<view class="concernTabs"> 贴合:
-  <view class="concernTab {{concernTabOD === 'none' ? 'active' : ''}}" bindtap="showNoConcernsMenuOD">沒有問題</view>
-  <view class="concernTab {{concernTabOD === 'some' ? 'active' : ''}}" bindtap="showSomeConcernsMenuOD">有問題</view>
-</view>
-
-<!-- no concern option for OD -->
-<view wx:if="{{showNoConcernOD}}" class="concernOptions">
-</view>
-<!-- concern option for OD-->
-<!-- Toggle for Radio Buttons -->
-<view wx:if="{{showConcernsOD && activeTab === 'OD'}}" class="toggle-radio-buttons" bindtap="toggleRadioButtonsOD">
-  {{showRadioButtonsOD ? '隱藏問題 ▲' : '揭露問題 ▼'}}
-</view>
-
-  <view wx:if="{{showRadioButtonsOD && showConcernsOD && activeTab === 'OD'}}" class="concernOptions">
-   <!-- Size Concerns -->
-   <radio-group name="sizeConcernOD" bindchange="onRadioChangeSizeOD">
-    <label><radio value="tooSmall" checked="{{sizeConcernOD === 'tooSmall'}}"/> 太小</label>
-    <label><radio value="tooBig" checked="{{sizeConcernOD === 'tooBig'}}"/> 太大</label>
-  </radio-group>
-
-  <!-- Tightness Concerns -->
-  <radio-group name="tightnessConcernOD" bindchange="onRadioChangeTightnessOD">
-    <label><radio value="tooTight" checked="{{tightnessConcernOD === 'tooTight'}}"/> 太緊</label>
-    <label><radio value="tooLoose" checked="{{tightnessConcernOD === 'tooLoose'}}"/> 太鬆</label>
-  </radio-group>
-
-  <!-- Curvature Concerns -->
-  <radio-group name="curvatureConcernOD" bindchange="onRadioChangeCurvatureOD">
-    <label><radio value="tooSteep" checked="{{curvatureConcernOD === 'tooSteep'}}"/> 太陡</label>
-    <label><radio value="tooFlat" checked="{{curvatureConcernOD === 'tooFlat'}}"/> 太平</label>
-  </radio-group>
-</view>
-
-
-  <!-- Row 3: Customer Feedback -->
-  <view class="customer-comfort-section">
-  <text class="customer-feedback-label">顧客舒適度:</text>
-  <picker mode="selector" range="{{comfortLevels}}" bindchange="onComfortLevelChangeOD" value="{{comfortIndexOD}}">
-    <view class="picker-view">{{comfortLevels[comfortIndexOD]}}</view>
-  </picker>
-</view>
-
-  <!-- Row 4: Notes -->
-  <view class="notes-section">
-    <text class="notes-label">筆記:</text>
-    <textarea class="notes-input"  type="text" value="{{notesOD}}" bindinput="onNotesInputOD" placeholder="在這裡寫筆記" placeholder-style="color: #916a94;"></textarea>
-  </view>
-</view> 
-
-
-<!-- OS -->
-  <!-- Row 1: BFK -->
-  <view wx:if="{{showOS}}" class="options" style="width: 706rpx; height: 100rpx; display: block; box-sizing: border-box">
-  <view class="row">
-    <label class="bfk-label" for="BFKOS"> BFK:</label>
-    <input class="bfk-input" type="number" id="BFKOS" name="BFKOS" value="{{resultOS}}" bindinput="onBFKInputOS" style="width: 80%" placeholder="{{originalResultOS}}" placeholder-style="color: #916a94;"/>
-  </view>
- <!-- Row 2, Fitting Concerns -->
-<view class="concernTabs"> 贴合:
-  <view class="concernTab {{concernTabOS === 'none' ? 'active' : ''}}" bindtap="showNoConcernsMenuOS">沒有問題</view>
-  <view class="concernTab {{concernTabOS === 'some' ? 'active' : ''}}" bindtap="showSomeConcernsMenuOS">有問題</view>
-</view>
-<!-- no concern option -->
-<view wx:if="{{showNoConcernOS}}" class="concernOptions">
-</view>
-<!-- concern option for OS-->
-<!-- Toggle for Radio Buttons -->
-<view wx:if="{{showConcernsOS && activeTab === 'OS'}}" class="toggle-radio-buttons" bindtap="toggleRadioButtonsOS">
-  {{showRadioButtonsOS ? '隱藏問題 ▲' : '揭露問題 ▼'}}
-</view>
-
-  <view wx:if="{{showRadioButtonsOS && showConcernsOS && activeTab === 'OS'}}" class="concernOptions">
-   <!-- Size Concerns -->
-   <radio-group name="sizeConcernOS" bindchange="onRadioChangeSizeOS">
-    <label><radio value="tooSmall" checked="{{sizeConcernOS === 'tooSmall'}}"/> 太小</label>
-    <label><radio value="tooBig" checked="{{sizeConcernOS === 'tooBig'}}"/> 太大</label>
-  </radio-group>
-
-  <!-- Tightness Concerns -->
-  <radio-group name="tightnessConcernOS" bindchange="onRadioChangeTightnessOS">
-    <label><radio value="tooTight" checked="{{tightnessConcernOS === 'tooTight'}}"/> 太緊</label>
-    <label><radio value="tooLoose" checked="{{tightnessConcernOS === 'tooLoose'}}"/> 太鬆</label>
-  </radio-group>
-
-  <!-- Curvature Concerns -->
-  <radio-group name="curvatureConcernOS" bindchange="onRadioChangeCurvatureOS">
-    <label><radio value="tooSteep" checked="{{curvatureConcernOS === 'tooSteep'}}"/> 太陡</label>
-    <label><radio value="tooFlat" checked="{{curvatureConcernOS === 'tooFlat'}}"/> 太平</label>
-  </radio-group>
-</view>
-
-
-  <!-- Row 3: Customer Feedback -->
-  <view class="customer-comfort-section">
-  <text class="customer-feedback-label">顧客舒適度:</text>
-  <picker mode="selector" range="{{comfortLevels}}" bindchange="onComfortLevelChangeOS" value="{{comfortIndexOS}}">
-    <view class="picker-view">{{comfortLevels[comfortIndexOS]}}</view>
-  </picker>
-</view>
-  <!-- Row 4: Notes -->
-  <view class="notes-section">
-    <text class="notes-label">筆記:</text>
-    <textarea class="notes-input"  type="text" value="{{notesOS}}" bindinput="onNotesInputOS" placeholder="在這裡寫筆記" placeholder-style="color: #916a94;"></textarea>
-  </view>
-</view>
-</scroll-view>
-<button class="new-lens-button" bindtap="addNewLens">加另一個片</button>
 
 

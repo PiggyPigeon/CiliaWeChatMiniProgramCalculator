@@ -15,11 +15,6 @@ Component({
       value: 0, 
     },
 
-    count: {
-      type: Number,
-      value: 0
-    },
-
     identifier: {
       type: String,
       value: 'OD'
@@ -27,6 +22,11 @@ Component({
 
     lensId: {
       type: Number,
+    },
+
+    concernsCollapsed: {
+      type: Boolean,
+      value: false,
     },
 
     collapsed: {
@@ -70,16 +70,13 @@ Component({
   },
 
   methods: {
-    toggleCollapse: function() {
-      const collapsed = !this.data.collapsed;
-      this.setData({ collapsed });
+
+    toggleLensContent: function() {
+      this.setData({ collapsed: !this.data.collapsed });
     },
 
-    incrementCount: function() {
-      this.triggerEvent('incrementCount', {
-        identifier: this.properties.identifier,
-        lensId: this.properties.lensId
-      });
+    toggleConcernsCollapse: function() {
+      this.setData({ concernsCollapsed: !this.data.concernsCollapsed });
     },
 
     takeNotes: function(e) {
@@ -129,7 +126,5 @@ Component({
       this.setData({ curvatureConcern: e.detail.value });
       this.triggerEvent('curvatureConcernChanged', { curvatureConcern: this.data.curvatureConcern, identifier: this.data.identifier, lensId: this.data.lensId });
     },
-
-    
   }
 });

@@ -7,9 +7,7 @@ Page({
     showOD: true,
     originalResultOS: '',
     originalResultOD: '',
-    resultOS: '',
-    resultOD: '',
-
+    
     lensCollection: [ 
       {id: 1, 
       countOD: 0, 
@@ -30,166 +28,9 @@ Page({
       curvatureConcernOS: '',
     } 
     ],
-    nextLensId: 2,
-      
-    notesOS: '',        
-    notesOD: '',
-    // sizeConcernOD: '',
-    // tightnessConcernOD: '',
-    // curvatureConcernOD: '',
-    // sizeConcernOS: '',
-    // tightnessConcernOS: '',
-    // curvatureConcernOS: '',
-
-    showRadioButtonsOD: true,
-    showRadioButtonsOS: true,
-
-    // showNoConcernOD: true,
-    // showConcernsOD: false,
-    // concernTabOD: 'none',
-    // showNoConcernOS: true,
-    // showConcernsOS: false,
-    // concernTabOS: 'none',
-
-    // comfortLevels: ['1 - 非常舒服', '2 - 可以', '3 - 不能穿'],
-    // comfortIndexOD: 0, 
-    // comfortIndexOS: 0,    
+    nextLensId: 2,   
   },
   
-
-  onBFKInputOS (e) {
-    this.handleInput(e, 'resultOS');
-  },
-
-  onBFKInputOD(e) {
-    this.handleInput(e, 'resultOD');
-  },
-
-  handleInput(e, field) {
-    let value = e.detail.value;
-    value = value.replace(/\D/g, ''); 
-
-    if (value.length > 2) {
-      value = value.slice(0, 2) + '.' + value.slice(2, 4);
-    } 
- 
-    let update = {};
-    update[field] = value;
-    this.setData(update);
-  },
-  
-  onComfortLevelChangeOD: function(e) {
-    this.setData({
-      comfortIndexOD: e.detail.value
-    })
-  },
-  onComfortLevelChangeOS: function(e) {
-    this.setData({
-      comfortIndexOS: e.detail.value
-    })
-  },
-
-  
-  showNoConcernsMenuOS() {
-    this.setData({
-      showConcernsOS: false,
-      showNoConcernOS: true,
-      concernTabOS: 'none',
-      sizeConcernOS: '',
-      curvatureConcernOS: '',
-      tightnessConcernOS: '',
-    })
-  },
-
-  showSomeConcernsMenuOS() {
-    this.setData({
-      showConcernsOS: true,
-      showNoConcernOS: false,
-      concernTabOS: 'some'
-    })
-  },
-
-  showNoConcernsMenuOD() {
-    this.setData({
-      showConcernsOD: false,
-      showNoConcernOD: true,
-      concernTabOD: 'none',
-      sizeConcernOD: '',
-      curvatureConcernOD: '',
-      tightnessConcernOD: '',
-    });
-  },
-
-  showSomeConcernsMenuOD() {
-    this.setData({
-      showConcernsOD: true,
-      showNoConcernOD: false,
-      concernTabOD: 'some'
-    });
-  },
-
-  onRadioChangeSizeOD(e) {
-    this.setData({
-      sizeConcernOD: e.detail.value
-    });
-  },
-
-  onRadioChangeTightnessOD(e) {
-    this.setData({
-      tightnessConcernOD: e.detail.value
-    });
-  },
-
-  onRadioChangeCurvatureOD(e) {
-    this.setData({
-      curvatureConcernOD: e.detail.value
-    });
-  },
- 
-  onRadioChangeSizeOS(e) {
-    this.setData({
-      sizeConcernOS: e.detail.value
-    });
-  },
-
-  onRadioChangeTightnessOS(e) {
-    this.setData({
-      tightnessConcernOS: e.detail.value
-    });
-  },
-
-  onRadioChangeCurvatureOS(e) {
-    this.setData({
-      curvatureConcernOS: e.detail.value
-    });
-  },
-
-  toggleRadioButtonsOD() {
-    this.setData({
-      showRadioButtonsOD: !this.data.showRadioButtonsOD
-    });
-  },
-
-  toggleRadioButtonsOS() {
-    this.setData({
-      showRadioButtonsOS: !this.data.showRadioButtonsOS
-    });
-  },
-
-
- onNotesInputOS(e) {
-  this.setData({
-    notesOS: e.detail.value
-  });
-},
-
-onNotesInputOD(e) {
-  this.setData({
-    notesOD: e.detail.value
-  });
-},
-
-  // <!-- learning about components -->
   showOSOptions() {
     this.setData({
       showOS: true,
@@ -223,19 +64,12 @@ onNotesInputOD(e) {
     });
   },
 
-
-
   handleConcernTabChanged: function(e) {
-    // Extracting the necessary details from the event
     const { lensId, identifier, concernTab } = e.detail;
-    // Finding the index of the lens that matches the lensId
     const lensIndex = this.data.lensCollection.findIndex(lens => lens.id === lensId);
     if (lensIndex !== -1) {
-      // Determine the key for updating based on the identifier
       const lensKey = identifier === 'OD' ? 'concernTabOD' : 'concernTabOS';
-      // Creating a new object for the lens with updated concernTab
       const updatedLens = Object.assign({}, this.data.lensCollection[lensIndex], {[lensKey]: concernTab});
-      // Updating the state with the new lens data
       this.setData({
         [`lensCollection[${lensIndex}]`]: updatedLens
       });
@@ -299,8 +133,6 @@ onNotesInputOD(e) {
     });
   },
 
-
-    // actual component building down here
   handleNotes: function(e) {
     const { notes, identifier, lensId } = e.detail;
     const lenses = this.data.lensCollection.map(note => {
@@ -388,7 +220,7 @@ onNotesInputOD(e) {
       }
     });
     if (allBFKValid) {
-    const newLens = { id: this.data.nextLensId, countOD: 0, countOS: 0, compNotesOS: '', compNotesOD: '', resultOD: '', resultOS: '', comfortIndexOD: 0, comfortIndexOS: 0 };
+    const newLens = { id: this.data.nextLensId, countOD: 0, countOS: 0, compNotesOS: '', compNotesOD: '', resultOD: '', resultOS: '', comfortIndexOD: 0, comfortIndexOS: 0, concernTabOD: 'none', concernTabOS: 'none'};
     const newLensCollection = this.data.lensCollection.concat(newLens); 
     this.setData({
       lensCollection: newLensCollection,

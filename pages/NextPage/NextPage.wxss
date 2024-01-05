@@ -2,12 +2,13 @@ page {
   height: 100vh;
   display: flex;
   flex-direction: column;
-  background-color: #fdeeaf;
+  align-items: center;
+  background-color: #b797d1;
 }
 
 .scroll-view {
   flex: 1; 
-  width: 100%; 
+  width: 90%; 
 }
 
 
@@ -22,7 +23,7 @@ page {
   height: 180rpx; 
   line-height: 60rpx; 
   text-align: center;
-  border: 1px solid #5A315D;
+  border: 1px solid #b797d1;
   margin: 50rpx;
   border-radius: 50%; 
   display: flex;
@@ -38,7 +39,7 @@ page {
 }
 
 
-.new-fart-button {
+.new-lens-button {
   background-color: #5A315D; 
   color: #fdeeaf;
   padding: 10rpx 20rpx;
@@ -48,163 +49,3 @@ page {
   display: block; 
   text-align: center;
 }
-
-
-.concernTabs {
-  display: flex;
-  justify-content: space-around;
-  margin-top: 10rpx;
-  color: #5A315D;
-  align-items: center;
-}
-
-.concernTab {
-  width: 210rpx; 
-  height: 70rpx; 
-  line-height: 40rpx; 
-  text-align: center;
-  border: 1px solid #5A315D;
-  margin: 5rpx;
-  padding: 5rpx;
-  border-radius: 25%; 
-  display: flex;
-  justify-content: center;
-  align-items: center; 
-  color: #5A315D;
-  background-color: #f3e3a1;
-}
-
-.concernTab.active {
-  background-color: #5A315D; 
-  color: #f5d34e; 
-}
-
-
-.checkbox-label {
-  margin-right: 15rpx;
-  margin-left: 15rpx;
-  color: #5A315D;
-}
-
-.options {
-  border: 7rpx solid #5A315D; /* Example border color and thickness */
-  padding: 10rpx;
-  margin: 10rpx;
-  border-radius: 10rpx; 
-}
-
-.row {
-  display: flex;
-  justify-content: center;
-  padding: 10rpx;
-  align-items: center;
-}
-
-.bfk-label {
-  color: #5A315D;
-}
-
-.bfk-input {
-  border: 1px solid #5A315D; 
-  padding: 5rpx 10rpx;    
-  border-radius: 15rpx;   
-  margin: 0 auto;
-  color: #5A315D; 
-  background-color: #f3e3a1;
-}
-
-.toggle-radio-buttons {
-  color: #5A315D;
-  display: flex;
-  justify-content: center;
-  font-weight: 100;
-  margin-left: 15rpx;
-}
-
-radio-group {
-  display: flex;
-  justify-content: space-around;
-  padding: 25rpx 10rpx;
-  color: #5A315D;
-}
-
-.customer-comfort-section {
-  margin-top: 10rpx; 
-  text-align: center;
-}
-
-.customer-feedback-label {
-  text-align: center; 
-  width: 80%;
-  margin-bottom: 5rpx; 
-  color: #5A315D;
-}
-
-.customer-feedback-input {
-  width: 90%; 
-  height: 100rpx; 
-  border: 1px solid #d3b642; 
-  border-radius: 10rpx; 
-  padding: 10rpx; 
-  text-align: center;
-  margin: 0 auto;
-}
-
-.picker-view {
-  display: block;
-  width: 90%;
-  height: 60rpx; 
-  border: 1px solid #5A315D; 
-  border-radius: 10rpx;
-  padding: 10rpx;
-  background-color: #f3e3a1;
-  color: #5A315D;
-  text-align: center;
-  line-height: 60rpx;
-  margin: 0 auto;
-  margin-top: 10rpx;
-}
-
-.picker-view::after {
-  content: '\25BC'; /* Down arrow */
-  float: right;
-  margin-right: 10rpx;
-  color: #5A315D;
-}
-
-
-.notes-section {
-  margin-top: 10rpx; 
-  text-align: center;
-}
-
-.notes-label {
-  text-align: center; 
-  width: 80%;
-  margin-bottom: 5rpx; 
-  color: #5A315D;
-}
-
-.notes-input {
-  width: 90%; 
-  height: 100rpx; 
-  border: 1px solid #5A315D; 
-  border-radius: 10rpx; 
-  padding: 10rpx; 
-  text-align: center;
-  margin: 0 auto;
-  color: #5A315D; 
-  background-color: #f3e3a1;
-}
-
-.new-lens-button {
-  background-color: #5A315D; 
-  color: #f5d34e;
-  padding: 10rpx 20rpx;
-  border: none;
-  border-radius: 5rpx;
-  margin: 20rpx auto;
-  display: block;
-  text-align: center;
-}
-
