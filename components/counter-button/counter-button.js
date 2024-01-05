@@ -7,7 +7,7 @@ Component({
 
     comfortLevels: {
       type: Array,
-      value: ['very comfortable', 'acceptable', 'unwearable',],
+      value: ['很舒服', '可以接受', '不能戴',],
     },
 
     comfortIndex: {

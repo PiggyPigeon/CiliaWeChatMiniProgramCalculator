@@ -32,7 +32,7 @@
   bind:changeComfortLevel="handleComfortLevelChange">
   </counter-button>
 </block>
-<button class="new-lens-button" bindtap="addNewLens">Add Lens</button>
+<button class="new-lens-button" bindtap="addNewLens">新镜片</button>
 </scroll-view>
 
 

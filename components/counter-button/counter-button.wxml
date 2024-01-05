@@ -2,7 +2,7 @@
 
 <view class="lens-container">
   <view class="lens-header" bindtap="toggleLensContent">
-    <h1 class="lens-label">Lens {{index + 1}}</h1>
+    <h1 class="lens-label">镜片 {{index + 1}}</h1>
     <text class="toggle-lens-content">{{collapsed ? '▼' : '▲'}}</text>
   </view> 
 
@@ -24,22 +24,22 @@
     <view wx:if="{{concernTab === 'some'}}" class="toggle-arrow" bindtap="toggleConcernsCollapse"> {{concernsCollapsed ? '▼' : '▲'}} </view>
   <view wx:if="{{concernTab === 'some' && !concernsCollapsed}}" class="concernOptions">
     <radio-group name="sizeConcern" bindchange="onRadioChangeSize">
-      <label><radio value="tooSmall" checked="{{sizeConcern === 'tooSmall'}}"/> Too Small</label>
-      <label><radio value="tooBig" checked="{{sizeConcern === 'tooBig'}}"/> Too Big</label>
+      <label><radio value="tooSmall" checked="{{sizeConcern === 'tooSmall'}}"/>太小</label>
+      <label><radio value="tooBig" checked="{{sizeConcern === 'tooBig'}}"/> 太大</label>
     </radio-group>
     <radio-group name="tightnessConcern" bindchange="onRadioChangeTightness">
-      <label><radio value="tooTight" checked="{{tightnessConcern === 'tooTight'}}"/> Too Tight</label>
-      <label><radio value="tooLoose" checked="{{tightnessConcern === 'tooLoose'}}"/> Too Loose</label>
+      <label><radio value="tooTight" checked="{{tightnessConcern === 'tooTight'}}"/>太紧</label>
+      <label><radio value="tooLoose" checked="{{tightnessConcern === 'tooLoose'}}"/>太松</label>
     </radio-group>
     <radio-group name="curvatureConcern" bindchange="onRadioChangeCurvature">
-      <label><radio value="tooSteep" checked="{{curvatureConcern === 'tooSteep'}}"/> Too Steep</label>
-      <label><radio value="tooFlat" checked="{{curvatureConcern === 'tooFlat'}}"/> Too Flat</label>
+      <label><radio value="tooSteep" checked="{{curvatureConcern === 'tooSteep'}}"/>太陡</label>
+      <label><radio value="tooFlat" checked="{{curvatureConcern === 'tooFlat'}}"/>太平</label>
     </radio-group>
   </view>
 
 
   <view class="customer-comfort-section">
-    <text class="customer-feedback-label">Comfort Level:</text>
+    <text class="customer-feedback-label">舒适度:</text>
     <picker mode="selector" range="{{comfortLevels}}" bindchange="changeComfortLevel" value="{{comfortIndex}}">
       <view class="picker-view">{{comfortLevels[comfortIndex]}}</view>
     </picker>
