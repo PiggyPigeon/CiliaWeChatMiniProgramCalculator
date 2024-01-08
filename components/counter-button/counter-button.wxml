@@ -1,0 +1,54 @@
+<!--components/counter-button/counter-button.wxml-->
+
+<view class="lens-container">
+  <view class="lens-header" bindtap="toggleLensContent">
+    <h1 class="lens-label">镜片 {{index + 1}}</h1>
+    <text class="toggle-lens-content">{{collapsed ? '▼' : '▲'}}</text>
+  </view> 
+
+  <view wx:if="{{!collapsed}}" class="lens-content">
+
+  <view class="BFK-row">
+    <label class="bfk-label" for="BFK-value"> BFK:</label>
+    <input class="bfk-input" type="text" 
+    value="{{BFKinput}}"
+    placeholder="{{identifier === 'OD' ? originalResultOD : originalResultOS}}"
+    placeholder-style="color: #916a94;"
+    bindinput="editBFK" style="width: 80%"/>
+  </view>
+
+    <view class="concernTabs"> 贴合:
+      <view class="concernTab {{concernTab === 'none' ? 'active' : ''}}" data-concern="none" bindtap="toggleConcerns">沒有問題</view>
+      <view class="concernTab {{concernTab === 'some' ? 'active' : ''}}" data-concern="some" bindtap="toggleConcerns">有問題</view>
+    </view>
+    <view wx:if="{{concernTab === 'some'}}" class="toggle-arrow" bindtap="toggleConcernsCollapse"> {{concernsCollapsed ? '▼' : '▲'}} </view>
+  <view wx:if="{{concernTab === 'some' && !concernsCollapsed}}" class="concernOptions">
+    <radio-group name="sizeConcern" bindchange="onRadioChangeSize">
+      <label><radio value="tooSmall" checked="{{sizeConcern === 'tooSmall'}}"/>太小</label>
+      <label><radio value="tooBig" checked="{{sizeConcern === 'tooBig'}}"/> 太大</label>
+    </radio-group>
+    <radio-group name="tightnessConcern" bindchange="onRadioChangeTightness">
+      <label><radio value="tooTight" checked="{{tightnessConcern === 'tooTight'}}"/>太紧</label>
+      <label><radio value="tooLoose" checked="{{tightnessConcern === 'tooLoose'}}"/>太松</label>
+    </radio-group>
+    <radio-group name="curvatureConcern" bindchange="onRadioChangeCurvature">
+      <label><radio value="tooSteep" checked="{{curvatureConcern === 'tooSteep'}}"/>太陡</label>
+      <label><radio value="tooFlat" checked="{{curvatureConcern === 'tooFlat'}}"/>太平</label>
+    </radio-group>
+  </view>
+
+
+  <view class="customer-comfort-section">
+    <text class="customer-feedback-label">舒适度:</text>
+    <picker mode="selector" range="{{comfortLevels}}" bindchange="changeComfortLevel" value="{{comfortIndex}}">
+      <view class="picker-view">{{comfortLevels[comfortIndex]}}</view>
+    </picker>
+  </view>
+
+
+  <view class="notes-section">
+  <text class="notes-label">筆記:</text>
+  <input class="notes-input"  type="text" value="{{notes}}" bindinput="takeNotes" placeholder="在這裡寫筆記" placeholder-style="color: #916a94;"></input>
+ </view>
+</view>
+</view>

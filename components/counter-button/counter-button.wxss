@@ -1,0 +1,148 @@
+/* components/counter-button/counter-button.wxss */
+
+.lens-container {
+  border: 3px solid #5A315D;
+  padding: 30rpx;
+  margin: 5rpx;
+  margin-bottom: 20rpx;
+  border-radius: 10%; 
+}
+
+.lens-header {
+  display: flex;
+  justify-content: space-between;
+  color: #5A315D;
+}
+
+.lens-label {
+  display: flex;
+  justify-content: center;
+  color: #5A315D;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  font-weight: 600;
+}
+
+.toggle-arrow {
+  display: flex;
+  justify-content: space-around;
+  margin-top: 10rpx;
+  color: #5A315D;
+  align-items: center;
+}
+
+.notes-section {
+  margin-top: 10rpx; 
+  text-align: center;
+}
+
+.notes-label {
+  text-align: center; 
+  width: 80%;
+  margin-bottom: 5rpx; 
+  color: #5A315D;
+  font-weight: 500;
+}
+
+.notes-input {
+  width: 90%; 
+  height: 100rpx; 
+  border: 1px solid #5A315D; 
+  border-radius: 10rpx; 
+  padding: 10rpx; 
+  text-align: center;
+  margin: 0 auto;
+  color: #5A315D; 
+  background-color: #fdeeaf;
+}
+
+.BFK-row {
+  display: flex;
+  justify-content: center;
+  padding: 10rpx;
+  align-items: center;
+}
+
+.bfk-label {
+  color: #5A315D;
+}
+
+.bfk-input {
+  border: 1px solid #5A315D; 
+  padding: 5rpx 10rpx;    
+  border-radius: 15rpx;   
+  margin: 0 auto;
+  color: #5A315D; 
+  background-color: #fdeeaf;
+}
+
+
+.customer-comfort-section {
+  margin-top: 10rpx; 
+  text-align: center;
+}
+
+.customer-feedback-label {
+  text-align: center; 
+  width: 80%;
+  margin-bottom: 5rpx; 
+  color: #5A315D;
+}
+
+.picker-view {
+  display: block;
+  width: 90%;
+  height: 60rpx; 
+  border: 1px solid #5A315D; 
+  border-radius: 10rpx;
+  padding: 10rpx;
+  background-color: #fdeeaf;
+  color: #5A315D;
+  text-align: center;
+  line-height: 60rpx;
+  margin: 0 auto;
+  margin-top: 10rpx;
+}
+
+.picker-view::after {
+  content: '\25BC'; 
+  float: right;
+  margin-right: 10rpx;
+  color: #5A315D;
+}
+
+.concernTabs {
+  display: flex;
+  justify-content: space-around;
+  margin-top: 10rpx;
+  color: #5A315D;
+  align-items: center;
+}
+
+.concernTab {
+  width: 210rpx; 
+  height: 70rpx; 
+  line-height: 40rpx; 
+  text-align: center;
+  border: 1px solid #5A315D;
+  margin: 5rpx;
+  padding: 5rpx;
+  border-radius: 25%; 
+  display: flex;
+  justify-content: center;
+  align-items: center; 
+  color: #5A315D;
+  background-color: #fdeeaf;
+}
+
+.concernTab.active {
+  background-color: #5A315D; 
+  color: #fdeeaf; 
+}
+
+radio-group {
+  display: flex;
+  justify-content: space-around;
+  padding: 25rpx 10rpx;
+  color: #5A315D;
+}
+

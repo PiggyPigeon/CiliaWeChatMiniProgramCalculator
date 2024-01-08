@@ -1,4 +1,8 @@
 <!--index.wxml-->
+<!-- <mp-dialog title="test" show="{{true}}" bindbuttontap="tapDialogButton" buttons="{{[{text: 'cancel'}, {text: 'ok'}]}}">
+  <view>test content</view>
+</mp-dialog> -->
+
 <navigation-bar title="Cilia 视光小助手" back="{{false}}"></navigation-bar>
 <scroll-view class="scrollarea" scroll-y type="list">
   <view class="container">
