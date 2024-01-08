@@ -47,22 +47,22 @@ Page({
     });
   },
 
-  handleIncrement: function(e) {
-    const { identifier, lensId } = e.detail;
-    const lenses = this.data.lensCollection.map(counter => {
-      if (counter.id === lensId) {
-        if (identifier === 'OD') {
-          return Object.assign({}, counter, { countOD: counter.countOD + 1 });
-        } else if (identifier === 'OS') {
-          return Object.assign({}, counter, { countOS: counter.countOS + 1 });
-        }
-      }
-      return counter;
-    });
-    this.setData({
-      lensCollection: lenses
-    });
-  },
+  // handleIncrement: function(e) {
+  //   const { identifier, lensId } = e.detail;
+  //   const lenses = this.data.lensCollection.map(counter => {
+  //     if (counter.id === lensId) {
+  //       if (identifier === 'OD') {
+  //         return Object.assign({}, counter, { countOD: counter.countOD + 1 });
+  //       } else if (identifier === 'OS') {
+  //         return Object.assign({}, counter, { countOS: counter.countOS + 1 });
+  //       }
+  //     }
+  //     return counter;
+  //   });
+  //   this.setData({
+  //     lensCollection: lenses
+  //   });
+  // },
 
   handleConcernTabChanged: function(e) {
     const { lensId, identifier, concernTab } = e.detail;
