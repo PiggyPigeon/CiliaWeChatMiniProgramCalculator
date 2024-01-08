@@ -2,14 +2,12 @@
 
 <!-- NextPage.wxml -->
 
-
-
 <view class="tabs">
   <view class="tab {{activeTab === 'OD' ? 'active' : ''}}" bindtap="showODOptions">OD</view>
   <view class="tab {{activeTab === 'OS' ? 'active' : ''}}" bindtap="showOSOptions">OS</view>
 </view>
 
-<scroll-view class="scroll-view" scroll-y="true" style="height: 50%;">
+<scroll-view class="scroll-view" scroll-y="list" type="true">
 <block wx:for="{{lensCollection}}" wx:key="id">
   <counter-button 
   index="{{index}}" 

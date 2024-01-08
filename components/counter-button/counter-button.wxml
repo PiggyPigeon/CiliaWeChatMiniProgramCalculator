@@ -48,7 +48,7 @@
 
   <view class="notes-section">
   <text class="notes-label">筆記:</text>
-  <textarea class="notes-input"  type="text" value="{{notes}}" bindinput="takeNotes" placeholder="在這裡寫筆記" placeholder-style="color: #916a94;"></textarea>
+  <input class="notes-input"  type="text" value="{{notes}}" bindinput="takeNotes" placeholder="在這裡寫筆記" placeholder-style="color: #916a94;"></input>
  </view>
 </view>
 </view>
