@@ -204,7 +204,7 @@ Page({
       let bfkOS = parseFloat(lens.resultOS);
       if ((bfkOS < 37.5 || bfkOS > 46.5)) {
         wx.showToast({
-          title: `Lens ${lens.id} BFK OS value is out of range (37.5 - 46.5)`,
+          title: `镜片 ${lens.id} BFK OS 值超出范围 (37.5 - 46.5)`,
           icon: 'none',
           duration: 2000
         });
@@ -212,7 +212,7 @@ Page({
       }
       if ((bfkOD < 37.5 || bfkOD > 46.5)) {
         wx.showToast({
-          title: `Lens ${lens.id} BFK OD value is out of range (37.5 - 46.5)`,
+          title: `镜片 ${lens.id} BFK OD 值超出范围 (37.5 - 46.5)`,
           icon: 'none',
           duration: 2000
         });

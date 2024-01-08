@@ -26,10 +26,10 @@ Page({
 
   handleInput(e, field) {
     let value = e.detail.value;
-    value = value.replace(/\D/g, ''); // Remove non-numeric characters
+    value = value.replace(/\D/g, ''); 
 
     if (value.length > 2) {
-      value = value.slice(0, 2) + '.' + value.slice(2,4); // Add decimal after first two digits
+      value = value.slice(0, 2) + '.' + value.slice(2,4); 
     }
 
     let update = {};
@@ -41,22 +41,21 @@ Page({
     const valueOS = parseFloat(this.data.valueOS);
     const valueOD = parseFloat(this.data.valueOD);
 
-     // Check if the values are within the acceptable range
   if ((valueOS < 37.5 || valueOS > 46.5)) {
     wx.showToast({
-      title: 'SIM K OS value out of range (37.5 - 46.5)',
+      title: 'SIM K OS 值超出范围 (37.5 - 46.5)',
       icon: 'none',
       duration: 2000
     });
-    return; // Do not proceed with calculations
+    return; 
   }
   if ((valueOD < 37.5 || valueOD > 46.5)) {
     wx.showToast({
-      title: 'SIM K OD value out of range (37.5 - 46.5)',
+      title: 'SIM K OD 值超出范围 (37.5 - 46.5)',
       icon: 'none',
       duration: 2000
     });
-    return; // Do not proceed with calculations
+    return; 
   }
   
     const resultOS = Math.round((6.293 + 0.828 * valueOS) * 4)/4;
