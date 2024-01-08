@@ -9,7 +9,7 @@ page {
 .scroll-view {
   flex: 1; 
   width: 90%; 
-  min-height: 300px; 
+  min-height: 100px; 
   padding-bottom: 50px;
 }
 
