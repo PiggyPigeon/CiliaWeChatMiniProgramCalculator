@@ -38,34 +38,43 @@ Page({
   },
 
   calculate() {
-    const valueOS = parseFloat(this.data.valueOS);
-    const valueOD = parseFloat(this.data.valueOD);
-
-  if ((valueOS < 37.5 || valueOS > 46.5)) {
-    wx.showToast({
-      title: 'SIM K OS 值超出范围 (37.5 - 46.5)',
-      icon: 'none',
-      duration: 2000
-    });
-    return; 
-  }
-  if ((valueOD < 37.5 || valueOD > 46.5)) {
-    wx.showToast({
-      title: 'SIM K OD 值超出范围 (37.5 - 46.5)',
-      icon: 'none',
-      duration: 2000
-    });
-    return; 
-  }
+    const isValidNumber = (value) => {
+      const number = parseFloat(value);
+      return value != null && (value - number === 0);
+    };
   
-    const resultOS = Math.round((6.293 + 0.828 * valueOS) * 4)/4;
-    const resultOD = Math.round((6.293 + 0.828 * valueOD) * 4)/4;
-
+    let valueOS = this.data.valueOS;
+    let valueOD = this.data.valueOD;
+  
+    valueOS = isValidNumber(valueOS) ? parseFloat(valueOS) : 0;
+    valueOD = isValidNumber(valueOD) ? parseFloat(valueOD) : 0;
+  
+    if (valueOS < 37.5 || valueOS > 46.5) {
+      wx.showToast({
+        title: 'SIM K OS 值超出范围 (37.5 - 46.5)',
+        icon: 'none',
+        duration: 2000
+      });
+    }
+  
+    if (valueOD < 37.5 || valueOD > 46.5) {
+      wx.showToast({
+        title: 'SIM K OD 值超出范围 (37.5 - 46.5)',
+        icon: 'none',
+        duration: 2000
+      });
+    }
+    
+    const resultOS = valueOS !== 0 ? Math.round((6.293 + 0.828 * valueOS) * 4)/4 : 0;
+    const resultOD = valueOD !== 0 ? Math.round((6.293 + 0.828 * valueOD) * 4)/4 : 0;
+  
     this.setData({
       resultOS: resultOS.toFixed(2).toString(),
       resultOD: resultOD.toFixed(2).toString()
     });
   },
+  
+  
   continueToNextPage() {
     wx.navigateTo({
       url: `/pages/NextPage/NextPage?resultOS=${this.data.resultOS}&resultOD=${this.data.resultOD}`
