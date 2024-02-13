@@ -10,12 +10,12 @@
 
     <view class="input-container">
       <text>Sim K OD:</text>
-      <input id="simKInputOD" value="{{valueOD}}" bindinput="handleInputOD" placeholder="输入平K/OD SIMK" style="width: 60%"></input>
+      <input id="simKInputOD" value="{{valueOD}}" bindblur="handleInputOD" placeholder="3mm FK" style="width: 60%"></input>
     </view>
 
     <view class="input-container">
       <text>Sim K OS:</text>
-      <input id="simKInputOS" value="{{valueOS}}" bindinput="handleInputOS" placeholder="输入平K/OS SIMK" style="width: 60%"></input>
+      <input id="simKInputOS" value="{{valueOS}}" bindblur="handleInputOS" placeholder="3mm FK" style="width: 60%"></input>
     </view>
 
    
