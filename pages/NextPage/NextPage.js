@@ -26,12 +26,17 @@ Page({
       slidingConcernOD: '',
 
       SPKConcernOD: '',
+      deviationConcernOD: '',
+      BFRpoolingConcernOD: '',
+
       OZsizeConcernOS: '',
       OADsizeConcernOS: '',
       RCthicknessConcernOS: '',
       slidingConcernOS: '',
     
-      SPKConcernOS: ''
+      SPKConcernOS: '',
+      deviationConcernOS: '',
+      BFRpoolingConcernOS: ''
     } 
     ],
     nextLensId: 2,   
@@ -113,10 +118,43 @@ Page({
     }
   },
 
+  handleSPKChange: function(e) {
+    const { lensId, identifier, SPKConcern } = e.detail;
+    const lensIndex = this.data.lensCollection.findIndex(lens => lens.id === lensId);
+    if (lensIndex !== -1) {
+      const lensKey = identifier === 'OD' ? 'SPKConcernOD' : 'SPKConcernOS';
+      const updatedLens = Object.assign({}, this.data.lensCollection[lensIndex], {[lensKey]: SPKConcern});
+      this.setData({
+        [`lensCollection[${lensIndex}]`]: updatedLens
+      });
+    }
+    },
+
+    handleDeviationChange: function(e) {
+      const { lensId, identifier, deviationConcern } = e.detail;
+      const lensIndex = this.data.lensCollection.findIndex(lens => lens.id === lensId);
+      if (lensIndex !== -1) {
+        const lensKey = identifier === 'OD' ? 'deviationConcernOD' : 'deviationConcernOS';
+        const updatedLens = Object.assign({}, this.data.lensCollection[lensIndex], {[lensKey]: deviationConcern});
+        this.setData({
+          [`lensCollection[${lensIndex}]`]: updatedLens
+        });
+      }
+      },
+
+      handleBFRpoolingChange: function(e) {
+        const { lensId, identifier, BFRpoolingConcern } = e.detail;
+        const lensIndex = this.data.lensCollection.findIndex(lens => lens.id === lensId);
+        if (lensIndex !== -1) {
+          const lensKey = identifier === 'OD' ? 'BFRpoolingConcernOD' : 'BFRpoolingConcernOS';
+          const updatedLens = Object.assign({}, this.data.lensCollection[lensIndex], {[lensKey]: BFRpoolingConcern});
+          this.setData({
+            [`lensCollection[${lensIndex}]`]: updatedLens
+          });
+        }
+        },
 
 
-
-  
   handleComfortLevelChange: function(e) {
     const { comfortIndex, identifier, lensId } = e.detail;
     const lenses = this.data.lensCollection.map(index => {
@@ -136,17 +174,9 @@ Page({
     });
   },
 
-  handleSPKChange: function(e) {
-    const { lensId, identifier, SPKConcern } = e.detail;
-    const lensIndex = this.data.lensCollection.findIndex(lens => lens.id === lensId);
-    if (lensIndex !== -1) {
-      const lensKey = identifier === 'OD' ? 'SPKConcernOD' : 'SPKConcernOS';
-      const updatedLens = Object.assign({}, this.data.lensCollection[lensIndex], {[lensKey]: SPKConcern});
-      this.setData({
-        [`lensCollection[${lensIndex}]`]: updatedLens
-      });
-    }
-    },
+
+
+
 
     handleNotes: function(e) {
       const { notes, identifier, lensId } = e.detail;

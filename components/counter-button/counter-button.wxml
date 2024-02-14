@@ -56,12 +56,26 @@
     </view>
   </view>
 
+  <view class ="checkbox-container">
     <checkbox-group name="SPKConcern" bindchange="onSPKChange">
         <label class="checkbox-label">
           <checkbox value="hasSPK" checked="{{SPKConcern === true}}" />引起SPK
         </label>
       </checkbox-group>
-    
+
+      <checkbox-group name="deviationConcern" bindchange="onDeviationChange">
+        <label class="checkbox-label">
+          <checkbox value="hasDeviation" checked="{{deviationConcern === true}}" />偏差
+        </label>
+      </checkbox-group>
+
+      <checkbox-group name="BFRpoolingConcern" bindchange="onBFRpoolingChange">
+        <label class="checkbox-label">
+          <checkbox value="hasBFRpooling" checked="{{BFRpoolingConcern === true}}" />BFR匯集
+        </label>
+      </checkbox-group>
+
+  </view>
       <view class="horizontal-line"></view>
   </view>
     

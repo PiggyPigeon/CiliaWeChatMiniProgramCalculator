@@ -69,17 +69,17 @@ Component({
       value: '', 
     },
 
-    // tightnessConcern: {
-    //   type: String,
-    //   value: '', 
-    // },
-
-    // curvatureConcern: {
-    //   type: String,
-    //   value: '',  
-    // },
-
     SPKConcern: {
+      type: Boolean,
+      value: false,
+    },
+
+    deviationConcern: {
+      type: Boolean,
+      value: false,
+    },
+
+    BFRpoolingConcern: {
       type: Boolean,
       value: false,
     },
@@ -159,6 +159,16 @@ Component({
     onSPKChange: function(e) {
       this.setData({ SPKConcern: e.detail.value.length > 0 });
       this.triggerEvent('SPKChanged', { SPKConcern: this.data.SPKConcern, identifier: this.data.identifier, lensId: this.data.lensId });
+    },
+
+    onDeviationChange: function(e) {
+      this.setData({ deviationConcern: e.detail.value.length > 0 });
+      this.triggerEvent('deviationChanged', { deviationConcern: this.data.deviationConcern, identifier: this.data.identifier, lensId: this.data.lensId });
+    },
+
+    onBFRpoolingChange: function(e) {
+      this.setData({ BFRpoolingConcern: e.detail.value.length > 0 });
+      this.triggerEvent('BFRpoolingChanged', { BFRpoolingConcern: this.data.BFRpoolingConcern, identifier: this.data.identifier, lensId: this.data.lensId });
     },
 
   }

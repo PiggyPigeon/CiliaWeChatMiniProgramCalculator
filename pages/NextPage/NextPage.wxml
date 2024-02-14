@@ -22,6 +22,9 @@
   slidingConcern="{{activeTab === 'OD' ? item.slidingConcernOD : item.slidingConcernOS}}"
 
   SPKConcern="{{activeTab === 'OD' ? item.SPKConcernOD : item.SPKConcernOS}}"
+  deviationConcern="{{activeTab === 'OD' ? item.deviationConcernOD : item.deviationConcernOS}}"
+  BFRpoolingConcern="{{activeTab === 'OD' ? item.BFRpoolingConcernOD : item.BFRpoolingConcernOS}}"
+
   originalResultOD="{{originalResultOD}}"
   originalResultOS="{{originalResultOS}}"
   identifier="{{activeTab}}" 
@@ -31,8 +34,11 @@
   bind:OADsizeConcernChanged="handleOADSizeConcernChanged"
   bind:RCthicknessConcernChanged="handleRCthicknessConcernChanged"
   bind:slidingConcernChanged="handleSlidingConcernChanged"
- 
+  
   bind:SPKChanged="handleSPKChange"
+  bind:deviationChanged="handleDeviationChange"
+  bind:BFRpoolingChanged="handleBFRpoolingChange"
+
   bind:takeNotes="handleNotes"
   bind:editBFK="handleBFKInput"
   bind:changeComfortLevel="handleComfortLevelChange">
