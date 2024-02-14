@@ -30,30 +30,7 @@
   align-items: center;
 }
 
-.notes-section {
-  margin-top: 10rpx; 
-  text-align: center;
-}
 
-.notes-label {
-  text-align: center; 
-  width: 80%;
-  margin-bottom: 5rpx; 
-  color: #5A315D;
-  font-weight: 500;
-}
-
-.notes-input {
-  width: 90%; 
-  height: 100rpx; 
-  border: 1px solid #5A315D; 
-  border-radius: 10rpx; 
-  padding: 10rpx; 
-  text-align: center;
-  margin: 0 auto;
-  color: #5A315D; 
-  background-color: #fdeeaf;
-}
 
 .BFK-row {
   display: flex;
@@ -139,10 +116,64 @@
   color: #fdeeaf; 
 }
 
-radio-group {
+checkbox-group{
   display: flex;
-  justify-content: space-around;
+  justify-content: center;
+  margin-bottom: 25rpx;
+  color: #5A315D;
+}
+
+
+.radio-container {
+ display: flex;
+ flex-direction: column;
   padding: 25rpx 10rpx;
   color: #5A315D;
+}
+
+.radio-row {
+  margin-bottom: 25rpx;
+}
+
+radio-group {
+  display: flex; 
+}
+
+.radio-label {
+  flex: 1; 
+  display: flex; 
+  align-items: center; 
+  margin-right: 10rpx; 
+}
+
+
+
+.horizontal-line {
+  height: 1px;
+  background-color: #000; 
+  margin: 10px 0; 
+}
+
+.notes-section {
+  margin-top: 10rpx; 
+  text-align: center;
+}
+.notes-label {
+  text-align: center; 
+  width: 80%;
+  margin-bottom: 5rpx; 
+  color: #5A315D;
+  font-weight: 500;
+}
+.notes-input {
+  width: 90%; 
+  height: 100rpx; 
+  border: 1px solid #5A315D; 
+  border-radius: 10rpx; 
+  padding: 10rpx; 
+  text-align: center;
+  margin: 0 auto;
+  color: #5A315D; 
+  background-color: #fdeeaf;
 }
 

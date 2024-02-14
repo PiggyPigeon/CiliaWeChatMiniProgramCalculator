@@ -21,21 +21,50 @@
       <view class="concernTab {{concernTab === 'none' ? 'active' : ''}}" data-concern="none" bindtap="toggleConcerns">沒有問題</view>
       <view class="concernTab {{concernTab === 'some' ? 'active' : ''}}" data-concern="some" bindtap="toggleConcerns">有問題</view>
     </view>
+
     <view wx:if="{{concernTab === 'some'}}" class="toggle-arrow" bindtap="toggleConcernsCollapse"> {{concernsCollapsed ? '▼' : '▲'}} </view>
+
   <view wx:if="{{concernTab === 'some' && !concernsCollapsed}}" class="concernOptions">
-    <radio-group name="sizeConcern" bindchange="onRadioChangeSize">
-      <label><radio value="tooSmall" checked="{{sizeConcern === 'tooSmall'}}"/>太小</label>
-      <label><radio value="tooBig" checked="{{sizeConcern === 'tooBig'}}"/> 太大</label>
+
+   <view class="radio-container">
+    <view class="radio-row">
+    <radio-group name="OZsizeConcern" bindchange="onRadioChangeOZSize">
+      <label class="radio-label"><radio value="OZtooSmall" checked="{{OZsizeConcern === 'OZtooSmall'}}"/>OZ 太小</label>
+      <label class="radio-label"><radio value="OZtooBig" checked="{{OZsizeConcern === 'OZtooBig'}}"/>OZ 太大</label>
     </radio-group>
-    <radio-group name="tightnessConcern" bindchange="onRadioChangeTightness">
-      <label><radio value="tooTight" checked="{{tightnessConcern === 'tooTight'}}"/>太紧</label>
-      <label><radio value="tooLoose" checked="{{tightnessConcern === 'tooLoose'}}"/>太松</label>
+    </view>
+
+    <view class="radio-row">
+    <radio-group name="OADsizeConcern" bindchange="onRadioChangeOADSize">
+      <label class="radio-label"><radio value="OADtooSmall" checked="{{OADsizeConcern === 'OADtooSmall'}}"/>OAD 太小</label>
+      <label class="radio-label"><radio value="OADtooBig" checked="{{OADsizeConcern === 'OADtooBig'}}"/>OAD 太大</label>
     </radio-group>
-    <radio-group name="curvatureConcern" bindchange="onRadioChangeCurvature">
-      <label><radio value="tooSteep" checked="{{curvatureConcern === 'tooSteep'}}"/>太陡</label>
-      <label><radio value="tooFlat" checked="{{curvatureConcern === 'tooFlat'}}"/>太平</label>
+    </view>
+
+    <view class="radio-row">
+    <radio-group name="RCthicknessConcern" bindchange="onRadioChangeRCthickness">
+      <label class="radio-label"><radio value="RCtooThin" checked="{{RCthicknessConcern === 'RCtooThin'}}"/>RC太窄</label>
+      <label class="radio-label"><radio value="RCtooThick" checked="{{RCthicknessConcern === 'RCtooThick'}}"/>RC太寬</label>
     </radio-group>
+    </view>
+
+    <view class="radio-row">
+    <radio-group name="slidingConcern" bindchange="onRadioChangeSliding">
+      <label class="radio-label"><radio value="tooFast" checked="{{slidingConcern === 'tooFast'}}"/>滑動太快</label>
+      <label class="radio-label"><radio value="tooSlow" checked="{{slidingConcern === 'tooSlow'}}"/>滑動太慢</label>
+    </radio-group>
+    </view>
   </view>
+
+    <checkbox-group name="SPKConcern" bindchange="onSPKChange">
+        <label class="checkbox-label">
+          <checkbox value="hasSPK" checked="{{SPKConcern === true}}" />引起SPK
+        </label>
+      </checkbox-group>
+    
+      <view class="horizontal-line"></view>
+  </view>
+    
 
 
   <view class="customer-comfort-section">

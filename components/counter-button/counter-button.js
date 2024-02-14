@@ -49,25 +49,46 @@ Component({
       value: 'none', 
     },
     
-    sizeConcern: {
+    OZsizeConcern: {
       type: String,
       value: '', 
     },
 
-    tightnessConcern: {
+    OADsizeConcern: {
       type: String,
       value: '', 
     },
 
-    curvatureConcern: {
+    RCthicknessConcern: {
       type: String,
-      value: '',  
+      value: '', 
+    },
+
+    slidingConcern: {
+      type: String,
+      value: '', 
+    },
+
+    // tightnessConcern: {
+    //   type: String,
+    //   value: '', 
+    // },
+
+    // curvatureConcern: {
+    //   type: String,
+    //   value: '',  
+    // },
+
+    SPKConcern: {
+      type: Boolean,
+      value: false,
     },
 
     originalResultOD: String,
     originalResultOS: String,
 
   },
+
 
   methods: {
 
@@ -114,17 +135,31 @@ Component({
       this.triggerEvent('toggleConcerns', { concernTab: this.data.concernTab, identifier: this.data.identifier, lensId: this.data.lensId });
     },
 
-    onRadioChangeSize: function(e) {
-      this.setData({ sizeConcern: e.detail.value });
-      this.triggerEvent('sizeConcernChanged', { sizeConcern: this.data.sizeConcern, identifier: this.data.identifier, lensId: this.data.lensId });
+    onRadioChangeOZSize: function(e) {
+      this.setData({ OZsizeConcern: e.detail.value });
+      this.triggerEvent('OZsizeConcernChanged', { OZsizeConcern: this.data.OZsizeConcern, identifier: this.data.identifier, lensId: this.data.lensId });
     },
-    onRadioChangeTightness: function(e) {
-      this.setData({ tightnessConcern: e.detail.value });
-      this.triggerEvent('tightnessConcernChanged', { tightnessConcern: this.data.tightnessConcern, identifier: this.data.identifier, lensId: this.data.lensId });
+
+    onRadioChangeOADSize: function(e) {
+      this.setData({ OADsizeConcern: e.detail.value });
+      this.triggerEvent('OADsizeConcernChanged', { OADsizeConcern: this.data.OADsizeConcern, identifier: this.data.identifier, lensId: this.data.lensId });
     },
-    onRadioChangeCurvature: function(e) {
-      this.setData({ curvatureConcern: e.detail.value });
-      this.triggerEvent('curvatureConcernChanged', { curvatureConcern: this.data.curvatureConcern, identifier: this.data.identifier, lensId: this.data.lensId });
+
+    onRadioChangeRCthickness: function(e) {
+      this.setData({ RCthicknessConcern: e.detail.value });
+      this.triggerEvent('RCthicknessConcernChanged', { RCthicknessConcern: this.data.RCthicknessConcern, identifier: this.data.identifier, lensId: this.data.lensId });
     },
+
+    onRadioChangeSliding: function(e) {
+      this.setData({ slidingConcern: e.detail.value });
+      this.triggerEvent('slidingConcernChanged', { slidingConcern: this.data.slidingConcern, identifier: this.data.identifier, lensId: this.data.lensId });
+    },
+
+
+    onSPKChange: function(e) {
+      this.setData({ SPKConcern: e.detail.value.length > 0 });
+      this.triggerEvent('SPKChanged', { SPKConcern: this.data.SPKConcern, identifier: this.data.identifier, lensId: this.data.lensId });
+    },
+
   }
 });

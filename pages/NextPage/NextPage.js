@@ -20,12 +20,18 @@ Page({
       comfortIndexOS: 0,
       concernTabOD: 'none', 
       concernTabOS: 'none', 
-      sizeConcernOD: '',
-      tightnessConcernOD: '',
-      curvatureConcernOD: '',
-      sizeConcernOS: '',
-      tightnessConcernOS: '',
-      curvatureConcernOS: '',
+      OZsizeConcernOD: '',
+      OADsizeConcernOD: '',
+      RCthicknessConcernOD: '',
+      slidingConcernOD: '',
+
+      SPKConcernOD: '',
+      OZsizeConcernOS: '',
+      OADsizeConcernOS: '',
+      RCthicknessConcernOS: '',
+      slidingConcernOS: '',
+    
+      SPKConcernOS: ''
     } 
     ],
     nextLensId: 2,   
@@ -47,23 +53,6 @@ Page({
     });
   },
 
-  // handleIncrement: function(e) {
-  //   const { identifier, lensId } = e.detail;
-  //   const lenses = this.data.lensCollection.map(counter => {
-  //     if (counter.id === lensId) {
-  //       if (identifier === 'OD') {
-  //         return Object.assign({}, counter, { countOD: counter.countOD + 1 });
-  //       } else if (identifier === 'OS') {
-  //         return Object.assign({}, counter, { countOS: counter.countOS + 1 });
-  //       }
-  //     }
-  //     return counter;
-  //   });
-  //   this.setData({
-  //     lensCollection: lenses
-  //   });
-  // },
-
   handleConcernTabChanged: function(e) {
     const { lensId, identifier, concernTab } = e.detail;
     const lensIndex = this.data.lensCollection.findIndex(lens => lens.id === lensId);
@@ -76,44 +65,58 @@ Page({
     }
   },
   
-  handleSizeConcernChanged: function(e) {
-    const { lensId, identifier, sizeConcern } = e.detail;
+  handleOZSizeConcernChanged: function(e) {
+    const { lensId, identifier, OZsizeConcern } = e.detail;
     const lensIndex = this.data.lensCollection.findIndex(lens => lens.id === lensId);
     if (lensIndex !== -1) {
-      const lensKey = identifier === 'OD' ? 'sizeConcernOD' : 'sizeConcernOS';
-      const updatedLens = Object.assign({}, this.data.lensCollection[lensIndex], {[lensKey]: sizeConcern});
-      this.setData({
-        [`lensCollection[${lensIndex}]`]: updatedLens
-      });
-    }
-  },
-  
-  
-  handleTightnessConcernChanged: function(e) {
-    const { lensId, identifier, tightnessConcern } = e.detail;
-    const lensIndex = this.data.lensCollection.findIndex(lens => lens.id === lensId);
-    if (lensIndex !== -1) {
-      const lensKey = identifier === 'OD' ? 'tightnessConcernOD' : 'tightnessConcernOS';
-      const updatedLens = Object.assign({}, this.data.lensCollection[lensIndex], {[lensKey]: tightnessConcern});
+      const lensKey = identifier === 'OD' ? 'OZsizeConcernOD' : 'OZsizeConcernOS';
+      const updatedLens = Object.assign({}, this.data.lensCollection[lensIndex], {[lensKey]: OZsizeConcern});
       this.setData({
         [`lensCollection[${lensIndex}]`]: updatedLens
       });
     }
   },
 
-  handleCurvatureConcernChanged: function(e) {
-    const { lensId, identifier, curvatureConcern } = e.detail;
+  handleOADSizeConcernChanged: function(e) {
+    const { lensId, identifier, OADsizeConcern } = e.detail;
     const lensIndex = this.data.lensCollection.findIndex(lens => lens.id === lensId);
     if (lensIndex !== -1) {
-      const lensKey = identifier === 'OD' ? 'curvatureConcernOD' : 'curvatureConcernOS';
-      const updatedLens = Object.assign({}, this.data.lensCollection[lensIndex], {[lensKey]: curvatureConcern});
+      const lensKey = identifier === 'OD' ? 'OADsizeConcernOD' : 'OADsizeConcernOS';
+      const updatedLens = Object.assign({}, this.data.lensCollection[lensIndex], {[lensKey]: OADsizeConcern});
+      this.setData({
+        [`lensCollection[${lensIndex}]`]: updatedLens
+      });
+    }
+  },
+
+  handleRCthicknessConcernChanged: function(e) {
+    const { lensId, identifier, RCthicknessConcern } = e.detail;
+    const lensIndex = this.data.lensCollection.findIndex(lens => lens.id === lensId);
+    if (lensIndex !== -1) {
+      const lensKey = identifier === 'OD' ? 'RCthicknessConcernOD' : 'RCthicknessConcernOS';
+      const updatedLens = Object.assign({}, this.data.lensCollection[lensIndex], {[lensKey]: RCthicknessConcern});
       this.setData({
         [`lensCollection[${lensIndex}]`]: updatedLens
       });
     }
   },
   
+  handleSlidingConcernChanged: function(e) {
+    const { lensId, identifier, slidingConcern } = e.detail;
+    const lensIndex = this.data.lensCollection.findIndex(lens => lens.id === lensId);
+    if (lensIndex !== -1) {
+      const lensKey = identifier === 'OD' ? 'slidingConcernOD' : 'slidingConcernOS';
+      const updatedLens = Object.assign({}, this.data.lensCollection[lensIndex], {[lensKey]: slidingConcern});
+      this.setData({
+        [`lensCollection[${lensIndex}]`]: updatedLens
+      });
+    }
+  },
 
+
+
+
+  
   handleComfortLevelChange: function(e) {
     const { comfortIndex, identifier, lensId } = e.detail;
     const lenses = this.data.lensCollection.map(index => {
@@ -133,24 +136,38 @@ Page({
     });
   },
 
-  handleNotes: function(e) {
-    const { notes, identifier, lensId } = e.detail;
-    const lenses = this.data.lensCollection.map(note => {
-      if (note.id === lensId) {
-        const updatedNote = Object.assign({}, note);
-        if (identifier === 'OD') {
-          updatedNote.compNotesOD = notes;
-        } else if (identifier === 'OS') {
-          updatedNote.compNotesOS = notes;
+  handleSPKChange: function(e) {
+    const { lensId, identifier, SPKConcern } = e.detail;
+    const lensIndex = this.data.lensCollection.findIndex(lens => lens.id === lensId);
+    if (lensIndex !== -1) {
+      const lensKey = identifier === 'OD' ? 'SPKConcernOD' : 'SPKConcernOS';
+      const updatedLens = Object.assign({}, this.data.lensCollection[lensIndex], {[lensKey]: SPKConcern});
+      this.setData({
+        [`lensCollection[${lensIndex}]`]: updatedLens
+      });
+    }
+    },
+
+    handleNotes: function(e) {
+      const { notes, identifier, lensId } = e.detail;
+      const lenses = this.data.lensCollection.map(note => {
+        if (note.id === lensId) {
+          const updatedNote = Object.assign({}, note);
+          if (identifier === 'OD') {
+            updatedNote.compNotesOD = notes;
+          } else if (identifier === 'OS') {
+            updatedNote.compNotesOS = notes;
+          }
+          return updatedNote;
         }
-        return updatedNote;
-      }
-      return note;
-    });
-    this.setData({
-      lensCollection: lenses
-    });
-  },
+        return note;
+      });
+      this.setData({
+        lensCollection: lenses
+      });
+    },
+    
+  
 
   onLoad(options) {
     let updatedLensCollection = this.data.lensCollection.map((lens, index) => {
