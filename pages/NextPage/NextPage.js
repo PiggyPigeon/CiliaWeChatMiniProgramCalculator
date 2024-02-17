@@ -27,6 +27,7 @@ Page({
 
       SPKConcernOD: '',
       deviationConcernOD: '',
+      deviationDirectionOD: '',
       BFRpoolingConcernOD: '',
 
       OZsizeConcernOS: '',
@@ -36,6 +37,7 @@ Page({
     
       SPKConcernOS: '',
       deviationConcernOS: '',
+      deviationDirectionOS: '',
       BFRpoolingConcernOS: ''
     } 
     ],
@@ -137,6 +139,18 @@ Page({
         const lensKey = identifier === 'OD' ? 'deviationConcernOD' : 'deviationConcernOS';
         const updatedLens = Object.assign({}, this.data.lensCollection[lensIndex], {[lensKey]: deviationConcern});
         this.setData({
+          [`lensCollection[${lensIndex}]`]: updatedLens
+        });
+      }
+      },
+
+      handleDeviationDirectionChange: function(e) {
+        const { lensId, identifier, deviationDirection } = e.detail;
+        const lensIndex = this.data.lensCollection.findIndex(lens => lens.id === lensId);
+          if (lensIndex !== -1) {
+          const lensKey = identifier === 'OD' ? 'deviationDirectionOD' : 'deviationDirectionOS';
+          const updatedLens = Object.assign({}, this.data.lensCollection[lensIndex], {[lensKey]: deviationDirection});
+          this.setData({
           [`lensCollection[${lensIndex}]`]: updatedLens
         });
       }

@@ -116,25 +116,6 @@
   color: #fdeeaf; 
 }
 
-.checkbox-container{
-  display: flex;
-  padding: 25rpx 10rpx;
-  color: #5A315D;
-  justify-content: space-around;
-}
-
-checkbox-group{
-  margin-bottom: 25rpx;
-}
-
-.checkbox-label {
-  flex: 1; 
-  display: flex; 
-  align-items: center; 
-  margin-right: 10rpx; 
-}
-
-
 .radio-container {
  display: flex;
  flex-direction: column;
@@ -157,10 +138,51 @@ radio-group {
   margin-right: 10rpx; 
 }
 
+.checkbox-container{
+  display: flex;
+  padding: 25rpx 10rpx;
+  color: #5A315D;
+  justify-content: space-around;
+}
+
+checkbox-group{
+  margin-bottom: 25rpx;
+}
+
+.checkbox-label {
+  flex: 1; 
+  display: flex; 
+  align-items: center; 
+  margin-right: 10rpx; 
+}
+
+.deviation-row {
+  display: flex;
+  justify-content: space-between; 
+}
+
+.deviation-label {
+  color: #5A315D;
+  display: flex;
+  justify-content: center;
+  font-weight: 500;
+  font-size: large;
+}
+
+.deviation-radio-group {
+  color: #5A315D;
+  display: block; 
+}
+
+.deviation-buttons {
+  margin-right: 10rpx;
+  margin-bottom: 15rpx;
+}
+
 .horizontal-line {
-  height: 1px;
-  background-color: #000; 
-  margin: 10px 0; 
+  height: 2px;
+  background-color: #5A315D; 
+  margin: 15px 0; 
 }
 
 .notes-section {

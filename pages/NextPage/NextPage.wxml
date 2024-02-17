@@ -23,7 +23,9 @@
 
   SPKConcern="{{activeTab === 'OD' ? item.SPKConcernOD : item.SPKConcernOS}}"
   deviationConcern="{{activeTab === 'OD' ? item.deviationConcernOD : item.deviationConcernOS}}"
+  deviationDirection="{{activeTab === 'OD' ? item.deviationDirectionOD : item.deviationDirectionOS}}"
   BFRpoolingConcern="{{activeTab === 'OD' ? item.BFRpoolingConcernOD : item.BFRpoolingConcernOS}}"
+
 
   originalResultOD="{{originalResultOD}}"
   originalResultOS="{{originalResultOS}}"
@@ -37,6 +39,7 @@
   
   bind:SPKChanged="handleSPKChange"
   bind:deviationChanged="handleDeviationChange"
+  bind:deviationDirectionChanged="handleDeviationDirectionChange"
   bind:BFRpoolingChanged="handleBFRpoolingChange"
 
   bind:takeNotes="handleNotes"

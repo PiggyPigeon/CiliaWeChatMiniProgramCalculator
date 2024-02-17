@@ -49,7 +49,7 @@ Page({
     valueOS = isValidNumber(valueOS) ? parseFloat(valueOS) : 0;
     valueOD = isValidNumber(valueOD) ? parseFloat(valueOD) : 0;
 
-    let invalidInput = false; // Track if any input is invalid
+    let invalidInput = false; 
   
     if (valueOS < 37.5 || valueOS > 46.5) {
       wx.showToast({
@@ -61,7 +61,7 @@ Page({
         valueOS: '',
         resultOS: '',
       });
-      invalidInput = true; // Mark input as invalid
+      invalidInput = true; 
     }
   
     if (valueOD < 37.5 || valueOD > 46.5) {
@@ -74,11 +74,11 @@ Page({
         valueOD: '',
         resultOD: '',
       });
-      invalidInput = true; // Mark input as invalid
+      invalidInput = true; 
     }
 
     if (invalidInput) {
-      return; // Return if any input was invalid
+      return; 
     }
     
     const resultOS = valueOS !== 0 ? Math.round((6.293 + 0.828 * valueOS) * 4)/4 : 0;

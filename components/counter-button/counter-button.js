@@ -79,6 +79,11 @@ Component({
       value: false,
     },
 
+    deviationDirection: {
+      type: String,
+      value: '', 
+    },
+
     BFRpoolingConcern: {
       type: Boolean,
       value: false,
@@ -89,6 +94,18 @@ Component({
 
   },
 
+  data: {
+    deviationOptions: [
+      { value: 'up', label: '上', checked: false },
+      { value: 'up-right', label: '右上', checked: false },
+      { value: 'right', label: '右', checked: false },
+      { value: 'down-right', label: '右下', checked: false },
+      { value: 'down', label: '下', checked: false },
+      { value: 'down-left', label: '左下', checked: false },
+      { value: 'left', label: '左下', checked: false },
+      { value: 'up-left', label: '左上', checked: false },
+    ],
+  },
 
   methods: {
 
@@ -155,16 +172,67 @@ Component({
       this.triggerEvent('slidingConcernChanged', { slidingConcern: this.data.slidingConcern, identifier: this.data.identifier, lensId: this.data.lensId });
     },
 
-
     onSPKChange: function(e) {
       this.setData({ SPKConcern: e.detail.value.length > 0 });
       this.triggerEvent('SPKChanged', { SPKConcern: this.data.SPKConcern, identifier: this.data.identifier, lensId: this.data.lensId });
     },
 
     onDeviationChange: function(e) {
-      this.setData({ deviationConcern: e.detail.value.length > 0 });
-      this.triggerEvent('deviationChanged', { deviationConcern: this.data.deviationConcern, identifier: this.data.identifier, lensId: this.data.lensId });
+      const isDeviationChecked = e.detail.value.includes('hasDeviation');
+       this.setData({ deviationConcern: isDeviationChecked });
+ 
+       if (!isDeviationChecked) {
+        const resetOptions = this.data.deviationOptions.map(function(option) {
+          return {
+            value: option.value, 
+            label: option.label,
+            checked: false       
+          };
+        });
+        this.setData({
+          deviationOptions: resetOptions,
+          deviationDirection: ''
+        });
+        this.triggerEvent('deviationDirectionChanged', {
+          deviationDirection: this.data.deviationDirection,
+          identifier: this.data.identifier,
+          lensId: this.data.lensId
+        });
+     }
+     this.triggerEvent('deviationChanged', {
+      deviationConcern: isDeviationChecked,
+      identifier: this.data.identifier,
+      lensId: this.data.lensId
+    });
+  
     },
+ 
+     onDeviationDirectionChange: function(e) {
+      const newDirection = e.detail.value;
+      const updatedOptions = this.data.deviationOptions.map(function(option) {
+        return {
+          value: option.value, 
+          label: option.label, 
+          checked: option.value === newDirection 
+        };
+      });
+      this.setData({
+        deviationOptions: updatedOptions,
+        deviationDirection: newDirection,
+      });
+      this.triggerEvent('deviationDirectionChanged', {
+        deviationDirection: this.data.deviationDirection,
+        identifier: this.data.identifier,
+        lensId: this.data.lensId
+      });
+    },
+
+      onRadioChangeSliding: function(e) {
+      this.setData({ slidingConcern: e.detail.value });
+      this.triggerEvent('slidingConcernChanged', { slidingConcern: this.data.slidingConcern, identifier: this.data.identifier, lensId: this.data.lensId });
+    },
+
+
 
     onBFRpoolingChange: function(e) {
       this.setData({ BFRpoolingConcern: e.detail.value.length > 0 });
