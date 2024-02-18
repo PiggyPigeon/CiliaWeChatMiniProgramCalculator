@@ -83,29 +83,29 @@
 
         <checkbox-group name="BFRpoolingConcern" bindchange="onBFRpoolingChange">
           <label class="checkbox-label">
-            <checkbox value="hasBFRpooling" checked="{{BFRpoolingConcern === true}}" />BFR匯集
+            <checkbox value="hasBFRpooling" checked="{{BFRpoolingConcern === true}}" />BFR螢光淤積
           </label>
         </checkbox-group>
       </view>
 
 
 
+      <view wx:if="{{BFRpoolingConcern}}">
+        <view class="toggle-container">
+          <text>AC2</text>
+          <switch name="AC2" bindchange="onACToggleChange" checked="{{AC2}}" />
+        </view>
+        <view class="toggle-container">
+          <text>AC1+2</text>
+          <switch name="AC1+2" bindchange="onACToggleChange" checked="{{AC1_2}}" />
+        </view>
+      </view>
+
+
       <view class="conditional-deviation-options" wx:if="{{deviationConcern}}">
         <view class="deviation-container">
           <text class="deviation-label">偏差</text>
           <radio-group class="deviation-radio-group" name="deviationDirection" bindchange="onDeviationDirectionChange">
-            <!-- <view class="deviation-row">
-        <label class="deviation-buttons"><radio value="up" checked="{{deviationDirection === 'up'}}"/>上</label>
-        <label class="deviation-buttons"><radio value="up-right" checked="{{deviationDirection === 'up-right'}}"/>右上</label>
-        <label class="deviation-buttons"><radio value="right" checked="{{deviationDirection === 'right'}}"/>右</label>
-        <label class="deviation-buttons"><radio value="down-right" checked="{{deviationDirection === 'down-right'}}"/>右下</label>
-      </view>
-      <view class="deviation-row">
-        <label class="deviation-buttons"><radio value="down" checked="{{deviationDirection === 'down'}}"/>下</label>
-        <label class="deviation-buttons"><radio value="down-left" checked="{{deviationDirection === 'down-left'}}"/>左下</label>
-        <label class="deviation-buttons"><radio value="left" checked="{{deviationDirection === 'left'}}"/>左</label>
-        <label class="deviation-buttons"><radio value="up-left" checked="{{deviationDirection === 'up-left'}}"/>左上</label>
-      </view> -->
             <block wx:for="{{deviationOptions}}" wx:key="value">
               <label class="deviation-buttons">
                 <radio value="{{item.value}}" checked="{{item.value === deviationDirection}}" />{{item.label}}
@@ -116,10 +116,8 @@
       </view>
 
 
-
       <view class="horizontal-line"></view>
     </view>
-
 
 
     <view class="customer-comfort-section">

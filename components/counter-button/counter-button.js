@@ -7,12 +7,12 @@ Component({
 
     comfortLevels: {
       type: Array,
-      value: ['很舒服', '可以接受', '不能戴',],
+      value: ['很舒服', '可以接受', '不能戴', ],
     },
 
     comfortIndex: {
       type: Number,
-      value: 0, 
+      value: 0,
     },
 
     identifier: {
@@ -46,27 +46,27 @@ Component({
 
     concernTab: {
       type: String,
-      value: 'none', 
+      value: 'none',
     },
-    
+
     OZsizeConcern: {
       type: String,
-      value: '', 
+      value: '',
     },
 
     OADsizeConcern: {
       type: String,
-      value: '', 
+      value: '',
     },
 
     RCthicknessConcern: {
       type: String,
-      value: '', 
+      value: '',
     },
 
     slidingConcern: {
       type: String,
-      value: '', 
+      value: '',
     },
 
     SPKConcern: {
@@ -81,7 +81,7 @@ Component({
 
     deviationDirection: {
       type: String,
-      value: '', 
+      value: '',
     },
 
     BFRpoolingConcern: {
@@ -89,35 +89,78 @@ Component({
       value: false,
     },
 
+    AC2: {
+      type: Boolean,
+      value: false,
+    },
+
+    AC1_2: {
+      type: Boolean,
+      value: false,
+    },
+
     originalResultOD: String,
     originalResultOS: String,
-
   },
 
   data: {
-    deviationOptions: [
-      { value: 'up', label: '上', checked: false },
-      { value: 'up-right', label: '右上', checked: false },
-      { value: 'right', label: '右', checked: false },
-      { value: 'down-right', label: '右下', checked: false },
-      { value: 'down', label: '下', checked: false },
-      { value: 'down-left', label: '左下', checked: false },
-      { value: 'left', label: '左下', checked: false },
-      { value: 'up-left', label: '左上', checked: false },
+    deviationOptions: [{
+        value: 'up',
+        label: '上',
+        checked: false
+      },
+      {
+        value: 'up-right',
+        label: '右上',
+        checked: false
+      },
+      {
+        value: 'right',
+        label: '右',
+        checked: false
+      },
+      {
+        value: 'down-right',
+        label: '右下',
+        checked: false
+      },
+      {
+        value: 'down',
+        label: '下',
+        checked: false
+      },
+      {
+        value: 'down-left',
+        label: '左下',
+        checked: false
+      },
+      {
+        value: 'left',
+        label: '左下',
+        checked: false
+      },
+      {
+        value: 'up-left',
+        label: '左上',
+        checked: false
+      },
     ],
   },
 
   methods: {
-
-    toggleLensContent: function() {
-      this.setData({ collapsed: !this.data.collapsed });
+    toggleLensContent: function () {
+      this.setData({
+        collapsed: !this.data.collapsed
+      });
     },
 
-    toggleConcernsCollapse: function() {
-      this.setData({ concernsCollapsed: !this.data.concernsCollapsed });
+    toggleConcernsCollapse: function () {
+      this.setData({
+        concernsCollapsed: !this.data.concernsCollapsed
+      });
     },
 
-    takeNotes: function(e) {
+    takeNotes: function (e) {
       this.triggerEvent('takeNotes', {
         notes: e.detail.value,
         identifier: this.properties.identifier,
@@ -125,7 +168,7 @@ Component({
       });
     },
 
-    editBFK: function(e) {
+    editBFK: function (e) {
       this.triggerEvent('editBFK', {
         BFKinput: e.detail.value,
         identifier: this.properties.identifier,
@@ -133,7 +176,7 @@ Component({
       });
     },
 
-    changeComfortLevel: function(e) {
+    changeComfortLevel: function (e) {
       this.setData({
         comfortIndex: e.detail.value
       });
@@ -145,48 +188,86 @@ Component({
       });
     },
 
-    toggleConcerns: function(e) {
+    toggleConcerns: function (e) {
       const concernState = e.currentTarget.dataset.concern;
-      this.setData({ concernTab: concernState });
+      this.setData({
+        concernTab: concernState
+      });
 
-      this.triggerEvent('toggleConcerns', { concernTab: this.data.concernTab, identifier: this.data.identifier, lensId: this.data.lensId });
+      this.triggerEvent('toggleConcerns', {
+        concernTab: this.data.concernTab,
+        identifier: this.data.identifier,
+        lensId: this.data.lensId
+      });
     },
 
-    onRadioChangeOZSize: function(e) {
-      this.setData({ OZsizeConcern: e.detail.value });
-      this.triggerEvent('OZsizeConcernChanged', { OZsizeConcern: this.data.OZsizeConcern, identifier: this.data.identifier, lensId: this.data.lensId });
+    onRadioChangeOZSize: function (e) {
+      this.setData({
+        OZsizeConcern: e.detail.value
+      });
+      this.triggerEvent('OZsizeConcernChanged', {
+        OZsizeConcern: this.data.OZsizeConcern,
+        identifier: this.data.identifier,
+        lensId: this.data.lensId
+      });
     },
 
-    onRadioChangeOADSize: function(e) {
-      this.setData({ OADsizeConcern: e.detail.value });
-      this.triggerEvent('OADsizeConcernChanged', { OADsizeConcern: this.data.OADsizeConcern, identifier: this.data.identifier, lensId: this.data.lensId });
+    onRadioChangeOADSize: function (e) {
+      this.setData({
+        OADsizeConcern: e.detail.value
+      });
+      this.triggerEvent('OADsizeConcernChanged', {
+        OADsizeConcern: this.data.OADsizeConcern,
+        identifier: this.data.identifier,
+        lensId: this.data.lensId
+      });
     },
 
-    onRadioChangeRCthickness: function(e) {
-      this.setData({ RCthicknessConcern: e.detail.value });
-      this.triggerEvent('RCthicknessConcernChanged', { RCthicknessConcern: this.data.RCthicknessConcern, identifier: this.data.identifier, lensId: this.data.lensId });
+    onRadioChangeRCthickness: function (e) {
+      this.setData({
+        RCthicknessConcern: e.detail.value
+      });
+      this.triggerEvent('RCthicknessConcernChanged', {
+        RCthicknessConcern: this.data.RCthicknessConcern,
+        identifier: this.data.identifier,
+        lensId: this.data.lensId
+      });
     },
 
-    onRadioChangeSliding: function(e) {
-      this.setData({ slidingConcern: e.detail.value });
-      this.triggerEvent('slidingConcernChanged', { slidingConcern: this.data.slidingConcern, identifier: this.data.identifier, lensId: this.data.lensId });
+    onRadioChangeSliding: function (e) {
+      this.setData({
+        slidingConcern: e.detail.value
+      });
+      this.triggerEvent('slidingConcernChanged', {
+        slidingConcern: this.data.slidingConcern,
+        identifier: this.data.identifier,
+        lensId: this.data.lensId
+      });
     },
 
-    onSPKChange: function(e) {
-      this.setData({ SPKConcern: e.detail.value.length > 0 });
-      this.triggerEvent('SPKChanged', { SPKConcern: this.data.SPKConcern, identifier: this.data.identifier, lensId: this.data.lensId });
+    onSPKChange: function (e) {
+      this.setData({
+        SPKConcern: e.detail.value.length > 0
+      });
+      this.triggerEvent('SPKChanged', {
+        SPKConcern: this.data.SPKConcern,
+        identifier: this.data.identifier,
+        lensId: this.data.lensId
+      });
     },
 
-    onDeviationChange: function(e) {
+    onDeviationChange: function (e) {
       const isDeviationChecked = e.detail.value.includes('hasDeviation');
-       this.setData({ deviationConcern: isDeviationChecked });
- 
-       if (!isDeviationChecked) {
-        const resetOptions = this.data.deviationOptions.map(function(option) {
+      this.setData({
+        deviationConcern: isDeviationChecked
+      });
+
+      if (!isDeviationChecked) {
+        const resetOptions = this.data.deviationOptions.map(function (option) {
           return {
-            value: option.value, 
+            value: option.value,
             label: option.label,
-            checked: false       
+            checked: false
           };
         });
         this.setData({
@@ -198,22 +279,22 @@ Component({
           identifier: this.data.identifier,
           lensId: this.data.lensId
         });
-     }
-     this.triggerEvent('deviationChanged', {
-      deviationConcern: isDeviationChecked,
-      identifier: this.data.identifier,
-      lensId: this.data.lensId
-    });
-  
+      }
+      this.triggerEvent('deviationChanged', {
+        deviationConcern: isDeviationChecked,
+        identifier: this.data.identifier,
+        lensId: this.data.lensId
+      });
+
     },
- 
-     onDeviationDirectionChange: function(e) {
+
+    onDeviationDirectionChange: function (e) {
       const newDirection = e.detail.value;
-      const updatedOptions = this.data.deviationOptions.map(function(option) {
+      const updatedOptions = this.data.deviationOptions.map(function (option) {
         return {
-          value: option.value, 
-          label: option.label, 
-          checked: option.value === newDirection 
+          value: option.value,
+          label: option.label,
+          checked: option.value === newDirection
         };
       });
       this.setData({
@@ -227,16 +308,45 @@ Component({
       });
     },
 
-      onRadioChangeSliding: function(e) {
-      this.setData({ slidingConcern: e.detail.value });
-      this.triggerEvent('slidingConcernChanged', { slidingConcern: this.data.slidingConcern, identifier: this.data.identifier, lensId: this.data.lensId });
+    onRadioChangeSliding: function (e) {
+      this.setData({
+        slidingConcern: e.detail.value
+      });
+      this.triggerEvent('slidingConcernChanged', {
+        slidingConcern: this.data.slidingConcern,
+        identifier: this.data.identifier,
+        lensId: this.data.lensId
+      });
     },
 
+    onBFRpoolingChange: function (e) {
+      const isBFRPoolingChecked = e.detail.value.includes('hasBFRpooling');
+      this.setData({
+        BFRpoolingConcern: isBFRPoolingChecked,
+      });
 
+      if (!isBFRPoolingChecked) {
+        this.setData({
+          AC2: false,
+          AC1_2: false,
+        });
+      }
 
-    onBFRpoolingChange: function(e) {
-      this.setData({ BFRpoolingConcern: e.detail.value.length > 0 });
-      this.triggerEvent('BFRpoolingChanged', { BFRpoolingConcern: this.data.BFRpoolingConcern, identifier: this.data.identifier, lensId: this.data.lensId });
+      this.triggerEvent('BFRpoolingChanged', {
+        BFRpoolingConcern: this.data.BFRpoolingConcern,
+        identifier: this.data.identifier,
+        lensId: this.data.lensId
+      });
+    },
+
+    onACToggleChange: function(e) {
+      const name = e.currentTarget.dataset.name; // 'AC2' or 'AC1+2'
+      const value = e.detail.value; // true or false
+      if (name === 'AC2') {
+        this.setData({ AC2: value });
+      } else if (name === 'AC1+2') {
+        this.setData({ AC1_2: value });
+      }
     },
 
   }

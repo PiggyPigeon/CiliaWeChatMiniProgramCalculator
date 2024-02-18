@@ -20,12 +20,10 @@
   OADsizeConcern="{{activeTab === 'OD' ? item.OADsizeConcernOD : item.OADsizeConcernOS}}"
   RCthicknessConcern="{{activeTab === 'OD' ? item.RCthicknessConcernOD : item.RCthicknessConcernOS}}"
   slidingConcern="{{activeTab === 'OD' ? item.slidingConcernOD : item.slidingConcernOS}}"
-
   SPKConcern="{{activeTab === 'OD' ? item.SPKConcernOD : item.SPKConcernOS}}"
   deviationConcern="{{activeTab === 'OD' ? item.deviationConcernOD : item.deviationConcernOS}}"
   deviationDirection="{{activeTab === 'OD' ? item.deviationDirectionOD : item.deviationDirectionOS}}"
   BFRpoolingConcern="{{activeTab === 'OD' ? item.BFRpoolingConcernOD : item.BFRpoolingConcernOS}}"
-
 
   originalResultOD="{{originalResultOD}}"
   originalResultOS="{{originalResultOS}}"
@@ -36,7 +34,7 @@
   bind:OADsizeConcernChanged="handleOADSizeConcernChanged"
   bind:RCthicknessConcernChanged="handleRCthicknessConcernChanged"
   bind:slidingConcernChanged="handleSlidingConcernChanged"
-  
+
   bind:SPKChanged="handleSPKChange"
   bind:deviationChanged="handleDeviationChange"
   bind:deviationDirectionChanged="handleDeviationDirectionChange"
