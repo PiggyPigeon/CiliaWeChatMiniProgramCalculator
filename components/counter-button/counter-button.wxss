@@ -179,6 +179,31 @@ checkbox-group{
   margin-bottom: 15rpx;
 }
 
+
+.ACpoolingTab {
+  width: 210rpx;
+  height: 70rpx;
+  line-height: 40rpx;
+  text-align: center;
+  border: 1px solid #5A315D;
+  margin: 5rpx;
+  padding: 5rpx;
+  border-radius: 25%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #5A315D;
+  background-color: #fdeeaf;
+}
+
+.ACpoolingTab.active {
+  background-color: #5A315D;
+  color: #fdeeaf;
+}
+
+
+
+
 .horizontal-line {
   height: 2px;
   background-color: #5A315D; 
