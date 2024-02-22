@@ -101,16 +101,16 @@
 
 
         <view wx:if="{{BFRpoolingConcern}}">
-            <view>
+            <view class="AC-tabs-container">
                 <view class="ACpoolingTab {{ACpoolingTab === 'AC2' ?  'active' : ''}}" data-location="AC2" bindtap='toggleAClocation'>AC 2</view>
-                <view class="ACpoolingTab {{ACpoolingTab === 'AC1+2' ?  'active' : ''}}" data-location='AC1+2' bindtap='toggleAClocation'>AC 1 + 2 </view>
+                <view class="ACpoolingTab {{ACpoolingTab === 'AC1+2' ?  'active' : ''}}" data-location='AC1+2' bindtap='toggleAClocation'>AC 1&2 </view>
             </view>
         </view>
 
 
-        <view wx:if="{{ACpoolingTab === 'AC2'}}">Input components for AC2</view>
+        <view wx:if="{{ACpoolingTab === 'AC2'}}"></view>
 
-        <view wx:if="{{ACpoolingTab === 'AC1+2'}}">Input components for AC1+2</view>
+        <view wx:if="{{ACpoolingTab === 'AC1+2'}}"></view>
 
 
         <view class="conditional-deviation-options" wx:if="{{deviationConcern}}">
@@ -129,7 +129,7 @@
 
 
         <view class="horizontal-line"></view>
-    </view>
+
 
 
     <view class="customer-comfort-section">
@@ -144,5 +144,6 @@
         <text class="notes-label">筆記:</text>
         <input class="notes-input" type="text" value="{{notes}}" bindinput="takeNotes" placeholder="在這裡寫筆記"
                placeholder-style="color: #916a94;"></input>
+    </view>
     </view>
 </view>

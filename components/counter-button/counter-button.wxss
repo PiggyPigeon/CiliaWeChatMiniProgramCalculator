@@ -156,39 +156,54 @@ checkbox-group{
   margin-right: 10rpx; 
 }
 
-.deviation-row {
+.deviation-container {
   display: flex;
-  justify-content: space-between; 
+  flex-direction: column;
+  align-items: center;
+}
+
+.deviation-radio-group {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  max-width: 100%;
+}
+
+.deviation-buttons {
+  width: 25%;
+  box-sizing: border-box;
+  padding: 1px;
+  display: flex;
+  justify-content: center;
+  margin-bottom: 8rpx;
+  color: #5A315D;
 }
 
 .deviation-label {
   color: #5A315D;
-  display: flex;
-  justify-content: center;
   font-weight: 500;
   font-size: large;
+  margin-bottom: 5px; 
 }
 
-.deviation-radio-group {
-  color: #5A315D;
-  display: block; 
+.AC-tabs-container {
+  display: flex;
+  flex-direction: row; 
+  justify-content: space-evenly; 
+  align-items: center;
 }
-
-.deviation-buttons {
-  margin-right: 10rpx;
-  margin-bottom: 15rpx;
-}
-
 
 .ACpoolingTab {
-  width: 210rpx;
+  width: 70rpx;
   height: 70rpx;
   line-height: 40rpx;
   text-align: center;
+  font-weight: 600;
+  font-size: small;
   border: 1px solid #5A315D;
   margin: 5rpx;
-  padding: 5rpx;
-  border-radius: 25%;
+  padding: 6rpx;
+  border-radius: 55%;
   display: flex;
   justify-content: center;
   align-items: center;

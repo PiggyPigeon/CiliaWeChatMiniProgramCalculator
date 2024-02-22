@@ -39,54 +39,53 @@ Page({
 
   calculate() {
     const isValidNumber = (value) => {
+      if (value === '' || value === null || value === undefined) return null;
       const number = parseFloat(value);
-      return value != null && (value - number === 0);
+      return !isNaN(number);
     };
   
     let valueOS = this.data.valueOS;
     let valueOD = this.data.valueOD;
-  
-    valueOS = isValidNumber(valueOS) ? parseFloat(valueOS) : 0;
-    valueOD = isValidNumber(valueOD) ? parseFloat(valueOD) : 0;
 
-    let invalidInput = false; 
-  
-    if (valueOS < 37.5 || valueOS > 46.5) {
-      wx.showToast({
-        title: 'SIM K OS 值超出范围 (37.5 - 46.5)',
-        icon: 'none',
-        duration: 2000
-      });
-      this.setData({
-        valueOS: '',
-        resultOS: '',
-      });
-      invalidInput = true; 
-    }
-  
-    if (valueOD < 37.5 || valueOD > 46.5) {
-      wx.showToast({
-        title: 'SIM K OD 值超出范围 (37.5 - 46.5)',
-        icon: 'none',
-        duration: 2000
-      });
-      this.setData({
-        valueOD: '',
-        resultOD: '',
-      });
-      invalidInput = true; 
+    valueOS = isValidNumber(valueOS) !== null ? parseFloat(valueOS) : null;
+    valueOD = isValidNumber(valueOD) !== null ? parseFloat(valueOD) : null;
+
+    let resultOS = '';
+    let resultOD = '';
+
+    if (valueOS !== null) {
+      if (valueOS < 37.5 || valueOS > 46.5) {
+        wx.showToast({
+          title: 'SIM K OS 值超出范围 (37.5 - 46.5)',
+          icon: 'none',
+          duration: 2000
+        });
+        this.setData({
+          valueOS: '',
+        });
+      } else {
+        resultOS = Math.round((6.293 + 0.828 * valueOS) * 4) / 4;
+      }
     }
 
-    if (invalidInput) {
-      return; 
+    if (valueOD !== null) {
+      if (valueOD < 37.5 || valueOD > 46.5) {
+        wx.showToast({
+          title: 'SIM K OD 值超出范围 (37.5 - 46.5)',
+          icon: 'none',
+          duration: 2000
+        });
+        this.setData({
+          valueOD: '',
+        });
+      } else {
+        resultOD = Math.round((6.293 + 0.828 * valueOD) * 4) / 4;
+      }
     }
-    
-    const resultOS = valueOS !== 0 ? Math.round((6.293 + 0.828 * valueOS) * 4)/4 : 0;
-    const resultOD = valueOD !== 0 ? Math.round((6.293 + 0.828 * valueOD) * 4)/4 : 0;
-  
+
     this.setData({
-      resultOS: resultOS.toFixed(2).toString(),
-      resultOD: resultOD.toFixed(2).toString()
+      resultOS: resultOS !== '' ? resultOS.toFixed(2).toString() : '',
+      resultOD: resultOD !== '' ? resultOD.toFixed(2).toString() : ''
     });
   },
   
