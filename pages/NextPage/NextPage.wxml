@@ -25,6 +25,8 @@
   deviationDirection="{{activeTab === 'OD' ? item.deviationDirectionOD : item.deviationDirectionOS}}"
   BFRpoolingConcern="{{activeTab === 'OD' ? item.BFRpoolingConcernOD : item.BFRpoolingConcernOS}}"
 
+  ACpoolingTab="{{activeTab === 'OD' ? item.ACpoolingTabOD : item.ACpoolingTabOS}}"
+
   originalResultOD="{{originalResultOD}}"
   originalResultOS="{{originalResultOS}}"
   identifier="{{activeTab}}" 
@@ -39,6 +41,7 @@
   bind:deviationChanged="handleDeviationChange"
   bind:deviationDirectionChanged="handleDeviationDirectionChange"
   bind:BFRpoolingChanged="handleBFRpoolingChange"
+  bind:toggleAClocation="handleACpoolingTabChange"
 
   bind:takeNotes="handleNotes"
   bind:editBFK="handleBFKInput"

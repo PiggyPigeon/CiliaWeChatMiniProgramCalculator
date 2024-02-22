@@ -140,7 +140,7 @@ radio-group {
 
 .checkbox-container{
   display: flex;
-  padding: 25rpx 10rpx;
+  padding: 20rpx 10rpx;
   color: #5A315D;
   justify-content: space-around;
 }
@@ -153,7 +153,7 @@ checkbox-group{
   flex: 1; 
   display: flex; 
   align-items: center; 
-  margin-right: 10rpx; 
+  margin-right: 8rpx; 
 }
 
 .deviation-container {
@@ -199,7 +199,7 @@ checkbox-group{
   line-height: 40rpx;
   text-align: center;
   font-weight: 600;
-  font-size: small;
+ 
   border: 1px solid #5A315D;
   margin: 5rpx;
   padding: 6rpx;
