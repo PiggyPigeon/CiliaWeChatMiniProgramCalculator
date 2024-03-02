@@ -1,149 +1,167 @@
 <!--components/counter-button/counter-button.wxml-->
 
 <view class="lens-container">
-    <view class="lens-header" bindtap="toggleLensContent">
-        <h1 class="lens-label">镜片 {{index + 1}}</h1>
-        <text class="toggle-lens-content">{{collapsed ? '▼' : '▲'}}</text>
+  <view class="lens-header" bindtap="toggleLensContent">
+    <h1 class="lens-label">镜片 {{index + 1}}</h1>
+    <text class="toggle-lens-content">{{collapsed ? '▼' : '▲'}}</text>
+  </view>
+
+  <view wx:if="{{!collapsed}}" class="lens-content">
+
+    <view class="BFK-row">
+      <label class="bfk-label" for="BFK-value">BFK:</label>
+      <input class="bfk-input" type="text" value="{{BFKinput}}" placeholder="{{identifier === 'OD' ? originalResultOD : originalResultOS}}" placeholder-style="color: #916a94;" bindinput="editBFK" style="width: 80%" />
     </view>
 
-    <view wx:if="{{!collapsed}}" class="lens-content">
+    <view class="concernTabs">贴合:
+      <view class="concernTab {{concernTab === 'none' ? 'active' : ''}}" data-concern="none" bindtap="toggleConcerns">沒有問題
+      </view>
+      <view class="concernTab {{concernTab === 'some' ? 'active' : ''}}" data-concern="some" bindtap="toggleConcerns">有問題
+      </view>
+    </view>
 
-        <view class="BFK-row">
-            <label class="bfk-label" for="BFK-value">BFK:</label>
-            <input class="bfk-input" type="text" value="{{BFKinput}}"
-                   placeholder="{{identifier === 'OD' ? originalResultOD : originalResultOS}}"
-                   placeholder-style="color: #916a94;" bindinput="editBFK" style="width: 80%"/>
+    <view wx:if="{{concernTab === 'some'}}" class="toggle-arrow" bindtap="toggleConcernsCollapse">
+      {{concernsCollapsed ? '▼' : '▲'}}
+    </view>
+
+    <view wx:if="{{concernTab === 'none' && !concernsCollapsed}}" class="concernOptions">fart</view>
+
+    <view wx:if="{{concernTab === 'some' && !concernsCollapsed}}" class="concernOptions">
+
+      <view class="radio-container">
+        <view class="radio-row">
+          <radio-group name="OZsizeConcern" bindchange="onRadioChangeOZSize">
+            <label class="radio-label">
+              <radio value="OZtooSmall" checked="{{OZsizeConcern === 'OZtooSmall'}}" />OZ 太小
+            </label>
+            <label class="radio-label">
+              <radio value="OZtooBig" checked="{{OZsizeConcern === 'OZtooBig'}}" />OZ 太大
+            </label>
+          </radio-group>
         </view>
 
-        <view class="concernTabs">贴合:
-            <view class="concernTab {{concernTab === 'none' ? 'active' : ''}}" data-concern="none"
-                  bindtap="toggleConcerns">沒有問題
-            </view>
-            <view class="concernTab {{concernTab === 'some' ? 'active' : ''}}" data-concern="some"
-                  bindtap="toggleConcerns">有問題
-            </view>
+        <view class="radio-row">
+          <radio-group name="OADsizeConcern" bindchange="onRadioChangeOADSize">
+            <label class="radio-label">
+              <radio value="OADtooSmall" checked="{{OADsizeConcern === 'OADtooSmall'}}" />OAD 太小
+            </label>
+            <label class="radio-label">
+              <radio value="OADtooBig" checked="{{OADsizeConcern === 'OADtooBig'}}" />OAD 太大
+            </label>
+          </radio-group>
         </view>
 
-        <view wx:if="{{concernTab === 'some'}}" class="toggle-arrow" bindtap="toggleConcernsCollapse">
-            {{concernsCollapsed ? '▼' : '▲'}}
+        <view class="radio-row">
+          <radio-group name="RCthicknessConcern" bindchange="onRadioChangeRCthickness">
+            <label class="radio-label">
+              <radio value="RCtooThin" checked="{{RCthicknessConcern === 'RCtooThin'}}" />RC太窄
+            </label>
+            <label class="radio-label">
+              <radio value="RCtooThick" checked="{{RCthicknessConcern === 'RCtooThick'}}" />RC太寬
+            </label>
+          </radio-group>
         </view>
 
-        <view wx:if="{{concernTab === 'none' && !concernsCollapsed}}" class="concernOptions">fart</view>
-
-        <view wx:if="{{concernTab === 'some' && !concernsCollapsed}}" class="concernOptions">
-
-            <view class="radio-container">
-                <view class="radio-row">
-                    <radio-group name="OZsizeConcern" bindchange="onRadioChangeOZSize">
-                        <label class="radio-label">
-                            <radio value="OZtooSmall" checked="{{OZsizeConcern === 'OZtooSmall'}}"/>OZ 太小
-                        </label>
-                        <label class="radio-label">
-                            <radio value="OZtooBig" checked="{{OZsizeConcern === 'OZtooBig'}}"/>OZ 太大
-                        </label>
-                    </radio-group>
-                </view>
-
-                <view class="radio-row">
-                    <radio-group name="OADsizeConcern" bindchange="onRadioChangeOADSize">
-                        <label class="radio-label">
-                            <radio value="OADtooSmall" checked="{{OADsizeConcern === 'OADtooSmall'}}"/>OAD 太小
-                        </label>
-                        <label class="radio-label">
-                            <radio value="OADtooBig" checked="{{OADsizeConcern === 'OADtooBig'}}"/>OAD 太大
-                        </label>
-                    </radio-group>
-                </view>
-
-                <view class="radio-row">
-                    <radio-group name="RCthicknessConcern" bindchange="onRadioChangeRCthickness">
-                        <label class="radio-label">
-                            <radio value="RCtooThin" checked="{{RCthicknessConcern === 'RCtooThin'}}"/>RC太窄
-                        </label>
-                        <label class="radio-label">
-                            <radio value="RCtooThick" checked="{{RCthicknessConcern === 'RCtooThick'}}"/>RC太寬
-                        </label>
-                    </radio-group>
-                </view>
-
-                <view class="radio-row">
-                    <radio-group name="slidingConcern" bindchange="onRadioChangeSliding">
-                        <label class="radio-label">
-                            <radio value="tooFast" checked="{{slidingConcern === 'tooFast'}}"/>滑動太快
-                        </label>
-                        <label class="radio-label">
-                            <radio value="tooSlow" checked="{{slidingConcern === 'tooSlow'}}"/>滑動太慢
-                        </label>
-                    </radio-group>
-                </view>
-            </view>
-
-            <view class="checkbox-container">
-                <checkbox-group name="SPKConcern" bindchange="onSPKChange">
-                    <label class="checkbox-label">
-                        <checkbox value="hasSPK" checked="{{SPKConcern === true}}"/>引起SPK
-                    </label>
-                </checkbox-group>
-
-                <checkbox-group name="deviationConcern" bindchange="onDeviationChange">
-                    <label class="checkbox-label">
-                        <checkbox value="hasDeviation" checked="{{deviationConcern === true}}"/>偏差
-                    </label>
-                </checkbox-group>
-
-                <checkbox-group name="BFRpoolingConcern" bindchange="onBFRpoolingChange">
-                    <label class="checkbox-label">
-                        <checkbox value="hasBFRpooling" checked="{{BFRpoolingConcern === true}}"/>BFR螢光淤積
-                    </label>
-                </checkbox-group>
-            </view>
+        <view class="radio-row">
+          <radio-group name="slidingConcern" bindchange="onRadioChangeSliding">
+            <label class="radio-label">
+              <radio value="tooFast" checked="{{slidingConcern === 'tooFast'}}" />滑動太快
+            </label>
+            <label class="radio-label">
+              <radio value="tooSlow" checked="{{slidingConcern === 'tooSlow'}}" />滑動太慢
+            </label>
+          </radio-group>
         </view>
+      </view>
 
+      <view class="checkbox-container">
+        <checkbox-group name="SPKConcern" bindchange="onSPKChange">
+          <label class="checkbox-label">
+            <checkbox value="hasSPK" checked="{{SPKConcern === true}}" />引起SPK
+          </label>
+        </checkbox-group>
 
-        <view wx:if="{{BFRpoolingConcern}}">
-            <view class="AC-tabs-container">
-                <view class="ACpoolingTab {{ACpoolingTab === 'AC2' ?  'active' : ''}}" data-location="AC2" bindtap='toggleAClocation'>AC 2</view>
-                <view class="ACpoolingTab {{ACpoolingTab === 'AC1+2' ?  'active' : ''}}" data-location='AC1+2' bindtap='toggleAClocation'>AC 1&2 </view>
-            </view>
+        <checkbox-group name="deviationConcern" bindchange="onDeviationChange">
+          <label class="checkbox-label">
+            <checkbox value="hasDeviation" checked="{{deviationConcern === true}}" />偏差
+          </label>
+        </checkbox-group>
+
+        <checkbox-group name="BFRpoolingConcern" bindchange="onBFRpoolingChange">
+          <label class="checkbox-label">
+            <checkbox value="hasBFRpooling" checked="{{BFRpoolingConcern}}" />BFR螢光淤積
+          </label>
+        </checkbox-group>
+      </view>
+    </view>
+
+    <view wx:if="{{BFRpoolingConcern}}">
+      <view class="AC-tabs-container">
+        <view class="ACpoolingTab {{ACpoolingTab === 'AC2' && ACpoolingTab !== '' ? 'active' : ''}}" data-location="AC2" bindtap='toggleAClocation'>AC 2
         </view>
-
-
-        <view wx:if="{{ACpoolingTab === 'AC2'}}"></view>
-
-        <view wx:if="{{ACpoolingTab === 'AC1+2'}}"></view>
-
-
-        <view class="conditional-deviation-options" wx:if="{{deviationConcern}}">
-            <view class="deviation-container">
-                <text class="deviation-label">偏差</text>
-                <radio-group class="deviation-radio-group" name="deviationDirection"
-                             bindchange="onDeviationDirectionChange">
-                    <block wx:for="{{deviationOptions}}" wx:key="value">
-                        <label class="deviation-buttons">
-                            <radio value="{{item.value}}" checked="{{item.value === deviationDirection}}"/>{{item.label}}
-                        </label>
-                    </block>
-                </radio-group>
-            </view>
+        <view class="ACpoolingTab {{ACpoolingTab === 'AC1+2' && ACpoolingTab !== '' ? 'active' : ''}}" data-location='AC1+2' bindtap='toggleAClocation'>AC 1&2
         </view>
+      </view>
+    </view>
 
 
-        <view class="horizontal-line"></view>
+    <view class="conditional-pooling-locations" wx:if="{{ACpoolingTab === 'AC2'}}">
+      <view class="pooling-locations-container">
+        <text class="pooling-label">AC2 Pooling</text>
+        <checkbox-group name="AC2PoolingLocation" data-name="AC2PoolingLocation" bindchange="onPoolingLocationChange">
+          <block wx:for="{{AC2PoolingLocations}}" wx:key="value">
+            <label class="pooling-location-buttons">
+              <checkbox value="{{item.value}}" checked="{{item.checked}}" />
+              {{item.label}}
+            </label>
+          </block>
+        </checkbox-group>
+      </view>
+    </view>
 
+    <view class="conditional-pooling-locations" wx:if="{{ACpoolingTab === 'AC1+2'}}">
+      <view class="pooling-locations-container">
+        <text class="pooling-label">AC1+2 Pooling</text>
+        <checkbox-group name="AC1and2PoolingLocation" data-name="AC1and2PoolingLocation" bindchange="onPoolingLocationChange">
+          <block wx:for="{{AC1and2PoolingLocations}}" wx:key="value">
+            <label class="pooling-location-buttons">
+              <checkbox value="{{item.value}}" checked="{{item.checked}}" />
+              {{item.label}}
+            </label>
+          </block>
+        </checkbox-group>
+      </view>
+    </view>
+
+
+    <view class="conditional-deviation-options" wx:if="{{deviationConcern}}">
+      <view class="deviation-container">
+        <text class="deviation-label">偏差</text>
+        <radio-group class="deviation-radio-group" name="deviationDirection" bindchange="onDeviationDirectionChange">
+          <block wx:for="{{deviationOptions}}" wx:key="value">
+            <label class="deviation-buttons">
+              <radio value="{{item.value}}" checked="{{item.value === deviationDirection}}" />{{item.label}}
+            </label>
+          </block>
+        </radio-group>
+      </view>
+    </view>
+
+
+    <view class="horizontal-line"></view>
 
 
     <view class="customer-comfort-section">
-        <text class="customer-feedback-label">舒适度:</text>
-        <picker mode="selector" range="{{comfortLevels}}" bindchange="changeComfortLevel" value="{{comfortIndex}}">
-            <view class="picker-view">{{comfortLevels[comfortIndex]}}</view>
-        </picker>
+      <text class="customer-feedback-label">舒适度:</text>
+      <picker mode="selector" range="{{comfortLevels}}" bindchange="changeComfortLevel" value="{{comfortIndex}}">
+        <view class="picker-view">{{comfortLevels[comfortIndex]}}</view>
+      </picker>
     </view>
 
 
     <view class="notes-section">
-        <text class="notes-label">筆記:</text>
-        <input class="notes-input" type="text" value="{{notes}}" bindinput="takeNotes" placeholder="在這裡寫筆記"
-               placeholder-style="color: #916a94;"></input>
+      <text class="notes-label">筆記:</text>
+      <input class="notes-input" type="text" value="{{notes}}" bindinput="takeNotes" placeholder="在這裡寫筆記" placeholder-style="color: #916a94;"></input>
     </view>
-    </view>
+  </view>
 </view>

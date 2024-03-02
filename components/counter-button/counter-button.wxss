@@ -145,16 +145,46 @@ radio-group {
   justify-content: space-around;
 }
 
-checkbox-group{
-  margin-bottom: 25rpx;
-}
-
 .checkbox-label {
   flex: 1; 
   display: flex; 
-  align-items: center; 
+  justify-content: center;
   margin-right: 8rpx; 
 }
+
+
+
+.pooling-locations-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.pooling-label {
+  color: #5A315D;
+  font-weight: 500;
+  font-size: large;
+  margin-bottom: 10px; /* Space between the label and the checkboxes */
+}
+
+checkbox-group {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around; /* Adjusts the spacing around the checkboxes */
+  max-width: 100%; /* Ensure the group doesn't exceed the container width */
+  margin-bottom: 25rpx;
+}
+
+.pooling-location-buttons {
+  width: 25%;
+  box-sizing: border-box;
+  padding: 1px;
+  display: flex;
+  justify-content: center;
+  margin-bottom: 8rpx;
+  color: #5A315D;/* Vertically center the checkbox and its label */
+}
+
 
 .deviation-container {
   display: flex;
@@ -199,7 +229,6 @@ checkbox-group{
   line-height: 40rpx;
   text-align: center;
   font-weight: 600;
- 
   border: 1px solid #5A315D;
   margin: 5rpx;
   padding: 6rpx;
@@ -215,8 +244,6 @@ checkbox-group{
   background-color: #5A315D;
   color: #fdeeaf;
 }
-
-
 
 
 .horizontal-line {

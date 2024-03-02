@@ -26,6 +26,8 @@
   BFRpoolingConcern="{{activeTab === 'OD' ? item.BFRpoolingConcernOD : item.BFRpoolingConcernOS}}"
 
   ACpoolingTab="{{activeTab === 'OD' ? item.ACpoolingTabOD : item.ACpoolingTabOS}}"
+  AC1and2PoolingLocation="{{activeTab === 'OD' ? item. AC1and2PoolingLocationOD : item. AC1and2PoolingLocationOS}}"
+  AC2PoolingLocation="{{activeTab === 'OD' ? item. AC2PoolingLocationOD : item. AC2PoolingLocationOS}}"
 
   originalResultOD="{{originalResultOD}}"
   originalResultOS="{{originalResultOS}}"
@@ -41,7 +43,8 @@
   bind:deviationChanged="handleDeviationChange"
   bind:deviationDirectionChanged="handleDeviationDirectionChange"
   bind:BFRpoolingChanged="handleBFRpoolingChange"
-  bind:toggleAClocation="handleACpoolingTabChange"
+  bind:toggleAClocationChanged="handleACpoolingTabChange"
+  bind:poolingLocationChanged="handlePoolingLocationChange"
 
   bind:takeNotes="handleNotes"
   bind:editBFK="handleBFKInput"

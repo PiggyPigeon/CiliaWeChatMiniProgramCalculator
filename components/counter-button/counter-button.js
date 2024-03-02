@@ -94,16 +94,113 @@ Component({
             value: ''
         },
 
+        AC2PoolingLocation: {
+            type: Array,
+            value: []
+        },
+
+        AC1and2PoolingLocation: {
+            type: Array,
+            value: []
+        },
+
         originalResultOD: String,
         originalResultOS: String,
     },
 
     data: {
-        deviationOptions: [{
-            value: 'up',
-            label: '上',
-            checked: false
-        },
+        deviationOptions: [
+            {
+                value: 'up',
+                label: '上',
+                checked: false
+            },
+            {
+                value: 'up-right',
+                label: '右上',
+                checked: false
+            },
+            {
+                value: 'right',
+                label: '右',
+                checked: false
+            },
+            {
+                value: 'down-right',
+                label: '右下',
+                checked: false
+            },
+            {
+                value: 'down',
+                label: '下',
+                checked: false
+            },
+            {
+                value: 'down-left',
+                label: '左下',
+                checked: false
+            },
+            {
+                value: 'left',
+                label: '左下',
+                checked: false
+            },
+            {
+                value: 'up-left',
+                label: '左上',
+                checked: false
+            },
+        ],
+
+        AC1and2PoolingLocations: [
+            {
+                value: 'up',
+                label: '上',
+                checked: false
+            },
+            {
+                value: 'up-right',
+                label: '右上',
+                checked: false
+            },
+            {
+                value: 'right',
+                label: '右',
+                checked: false
+            },
+            {
+                value: 'down-right',
+                label: '右下',
+                checked: false
+            },
+            {
+                value: 'down',
+                label: '下',
+                checked: false
+            },
+            {
+                value: 'down-left',
+                label: '左下',
+                checked: false
+            },
+            {
+                value: 'left',
+                label: '左下',
+                checked: false
+            },
+            {
+                value: 'up-left',
+                label: '左上',
+                checked: false
+            },
+        ],
+
+        AC2PoolingLocations: [
+            {
+                value: 'up',
+                label: '上',
+                checked: false
+            },
             {
                 value: 'up-right',
                 label: '右上',
@@ -314,38 +411,72 @@ Component({
             });
         },
 
+        // TODO: below is not correctly resetting the poolingLocation
         onBFRpoolingChange: function (e) {
+            console.log("Checkbox Values", e.detail.value);
             const isBFRPoolingChecked = e.detail.value.includes('hasBFRpooling');
+            console.log("Is BFR Pooling Checked:", isBFRPoolingChecked);
             this.setData({
                 BFRpoolingConcern: isBFRPoolingChecked,
             });
 
             if (!isBFRPoolingChecked) {
+                console.log("Current ACpoolingTab value before reset:", this.data.ACpoolingTab);
                 this.setData({
-                    AC2: false,
-                    AC1_2: false,
+                    ACpoolingTab: '', // Reset ACpoolingTab
+                    AC2PoolingLocation: [], // Also reset AC2PoolingLocation
+                    AC1and2PoolingLocation: [] // And reset AC1and2PoolingLocation
                 });
+                this.toggleAClocation(e);
+                console.log("ACpoolingTab has been reset to:", this.data.ACpoolingTab);
+                console.log("AC2poolingLocation has been reset to:", this.data.AC2PoolingLocation);
+                console.log("AC1and2PoolingLocation has been reset to:", this.data.AC1and2PoolingLocation);
             }
 
             this.triggerEvent('BFRpoolingChanged', {
-                BFRpoolingConcern: this.data.BFRpoolingConcern,
+                BFRpoolingConcern: isBFRPoolingChecked,
                 identifier: this.data.identifier,
                 lensId: this.data.lensId
             });
         },
 
         toggleAClocation: function (e) {
-            const AClocation = e.currentTarget.dataset.location;
-            this.setData({
-                ACpoolingTab: AClocation
-            });
+            console.log("Toggling AC location, BFRpoolingConcern:", this.data.BFRpoolingConcern);
 
-            this.triggerEvent('toggleAClocation', {
+            if (this.data.BFRpoolingConcern) {
+                const newAClocation = e.currentTarget.dataset.location;
+                console.log("Setting newAClocation to:", newAClocation);
+                this.setData({
+                    ACpoolingTab: newAClocation
+                });
+            } else {
+                console.log("BFRpoolingConcern is unchecked, no ACpoolingTab should be active.");
+                this.setData({
+                    ACpoolingTab: ''
+                })
+            }
+            this.triggerEvent('toggleAClocationChanged', {
                 ACpoolingTab: this.data.ACpoolingTab,
                 identifier: this.data.identifier,
                 lensId: this.data.lensId
             });
         },
 
+        onPoolingLocationChange: function (e) {
+            const selectedValue = e.detail.value[0];
+
+            if (e.currentTarget.dataset.name === 'AC2PoolingLocation') {
+                this.data.AC2PoolingLocation.push(selectedValue);
+            }
+            else if (e.currentTarget.dataset.name === 'AC1and2PoolingLocation') {
+                this.data.AC1and2PoolingLocation.push(selectedValue);
+            }
+            this.triggerEvent('poolingLocationChanged', {
+                AC2PoolingLocation: this.data.AC2PoolingLocation,
+                AC1and2PoolingLocation: this.data.AC1and2PoolingLocation,
+                identifier: this.data.identifier,
+                lensId: this.data.lensId
+            });
+        },
     }
 });

@@ -32,6 +32,8 @@ Page({
                 BFRpoolingConcernOD: '',
                 ACpoolingTabOD: '',
 
+                AC2PoolingLocationOD: '',
+                AC1and2PoolingLocationOD: '',
 
                 OZsizeConcernOS: '',
                 OADsizeConcernOS: '',
@@ -42,7 +44,9 @@ Page({
                 deviationConcernOS: '',
                 deviationDirectionOS: '',
                 BFRpoolingConcernOS: '',
-                ACpoolingTabOS: ''
+                ACpoolingTabOS: '',
+                AC2PoolingLocationOS: '',
+                AC1and2PoolingLocationOS: ''
             }
         ],
         nextLensId: 2,
@@ -181,6 +185,23 @@ Page({
             this.setData({
                 [`lensCollection[${lensIndex}]`]: updatedLens
             });
+        }
+    },
+
+    handlePoolingLocationChange: function (e) {
+        const {lensId, identifier, AC1and2PoolingLocation, AC2PoolingLocation} = e.detail;
+        const lensIndex = this.data.lensCollection.findIndex(lens => lens.id === lensId);
+        if (lensIndex !== -1) {
+            const lensKey1and2 = identifier === 'OD' ? 'AC1and2PoolingLocationOD' : 'AC1and2PoolingLocationOS';
+            const lensKey2 = identifier === 'OD' ? 'AC2PoolingLocationOD' : 'AC2PoolingLocationOS';
+            const updatedLens = Object.assign({}, this.data.lensCollection[lensIndex], {[lensKey1and2]: [AC1and2PoolingLocation]}, {[lensKey2]: [AC2PoolingLocation]});
+            this.setData({
+                [`lensCollection[${lensIndex}]`]: updatedLens
+            });
+            console.log("upon updating the lens collection, lensKey1and2 is:", lensKey1and2)
+            console.log("lensKey2 is:", lensKey2)
+            console.log("AC1and2PoolingLocation is:", AC1and2PoolingLocation)
+            console.log("AC2PoolingLocation is:", AC2PoolingLocation)
         }
     },
 
